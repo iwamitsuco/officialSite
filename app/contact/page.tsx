@@ -20,8 +20,8 @@ export default function ContactPage() {
             <SectionTitle label="Contact" title="まずは無料でご相談ください。" description="内容が固まっていなくても大丈夫です。課題を伺い、進め方を整理します。" />
             <div className="mt-8 rounded-lg bg-white p-6 text-sm leading-7 text-apple-sub">
               <p>電話: <a className="font-semibold text-apple-blue" href={siteConfig.telLink}>{siteConfig.tel}</a></p>
-              <p>メール: <a className="font-semibold text-apple-blue" href={siteConfig.emailLink}>{siteConfig.email}</a></p>
               <p>受付: {siteConfig.businessHours}</p>
+              <p>メール: <a className="font-semibold text-apple-blue" href={siteConfig.emailLink}>{siteConfig.email}</a></p>
             </div>
           </div>
           <ContactForm />
