@@ -6,9 +6,10 @@ import { FormEvent, useRef, useState } from "react";
 type SearchBoxProps = {
   defaultValue?: string;
   compact?: boolean;
+  placeholder?: string;
 };
 
-export function SearchBox({ defaultValue = "", compact = false }: SearchBoxProps) {
+export function SearchBox({ defaultValue = "", compact = false, placeholder = "サイト内検索" }: SearchBoxProps) {
   const router = useRouter();
   const pathname = usePathname();
   const params = useSearchParams();
@@ -42,7 +43,7 @@ export function SearchBox({ defaultValue = "", compact = false }: SearchBoxProps
           ref={inputRef}
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="検索"
+          placeholder={placeholder}
         />
         {query ? (
           <button

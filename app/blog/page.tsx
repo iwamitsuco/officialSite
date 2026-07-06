@@ -22,7 +22,7 @@ export default function BlogPage() {
           <SectionTitle label="Blog" title="事業に役立つデジタル情報" description="中小企業の経営者にも分かりやすく、短く整理してお届けします。" align="center" />
           <div className="mx-auto mt-8 max-w-xl">
             <Suspense>
-              <SearchBox />
+              <SearchBox placeholder="ブログ内を検索" />
             </Suspense>
           </div>
           <div className="mt-12">
