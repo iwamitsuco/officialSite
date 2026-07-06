@@ -42,7 +42,7 @@ export default function HomePage() {
               システム・Web広告・AIで企業を支える
             </h1>
             <p className="lead mt-6 max-w-2xl">
-              宮崎の中小企業・個人事業主向けに、ホームページ制作、業務システム、Web広告、DX支援まで一貫してサポートします。
+              中小企業・個人事業主向けに、ホームページ制作、業務システム、Web広告、DX支援まで一貫してサポートします。
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button href="/contact">無料で相談する</Button>
