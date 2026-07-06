@@ -90,11 +90,13 @@ export function Header() {
             <div className="flex justify-end">
               <button
                 aria-label="メニューを閉じる"
-                className="min-h-11 min-w-11 rounded-full border border-apple-border text-sm font-semibold"
+                className="relative min-h-11 min-w-11 rounded-full border border-apple-border text-apple-text transition hover:bg-apple-gray"
                 type="button"
                 onClick={() => setOpen(false)}
               >
-                閉じる
+                <span className="sr-only">閉じる</span>
+                <span aria-hidden="true" className="absolute left-1/2 top-1/2 h-0.5 w-5 -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-full bg-current" />
+                <span aria-hidden="true" className="absolute left-1/2 top-1/2 h-0.5 w-5 -translate-x-1/2 -translate-y-1/2 -rotate-45 rounded-full bg-current" />
               </button>
             </div>
             <div className="mt-6">
