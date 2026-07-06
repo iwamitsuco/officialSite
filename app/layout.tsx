@@ -4,6 +4,7 @@ import "./globals.css";
 import { FixedMobileCTA } from "@/components/layout/FixedMobileCTA";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { ChatWidget } from "@/components/layout/ChatWidget";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         </Suspense>
         <main>{children}</main>
         <Footer />
+        <ChatWidget />
         <FixedMobileCTA />
       </body>
     </html>
