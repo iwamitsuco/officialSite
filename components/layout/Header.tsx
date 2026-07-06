@@ -60,16 +60,23 @@ export function Header() {
         <button
           aria-controls="mobile-drawer"
           aria-expanded={open}
-          aria-label="メニューを開く"
-          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-apple-border text-apple-text lg:hidden"
+          aria-label={open ? "メニューを閉じる" : "メニューを開く"}
+          className="relative inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-apple-border text-apple-text transition hover:bg-apple-gray lg:hidden"
           type="button"
-          onClick={() => setOpen(true)}
+          onClick={() => setOpen((current) => !current)}
         >
-          <span className="sr-only">メニュー</span>
-          <span className="flex w-5 flex-col gap-1.5" aria-hidden="true">
-            <span className="h-0.5 rounded-full bg-current" />
-            <span className="h-0.5 rounded-full bg-current" />
-          </span>
+          <span className="sr-only">{open ? "閉じる" : "メニュー"}</span>
+          {open ? (
+            <>
+              <span aria-hidden="true" className="absolute left-1/2 top-1/2 h-0.5 w-5 -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-full bg-current" />
+              <span aria-hidden="true" className="absolute left-1/2 top-1/2 h-0.5 w-5 -translate-x-1/2 -translate-y-1/2 -rotate-45 rounded-full bg-current" />
+            </>
+          ) : (
+            <span className="flex w-5 flex-col gap-1.5" aria-hidden="true">
+              <span className="h-0.5 rounded-full bg-current" />
+              <span className="h-0.5 rounded-full bg-current" />
+            </span>
+          )}
         </button>
       </div>
 
@@ -87,19 +94,7 @@ export function Header() {
             aria-label="モバイルメニュー"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="flex justify-end">
-              <button
-                aria-label="メニューを閉じる"
-                className="relative min-h-11 min-w-11 rounded-full border border-apple-border text-apple-text transition hover:bg-apple-gray"
-                type="button"
-                onClick={() => setOpen(false)}
-              >
-                <span className="sr-only">閉じる</span>
-                <span aria-hidden="true" className="absolute left-1/2 top-1/2 h-0.5 w-5 -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-full bg-current" />
-                <span aria-hidden="true" className="absolute left-1/2 top-1/2 h-0.5 w-5 -translate-x-1/2 -translate-y-1/2 -rotate-45 rounded-full bg-current" />
-              </button>
-            </div>
-            <div className="mt-6">
+            <div>
               <SearchBox />
             </div>
             <nav className="mt-8 grid gap-2 text-lg font-semibold" aria-label="モバイルナビ">
