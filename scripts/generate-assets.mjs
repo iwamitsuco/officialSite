@@ -61,11 +61,6 @@ async function main() {
   await writeWebp("public/images/insight-ai.webp", svgCard({ title: "AI", subtitle: "安全に始める活用", accent: "#5856D6", width: 720, height: 420 }), 720, 420);
 
   await writePng("public/ogp/ogp.png", ogpSvg(), 1200, 630);
-  await writePng("public/favicon-32.png", ogpSvg(), 32, 32);
-  await writePng("public/favicon-16.png", ogpSvg(), 16, 16);
-  await writePng("public/apple-touch-icon.png", ogpSvg(), 180, 180);
-  await writePng("public/favicon.ico", ogpSvg(), 32, 32);
-
   const pdf = `%PDF-1.4
 1 0 obj
 << /Type /Catalog /Pages 2 0 R >>
