@@ -10,7 +10,6 @@ import { blogPosts } from "@/data/blog";
 import { newsPosts } from "@/data/news";
 import { services } from "@/data/services";
 import { organizationJsonLd, SEOJsonLd } from "@/lib/jsonld";
-import { siteConfig } from "@/lib/site-config";
 
 const problems = [
   "ホームページが古い",
@@ -48,9 +47,6 @@ export default function HomePage() {
               <Button href="/contact">無料で相談する</Button>
               <Button href="/download" variant="secondary">
                 資料をダウンロード
-              </Button>
-              <Button href={siteConfig.telLink} variant="secondary">
-                電話する
               </Button>
             </div>
           </div>
