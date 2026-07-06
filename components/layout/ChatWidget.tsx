@@ -56,18 +56,18 @@ export function ChatWidget() {
       {isOpen ? (
         <section
           className="w-[min(calc(100vw-32px),360px)] overflow-hidden rounded-lg border border-apple-border bg-white shadow-soft"
-          aria-label="相談チャット"
+          aria-label="ご相談はこちら"
         >
           <div className="flex items-center justify-between border-b border-apple-border px-4 py-3">
             <div>
-              <p className="text-sm font-semibold text-apple-text">相談チャット</p>
+              <p className="text-sm font-semibold text-apple-text">ご相談はこちら</p>
               <p className="text-xs text-apple-sub">知りたい内容を選んでください</p>
             </div>
             <button
               type="button"
               className="flex size-9 items-center justify-center rounded-full text-xl leading-none text-apple-sub transition hover:bg-apple-gray hover:text-apple-text"
               onClick={() => setIsOpen(false)}
-              aria-label="相談チャットを閉じる"
+              aria-label="ご相談パネルを閉じる"
             >
               ×
             </button>
@@ -119,10 +119,10 @@ export function ChatWidget() {
         className="flex min-h-12 items-center gap-2 rounded-full bg-apple-text px-5 text-sm font-semibold text-white shadow-soft transition hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
         onClick={() => setIsOpen((current) => !current)}
         aria-expanded={isOpen}
-        aria-label={isOpen ? "相談チャットを閉じる" : "相談チャットを開く"}
+        aria-label={isOpen ? "ご相談パネルを閉じる" : "ご相談パネルを開く"}
       >
-        <span aria-hidden="true">{isOpen ? "×" : "?"}</span>
-        <span>{isOpen ? "閉じる" : "相談チャット"}</span>
+        {isOpen ? <span aria-hidden="true">×</span> : null}
+        <span>{isOpen ? "閉じる" : "ご相談はこちら"}</span>
       </button>
     </div>
   );
