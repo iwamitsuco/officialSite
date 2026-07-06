@@ -20,6 +20,5 @@ export const navLinks = [
   { href: "/services", label: "サービス" },
   { href: "/company", label: "会社概要" },
   { href: "/blog", label: "ブログ" },
-  { href: "/news", label: "お知らせ" },
-  { href: "/contact", label: "お問い合わせ" }
+  { href: "/news", label: "お知らせ" }
 ] as const;
