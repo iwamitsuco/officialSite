@@ -54,7 +54,7 @@ export function Header() {
           <Button href="/download" variant="secondary">
             資料DL
           </Button>
-          <Button href={siteConfig.telLink}>電話</Button>
+          <Button href="/contact">無料相談</Button>
         </div>
 
         <button
@@ -113,8 +113,8 @@ export function Header() {
               <Button href="/download" variant="secondary" onClick={() => setOpen(false)}>
                 資料をダウンロード
               </Button>
-              <Button href={siteConfig.telLink} onClick={() => setOpen(false)}>
-                電話で相談する
+              <Button href="/contact" onClick={() => setOpen(false)}>
+                無料で相談する
               </Button>
             </div>
           </div>

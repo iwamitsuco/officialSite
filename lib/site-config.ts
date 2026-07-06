@@ -18,8 +18,8 @@ export const siteConfig = {
 
 export const navLinks = [
   { href: "/services", label: "サービス" },
+  { href: "/company", label: "会社概要" },
   { href: "/blog", label: "ブログ" },
   { href: "/news", label: "お知らせ" },
-  { href: "/company", label: "会社概要" },
   { href: "/contact", label: "お問い合わせ" }
 ] as const;
