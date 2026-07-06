@@ -7,6 +7,7 @@ const inquiryTypes = ["システム開発", "ホームページ制作", "制作�
 const fieldLimits = {
   company: 100,
   name: 50,
+  furigana: 50,
   email: 254,
   tel: 20,
   message: 5000
@@ -21,19 +22,21 @@ export function ContactForm() {
     const formData = new FormData(event.currentTarget);
     const company = String(formData.get("company") ?? "").trim();
     const name = String(formData.get("name") ?? "").trim();
+    const furigana = String(formData.get("furigana") ?? "").trim();
     const email = String(formData.get("email") ?? "").trim();
     const tel = String(formData.get("tel") ?? "").trim();
     const message = String(formData.get("message") ?? "").trim();
     const agreed = formData.get("privacy") === "on";
 
-    if (!name || !email || !message) {
-      setErrorMessage("お名前、メールアドレス、お問い合わせ内容を入力してください。");
+    if (!name || !furigana || !email || !message) {
+      setErrorMessage("お名前、フリガナ、メールアドレス、お問い合わせ内容を入力してください。");
       return;
     }
 
     if (
       company.length > fieldLimits.company ||
       name.length > fieldLimits.name ||
+      furigana.length > fieldLimits.furigana ||
       email.length > fieldLimits.email ||
       tel.length > fieldLimits.tel ||
       message.length > fieldLimits.message
@@ -79,6 +82,7 @@ export function ContactForm() {
       ) : null}
       <Field label="会社名" name="company" maxLength={fieldLimits.company} />
       <Field label="お名前（必須）" name="name" maxLength={fieldLimits.name} required />
+      <Field label="フリガナ（必須）" name="furigana" maxLength={fieldLimits.furigana} required />
       <EmailField label="メールアドレス（必須）" maxLength={fieldLimits.email} required />
       <Field label="電話番号" name="tel" type="tel" maxLength={fieldLimits.tel} pattern="^[0-9\\-+()\\s]+$" />
       <label className="grid gap-2 text-sm font-semibold">
