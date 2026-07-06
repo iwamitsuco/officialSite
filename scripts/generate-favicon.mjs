@@ -2,9 +2,10 @@ import fs from "node:fs/promises";
 import sharp from "sharp";
 
 const source = "public/images/bloomia-logo-mark.png";
+const rawSource = "public/images/bloomia-logo-source.png";
 
-async function transparentLogo(size, padding) {
-  const { data, info } = await sharp(source)
+async function transparentLogo(size, padding, input = rawSource) {
+  const { data, info } = await sharp(input)
     .resize(size - padding * 2, size - padding * 2, { fit: "contain" })
     .removeAlpha()
     .raw()
@@ -64,7 +65,14 @@ async function appleTouchIcon() {
     .toBuffer();
 }
 
-await fs.writeFile("public/favicon-16.png", await transparentLogo(16, 1));
-await fs.writeFile("public/favicon-32.png", await transparentLogo(32, 2));
-await fs.writeFile("public/favicon.ico", await transparentLogo(32, 2));
+try {
+  await fs.access(rawSource);
+  await fs.writeFile(source, await transparentLogo(96, 10, rawSource));
+} catch {
+  // The source file is optional; existing logo assets are still regenerated above.
+}
+
+await fs.writeFile("public/favicon-16.png", await transparentLogo(16, 1, rawSource));
+await fs.writeFile("public/favicon-32.png", await transparentLogo(32, 2, rawSource));
+await fs.writeFile("public/favicon.ico", await transparentLogo(32, 2, rawSource));
 await fs.writeFile("public/apple-touch-icon.png", await appleTouchIcon());
