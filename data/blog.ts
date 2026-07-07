@@ -11,7 +11,7 @@ export const blogPosts: BlogPost[] = [
       "まずはトップページで何を相談できる会社なのかが伝わるかを確認しましょう。"
     ],
     category: "ホームページ制作",
-    tags: ["SEO・検索対策", "宮崎", "中小企業"],
+    tags: ["SEO・検索対策", "地域ビジネス", "中小企業"],
     publishedAt: "2026-06-20",
     updatedAt: "2026-06-24",
     thumbnail: "/images/insight-website.webp",
@@ -42,7 +42,7 @@ export const blogPosts: BlogPost[] = [
       "最初は小さな予算で検証し、反応を見ながら改善していきましょう。"
     ],
     category: "Web広告",
-    tags: ["Google広告", "Instagram広告", "宮崎"],
+    tags: ["Google広告", "Instagram広告", "地域ビジネス"],
     publishedAt: "2026-06-02",
     thumbnail: "/images/insight-ad.webp",
     reading: "うぇぶこうこく"
@@ -65,7 +65,7 @@ export const blogPosts: BlogPost[] = [
 ];
 
 export const blogCategories = ["システム開発", "ホームページ制作", "Web広告", "DX・業務改善", "生成AI", "デザイン", "お知らせ"];
-export const blogTags = ["Google広告", "Instagram広告", "SEO・検索対策", "ECサイト", "業務改善", "AI活用", "宮崎", "中小企業"];
+export const blogTags = ["Google広告", "Instagram広告", "SEO・検索対策", "ECサイト", "業務改善", "AI活用", "地域ビジネス", "中小企業"];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
