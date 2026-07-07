@@ -22,7 +22,7 @@ const adTypes = [
 function AdVisual({ type }: { type: string }) {
   if (type === "search") {
     return (
-      <div className="rounded-lg bg-white p-4 ring-1 ring-apple-border">
+      <div className="flex h-[220px] flex-col justify-center rounded-lg bg-white p-4 ring-1 ring-apple-border">
         <div className="rounded-full bg-apple-gray px-4 py-2 text-xs font-semibold text-apple-sub">ホームページ制作</div>
         <div className="mt-4 rounded-lg border border-apple-blue bg-blue-50 p-3">
           <p className="text-xs font-semibold text-apple-blue">広告</p>
@@ -39,7 +39,7 @@ function AdVisual({ type }: { type: string }) {
 
   if (type === "display") {
     return (
-      <div className="rounded-lg bg-white p-4 ring-1 ring-apple-border">
+      <div className="flex h-[220px] flex-col justify-center rounded-lg bg-white p-4 ring-1 ring-apple-border">
         <div className="grid grid-cols-[1fr_112px] gap-3">
           <div className="space-y-2">
             <div className="h-3 w-4/5 rounded-full bg-gray-300" />
@@ -58,7 +58,7 @@ function AdVisual({ type }: { type: string }) {
   }
 
   return (
-    <div className="rounded-lg bg-white p-4 ring-1 ring-apple-border">
+    <div className="flex h-[220px] flex-col justify-center rounded-lg bg-white p-4 ring-1 ring-apple-border">
       <div className="flex items-center gap-3">
         <div className="h-9 w-9 rounded-full bg-apple-blue/15" />
         <div>
@@ -91,7 +91,7 @@ export function WebAdTypesSection() {
 
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {adTypes.map((adType) => (
-            <article className="rounded-lg border border-apple-border bg-white p-6 shadow-sm" key={adType.title}>
+            <article className="flex h-full flex-col rounded-lg border border-apple-border bg-white p-6 shadow-sm" key={adType.title}>
               <AdVisual type={adType.visual} />
               <h3 className="mt-6 text-xl font-semibold text-apple-text">{adType.title}</h3>
               <p className="mt-3 text-sm leading-7 text-apple-sub">{adType.description}</p>
