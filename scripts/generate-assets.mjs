@@ -54,7 +54,7 @@ async function main() {
   await ensureDir("public/ogp");
   await ensureDir("public/documents");
 
-  await writeWebp("public/images/hero-dashboard.webp", svgCard({ title: "Digital Growth", subtitle: "Web / System / Ads / DX", width: 960, height: 720 }), 960, 720);
+  await writeWebp("public/images/hero-dashboard.webp", svgCard({ title: "Digital Growth", subtitle: "Web制作 / 業務システム / 広告 / DX", width: 960, height: 720 }), 960, 720);
   await writeWebp("public/images/insight-website.webp", svgCard({ title: "Website", subtitle: "CV導線を整える", width: 720, height: 420 }), 720, 420);
   await writeWebp("public/images/insight-dx.webp", svgCard({ title: "DX", subtitle: "業務を軽くする", accent: "#34C759", width: 720, height: 420 }), 720, 420);
   await writeWebp("public/images/insight-ad.webp", svgCard({ title: "Ads", subtitle: "成果を見ながら改善", accent: "#FF9500", width: 720, height: 420 }), 720, 420);
