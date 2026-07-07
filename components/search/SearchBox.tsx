@@ -7,9 +7,10 @@ type SearchBoxProps = {
   defaultValue?: string;
   compact?: boolean;
   placeholder?: string;
+  onSearch?: () => void;
 };
 
-export function SearchBox({ defaultValue = "", compact = false, placeholder = "サイト内検索" }: SearchBoxProps) {
+export function SearchBox({ defaultValue = "", compact = false, placeholder = "サイト内検索", onSearch }: SearchBoxProps) {
   const router = useRouter();
   const pathname = usePathname();
   const params = useSearchParams();
@@ -20,6 +21,7 @@ export function SearchBox({ defaultValue = "", compact = false, placeholder = "�
     event.preventDefault();
     const trimmed = query.trim();
     router.push(trimmed ? `/search?q=${encodeURIComponent(trimmed)}` : "/search");
+    onSearch?.();
   }
 
   function handleClear() {
@@ -37,10 +39,12 @@ export function SearchBox({ defaultValue = "", compact = false, placeholder = "�
       </label>
       <div className="relative w-full">
         <input
-          className="min-h-11 w-full rounded-full border border-apple-border bg-white px-4 pr-12 text-sm text-apple-text placeholder:text-apple-sub focus:border-apple-blue"
+          className="min-h-11 w-full appearance-none rounded-full border border-apple-border bg-white px-4 pr-20 text-sm text-apple-text placeholder:text-apple-sub focus:border-apple-blue"
+          enterKeyHint="search"
           id={compact ? "header-search" : "site-search"}
           name="q"
           ref={inputRef}
+          type="search"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder={placeholder}
@@ -48,13 +52,23 @@ export function SearchBox({ defaultValue = "", compact = false, placeholder = "�
         {query ? (
           <button
             aria-label="検索語句を削除"
-            className="absolute right-1.5 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full text-lg leading-none text-apple-sub transition hover:bg-apple-gray hover:text-apple-text"
+            className="absolute right-10 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full text-lg leading-none text-apple-sub transition hover:bg-apple-gray hover:text-apple-text"
             type="button"
             onClick={handleClear}
           >
             ×
           </button>
         ) : null}
+        <button
+          aria-label="検索する"
+          className="absolute right-1.5 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-apple-blue text-white transition hover:bg-apple-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
+          type="submit"
+        >
+          <svg aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path d="m21 21-4.35-4.35" strokeLinecap="round" strokeLinejoin="round" />
+            <circle cx="11" cy="11" r="6" />
+          </svg>
+        </button>
       </div>
     </form>
   );

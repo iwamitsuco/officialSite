@@ -95,7 +95,7 @@ export function Header() {
             onClick={(event) => event.stopPropagation()}
           >
             <div>
-              <SearchBox />
+              <SearchBox onSearch={() => setOpen(false)} />
             </div>
             <nav className="mt-8 grid gap-2 text-lg font-semibold" aria-label="モバイルナビ">
               {navLinks.map((link) => (
