@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 
 type ChatTopic = {
@@ -51,8 +51,30 @@ export function ChatWidget() {
     [selectedTopicId]
   );
 
+  useEffect(() => {
+    if (!isOpen || !window.matchMedia("(max-width: 767px)").matches) {
+      return;
+    }
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [isOpen]);
+
   return (
-    <div className="fixed bottom-[calc(env(safe-area-inset-bottom)+16px)] right-4 z-50 flex flex-col items-end gap-3 md:bottom-6 md:right-6">
+    <>
+      {isOpen ? (
+        <button
+          type="button"
+          className="fixed inset-0 z-[55] bg-black/30 md:hidden"
+          aria-label="チャットを閉じる"
+          onClick={() => setIsOpen(false)}
+        />
+      ) : null}
+      <div className="fixed bottom-[calc(env(safe-area-inset-bottom)+16px)] right-4 z-[60] flex flex-col items-end gap-3 md:bottom-6 md:right-6">
       {isOpen ? (
         <section
           className="w-[min(calc(100vw-32px),360px)] overflow-hidden rounded-lg border border-apple-border bg-white shadow-soft"
@@ -124,6 +146,7 @@ export function ChatWidget() {
         {isOpen ? <span aria-hidden="true">×</span> : null}
         <span>{isOpen ? "閉じる" : "ご相談はこちら"}</span>
       </button>
-    </div>
+      </div>
+    </>
   );
 }
