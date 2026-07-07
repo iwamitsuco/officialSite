@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { BlogCard } from "@/components/sections/BlogCard";
 import { CTASection } from "@/components/sections/CTASection";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { CopyArticleUrlButton } from "@/components/ui/CopyArticleUrlButton";
 import { blogPosts, getBlogPostBySlug } from "@/data/blog";
 import { blogPostingJsonLd, breadcrumbJsonLd, SEOJsonLd } from "@/lib/jsonld";
 import { createMetadata } from "@/lib/seo";
@@ -60,6 +61,10 @@ export default async function BlogDetailPage({ params }: BlogDetailProps) {
                 {tag}
               </span>
             ))}
+          </div>
+          <div className="mt-6 flex items-center gap-3 border-t border-apple-border pt-6">
+            <p className="text-sm font-semibold text-apple-sub">記事を共有</p>
+            <CopyArticleUrlButton />
           </div>
           <div className="mt-12 grid gap-6 text-[17px] leading-9 text-apple-text">
             {post.body.map((paragraph) => (
