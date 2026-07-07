@@ -2,6 +2,7 @@ import { CTASection } from "@/components/sections/CTASection";
 import { FAQ } from "@/components/sections/FAQ";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { SectionTitle } from "@/components/ui/SectionTitle";
+import { WebAdTypesSection } from "@/components/sections/WebAdTypesSection";
 import { breadcrumbJsonLd, faqJsonLd, SEOJsonLd, serviceJsonLd } from "@/lib/jsonld";
 import type { Service } from "@/types";
 
@@ -33,6 +34,7 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
           </div>
         </div>
       </section>
+      {service.slug === "web-advertising" ? <WebAdTypesSection /> : null}
       <section className="section-space bg-apple-gray">
         <div className="container-site">
           <SectionTitle title="対応内容" align="center" />
