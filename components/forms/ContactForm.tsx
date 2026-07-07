@@ -1,9 +1,16 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { EmailField } from "@/components/forms/EmailField";
 
 const inquiryTypes = ["システム開発", "ホームページ制作", "制作・デザイン", "企業DX", "Web広告", "その他"];
+const categoryToInquiryType: Record<string, string> = {
+  website: "ホームページ制作",
+  system: "システム開発",
+  ads: "Web広告",
+  dx: "企業DX",
+  flow: "その他"
+};
 const fieldLimits = {
   company: 100,
   name: 50,
@@ -16,6 +23,19 @@ const fieldLimits = {
 export function ContactForm() {
   const [sent, setSent] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [selectedInquiryType, setSelectedInquiryType] = useState("");
+
+  useEffect(() => {
+    const category = new URLSearchParams(window.location.search).get("category");
+    if (!category) {
+      return;
+    }
+
+    const inquiryType = categoryToInquiryType[category];
+    if (inquiryType) {
+      setSelectedInquiryType(inquiryType);
+    }
+  }, []);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -87,7 +107,13 @@ export function ContactForm() {
       <Field label="電話番号" name="tel" type="tel" maxLength={fieldLimits.tel} pattern="^[0-9\\-+()\\s]+$" />
       <label className="grid gap-2 text-sm font-semibold">
         相談内容
-        <select className="min-h-12 rounded-lg border border-apple-border px-4 text-base font-normal" name="type" required>
+        <select
+          className="min-h-12 rounded-lg border border-apple-border px-4 text-base font-normal"
+          name="type"
+          onChange={(event) => setSelectedInquiryType(event.target.value)}
+          required
+          value={selectedInquiryType}
+        >
           <option value="">選択してください</option>
           {inquiryTypes.map((type) => (
             <option key={type}>{type}</option>

@@ -127,7 +127,7 @@ export function ChatWidget() {
 
             <Link
               className="flex min-h-11 items-center justify-center rounded-full bg-apple-blue px-5 text-sm font-semibold text-white transition hover:bg-apple-hover"
-              href="/contact"
+              href={`/contact?category=${selectedTopic.id}`}
               onClick={() => setIsOpen(false)}
             >
               無料で相談する
