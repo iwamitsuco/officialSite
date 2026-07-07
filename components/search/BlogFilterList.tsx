@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { BlogCard } from "@/components/sections/BlogCard";
 import { CategoryFilter } from "@/components/search/CategoryFilter";
 import { TagFilter } from "@/components/search/TagFilter";
@@ -17,6 +17,7 @@ export function BlogFilterList({ posts, categories }: BlogFilterListProps) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   const visibleTags = useMemo(() => getTagsForCategory(posts, category), [posts, category]);
   const filteredTags = selectedTags.filter((tag) => visibleTags.includes(tag));
@@ -54,14 +55,29 @@ export function BlogFilterList({ posts, categories }: BlogFilterListProps) {
         <label className="sr-only" htmlFor="blog-search">
           ブログ内を検索
         </label>
-        <input
-          className="min-h-12 w-full rounded-full border border-apple-border bg-white px-5 text-base text-apple-text placeholder:text-apple-sub focus:border-apple-blue"
-          id="blog-search"
-          type="search"
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder="ブログ内を検索"
-        />
+        <div className="relative">
+          <input
+            className="min-h-12 w-full appearance-none rounded-full border border-apple-border bg-white px-5 pr-14 text-base text-apple-text placeholder:text-apple-sub focus:border-apple-blue"
+            enterKeyHint="search"
+            id="blog-search"
+            ref={searchInputRef}
+            type="search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="ブログ内を検索"
+          />
+          <button
+            aria-label="ブログ内を検索"
+            className="absolute right-1.5 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-apple-blue text-white transition hover:bg-apple-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
+            type="button"
+            onClick={() => searchInputRef.current?.focus()}
+          >
+            <svg aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path d="m21 21-4.35-4.35" strokeLinecap="round" strokeLinejoin="round" />
+              <circle cx="11" cy="11" r="6" />
+            </svg>
+          </button>
+        </div>
         <div className="grid gap-3 border-t border-apple-border pt-5">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <p className="text-sm font-semibold text-apple-text">カテゴリ</p>
