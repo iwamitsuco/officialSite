@@ -50,7 +50,7 @@ export function BlogFilterList({ posts, categories }: BlogFilterListProps) {
 
   return (
     <div className="grid gap-8">
-      <div className="grid gap-4 rounded-lg bg-apple-gray p-5">
+      <div className="grid gap-6 rounded-lg bg-apple-gray p-5">
         <label className="sr-only" htmlFor="blog-search">
           ブログ内を検索
         </label>
@@ -62,8 +62,21 @@ export function BlogFilterList({ posts, categories }: BlogFilterListProps) {
           onChange={(event) => setQuery(event.target.value)}
           placeholder="ブログ内を検索"
         />
-        <CategoryFilter categories={categories} value={category} onChange={handleCategoryChange} />
-        <TagFilter tags={visibleTags} selectedTags={filteredTags} onToggle={handleTagToggle} />
+        <div className="grid gap-3 border-t border-apple-border pt-5">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <p className="text-sm font-semibold text-apple-text">カテゴリ</p>
+            <p className="text-xs font-semibold text-apple-sub">大きな分類を1つ選択</p>
+          </div>
+          <CategoryFilter categories={categories} value={category} onChange={handleCategoryChange} />
+        </div>
+
+        <div className="grid gap-3 border-t border-apple-border pt-5">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <p className="text-sm font-semibold text-apple-text">タグ</p>
+            <p className="text-xs font-semibold text-apple-sub">細かいキーワードを複数選択可</p>
+          </div>
+          <TagFilter tags={visibleTags} selectedTags={filteredTags} onToggle={handleTagToggle} />
+        </div>
       </div>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {filteredPosts.map((post) => (
