@@ -57,7 +57,7 @@ export function BlogFilterList({ posts, categories }: BlogFilterListProps) {
         </label>
         <div className="relative">
           <input
-            className="min-h-12 w-full appearance-none rounded-full border border-apple-border bg-white px-5 pr-14 text-base text-apple-text placeholder:text-apple-sub focus:border-apple-blue"
+            className="min-h-12 w-full appearance-none rounded-full border border-apple-border bg-white px-5 pr-24 text-base text-apple-text placeholder:text-apple-sub focus:border-apple-blue"
             enterKeyHint="search"
             id="blog-search"
             ref={searchInputRef}
@@ -66,6 +66,19 @@ export function BlogFilterList({ posts, categories }: BlogFilterListProps) {
             onChange={(event) => setQuery(event.target.value)}
             placeholder="ブログ内を検索"
           />
+          {query ? (
+            <button
+              aria-label="ブログ内検索の語句を削除"
+              className="absolute right-11 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full text-lg leading-none text-apple-sub transition hover:bg-apple-gray hover:text-apple-text"
+              type="button"
+              onClick={() => {
+                setQuery("");
+                searchInputRef.current?.focus();
+              }}
+            >
+              ×
+            </button>
+          ) : null}
           <button
             aria-label="ブログ内を検索"
             className="absolute right-1.5 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-apple-blue text-white transition hover:bg-apple-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
