@@ -62,14 +62,14 @@ export default async function BlogDetailPage({ params }: BlogDetailProps) {
               </span>
             ))}
           </div>
-          <div className="mt-6 flex items-center gap-3 border-t border-apple-border pt-6">
-            <p className="text-sm font-semibold text-apple-sub">記事を共有</p>
-            <CopyArticleUrlButton />
-          </div>
           <div className="mt-12 grid gap-6 text-[17px] leading-9 text-apple-text">
             {post.body.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
+          </div>
+          <div className="mt-12 flex items-center gap-3 border-t border-apple-border pt-6">
+            <p className="text-sm font-semibold text-apple-sub">記事を共有</p>
+            <CopyArticleUrlButton />
           </div>
         </div>
       </article>
