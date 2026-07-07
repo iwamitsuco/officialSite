@@ -9,7 +9,8 @@ const categoryToInquiryType: Record<string, string> = {
   system: "システム開発",
   ads: "Web広告",
   dx: "企業DX",
-  flow: "その他"
+  flow: "その他",
+  other: "その他"
 };
 const fieldLimits = {
   company: 100,
