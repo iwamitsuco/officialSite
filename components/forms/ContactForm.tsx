@@ -228,7 +228,7 @@ function FuriganaField({ error }: { error?: string }) {
     <label className="grid gap-2 text-sm font-semibold">
       フリガナ（必須）
       <input
-        aria-describedby={error ? "furigana-error" : undefined}
+        aria-describedby={error ? "furigana-help furigana-error" : "furigana-help"}
         aria-invalid={error ? "true" : undefined}
         className={`min-h-12 rounded-lg border px-4 text-base font-normal ${
           error ? "border-red-300 bg-red-50/40" : "border-apple-border"
@@ -249,6 +249,9 @@ function FuriganaField({ error }: { error?: string }) {
         type="text"
         value={value}
       />
+      <span className="text-xs font-semibold text-apple-sub" id="furigana-help">
+        ひらがな入力でも、確定後にカタカナへ自動変換されます。
+      </span>
       {error ? (
         <span className="text-xs font-semibold text-red-600" id="furigana-error">
           {error}
