@@ -80,7 +80,7 @@ export function ChatWidget() {
           onClick={() => setIsOpen(false)}
         />
       ) : null}
-      <div className="fixed bottom-[calc(env(safe-area-inset-bottom)+16px)] right-4 z-[60] flex flex-col items-end gap-3 md:bottom-6 md:right-6">
+      <div className="fixed bottom-[calc(env(safe-area-inset-bottom)+16px)] right-4 z-[60] flex flex-col items-end gap-3 md:bottom-14 md:right-6">
       {isOpen ? (
         <section
           className="w-[min(calc(100vw-32px),360px)] overflow-hidden rounded-lg border border-apple-border bg-white shadow-soft"
