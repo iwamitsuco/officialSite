@@ -191,14 +191,8 @@ export function ContactForm() {
 }
 
 function FuriganaField({ error }: { error?: string }) {
-  function handleInput(event: FormEvent<HTMLInputElement>) {
-    const input = event.currentTarget;
-    const normalizedValue = toKatakana(input.value);
-
-    if (input.value !== normalizedValue) {
-      input.value = normalizedValue;
-    }
-  }
+  const [value, setValue] = useState("");
+  const [isComposing, setIsComposing] = useState(false);
 
   return (
     <label className="grid gap-2 text-sm font-semibold">
@@ -211,9 +205,19 @@ function FuriganaField({ error }: { error?: string }) {
         }`}
         maxLength={fieldLimits.furigana}
         name="furigana"
-        onInput={handleInput}
+        onBlur={() => setValue((current) => toKatakana(current))}
+        onChange={(event) => {
+          const nextValue = event.currentTarget.value;
+          setValue(isComposing ? nextValue : toKatakana(nextValue));
+        }}
+        onCompositionEnd={(event) => {
+          setIsComposing(false);
+          setValue(toKatakana(event.currentTarget.value));
+        }}
+        onCompositionStart={() => setIsComposing(true)}
         required
         type="text"
+        value={value}
       />
       {error ? (
         <span className="text-xs font-semibold text-red-600" id="furigana-error">
