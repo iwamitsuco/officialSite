@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, KeyboardEvent, useEffect, useState } from "react";
 import { EmailField } from "@/components/forms/EmailField";
 
 const inquiryTypes = ["システム開発", "ホームページ制作", "制作・デザイン", "企業DX", "Web広告", "その他"];
@@ -120,6 +120,31 @@ export function ContactForm() {
     setSent(true);
   }
 
+  function handleFormKeyDown(event: KeyboardEvent<HTMLFormElement>) {
+    if (event.key !== "Enter" || event.nativeEvent.isComposing || event.nativeEvent.keyCode === 229) {
+      return;
+    }
+
+    const target = event.target;
+    if (!(target instanceof HTMLInputElement)) {
+      return;
+    }
+
+    if (["button", "checkbox", "file", "radio", "reset", "submit"].includes(target.type)) {
+      return;
+    }
+
+    event.preventDefault();
+
+    const focusableFields = Array.from(
+      event.currentTarget.querySelectorAll<HTMLElement>(
+        "input:not([type='hidden']):not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled])"
+      )
+    ).filter((field) => field.tabIndex !== -1);
+    const currentIndex = focusableFields.indexOf(target);
+    focusableFields[currentIndex + 1]?.focus();
+  }
+
   if (sent) {
     return (
       <div className="rounded-lg border border-apple-border bg-white p-8 shadow-sm">
@@ -130,7 +155,12 @@ export function ContactForm() {
   }
 
   return (
-    <form className="grid gap-5 rounded-lg border border-apple-border bg-white p-6 shadow-sm md:p-10" noValidate onSubmit={handleSubmit}>
+    <form
+      className="grid gap-5 rounded-lg border border-apple-border bg-white p-6 shadow-sm md:p-10"
+      noValidate
+      onKeyDown={handleFormKeyDown}
+      onSubmit={handleSubmit}
+    >
       <Field label="会社名" name="company" maxLength={fieldLimits.company} />
       <Field label="お名前（必須）" name="name" maxLength={fieldLimits.name} required error={fieldErrors.name} />
       <FuriganaField error={fieldErrors.furigana} />
