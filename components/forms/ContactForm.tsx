@@ -21,6 +21,14 @@ const fieldLimits = {
   message: 5000
 } as const;
 
+const furiganaPattern = /^[ァ-ヶー\s　]+$/;
+
+function toKatakana(value: string) {
+  return value
+    .normalize("NFKC")
+    .replace(/[ぁ-ゖ]/g, (character) => String.fromCharCode(character.charCodeAt(0) + 0x60));
+}
+
 export function ContactForm() {
   const [sent, setSent] = useState(false);
   const [formErrors, setFormErrors] = useState<string[]>([]);
@@ -83,6 +91,12 @@ export function ContactForm() {
       return;
     }
 
+    if (!furiganaPattern.test(furigana)) {
+      setFieldErrors({ furigana: "フリガナはカタカナで入力してください。" });
+      setFormErrors(["フリガナはカタカナで入力してください。"]);
+      return;
+    }
+
     if (/[^A-Za-z0-9.!#$%&'*+/=?^_`{|}~@-]/.test(email)) {
       setFieldErrors({ email: "メールアドレスは半角英数字と記号で入力してください。" });
       setFormErrors(["メールアドレスは半角英数字と記号で入力してください。"]);
@@ -119,7 +133,7 @@ export function ContactForm() {
     <form className="grid gap-5 rounded-lg border border-apple-border bg-white p-6 shadow-sm md:p-10" noValidate onSubmit={handleSubmit}>
       <Field label="会社名" name="company" maxLength={fieldLimits.company} />
       <Field label="お名前（必須）" name="name" maxLength={fieldLimits.name} required error={fieldErrors.name} />
-      <Field label="フリガナ（必須）" name="furigana" maxLength={fieldLimits.furigana} required error={fieldErrors.furigana} />
+      <FuriganaField error={fieldErrors.furigana} />
       <EmailField label="メールアドレス（必須）" maxLength={fieldLimits.email} required error={fieldErrors.email} />
       <Field label="電話番号" name="tel" type="tel" maxLength={fieldLimits.tel} pattern="^[0-9\\-+()\\s]+$" />
       <label className="grid gap-2 text-sm font-semibold">
@@ -173,6 +187,40 @@ export function ContactForm() {
         送信する
       </button>
     </form>
+  );
+}
+
+function FuriganaField({ error }: { error?: string }) {
+  function handleInput(event: FormEvent<HTMLInputElement>) {
+    const input = event.currentTarget;
+    const normalizedValue = toKatakana(input.value);
+
+    if (input.value !== normalizedValue) {
+      input.value = normalizedValue;
+    }
+  }
+
+  return (
+    <label className="grid gap-2 text-sm font-semibold">
+      フリガナ（必須）
+      <input
+        aria-describedby={error ? "furigana-error" : undefined}
+        aria-invalid={error ? "true" : undefined}
+        className={`min-h-12 rounded-lg border px-4 text-base font-normal ${
+          error ? "border-red-300 bg-red-50/40" : "border-apple-border"
+        }`}
+        maxLength={fieldLimits.furigana}
+        name="furigana"
+        onInput={handleInput}
+        required
+        type="text"
+      />
+      {error ? (
+        <span className="text-xs font-semibold text-red-600" id="furigana-error">
+          {error}
+        </span>
+      ) : null}
+    </label>
   );
 }
 
