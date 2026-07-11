@@ -23,7 +23,8 @@ const fieldLimits = {
 
 export function ContactForm() {
   const [sent, setSent] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [formErrors, setFormErrors] = useState<string[]>([]);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [selectedInquiryType, setSelectedInquiryType] = useState("");
 
   useEffect(() => {
@@ -49,8 +50,23 @@ export function ContactForm() {
     const message = String(formData.get("message") ?? "").trim();
     const agreed = formData.get("privacy") === "on";
 
-    if (!name || !furigana || !email || !message) {
-      setErrorMessage("お名前、フリガナ、メールアドレス、お問い合わせ内容を入力してください。");
+    const requiredFieldErrors: Record<string, string> = {};
+    if (!name) {
+      requiredFieldErrors.name = "お名前を入力してください。";
+    }
+    if (!furigana) {
+      requiredFieldErrors.furigana = "フリガナを入力してください。";
+    }
+    if (!email) {
+      requiredFieldErrors.email = "メールアドレスを入力してください。";
+    }
+    if (!message) {
+      requiredFieldErrors.message = "お問い合わせ内容を入力してください。";
+    }
+
+    if (Object.keys(requiredFieldErrors).length > 0) {
+      setFieldErrors(requiredFieldErrors);
+      setFormErrors(Object.values(requiredFieldErrors));
       return;
     }
 
@@ -62,26 +78,31 @@ export function ContactForm() {
       tel.length > fieldLimits.tel ||
       message.length > fieldLimits.message
     ) {
-      setErrorMessage("入力文字数が上限を超えています。各項目の文字数を確認してください。");
+      setFieldErrors({});
+      setFormErrors(["入力文字数が上限を超えています。各項目の文字数を確認してください。"]);
       return;
     }
 
     if (/[^A-Za-z0-9.!#$%&'*+/=?^_`{|}~@-]/.test(email)) {
-      setErrorMessage("メールアドレスは半角英数字と記号で入力してください。");
+      setFieldErrors({ email: "メールアドレスは半角英数字と記号で入力してください。" });
+      setFormErrors(["メールアドレスは半角英数字と記号で入力してください。"]);
       return;
     }
 
     if (!/^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+$/.test(email)) {
-      setErrorMessage("正しいメールアドレス形式で入力してください。");
+      setFieldErrors({ email: "正しいメールアドレス形式で入力してください。" });
+      setFormErrors(["正しいメールアドレス形式で入力してください。"]);
       return;
     }
 
     if (!agreed) {
-      setErrorMessage("個人情報の取り扱いに同意してください。");
+      setFieldErrors({});
+      setFormErrors(["個人情報の取り扱いに同意してください。"]);
       return;
     }
 
-    setErrorMessage("");
+    setFormErrors([]);
+    setFieldErrors({});
     setSent(true);
   }
 
@@ -96,15 +117,10 @@ export function ContactForm() {
 
   return (
     <form className="grid gap-5 rounded-lg border border-apple-border bg-white p-6 shadow-sm md:p-10" noValidate onSubmit={handleSubmit}>
-      {errorMessage ? (
-        <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-700" role="alert">
-          {errorMessage}
-        </div>
-      ) : null}
       <Field label="会社名" name="company" maxLength={fieldLimits.company} />
-      <Field label="お名前（必須）" name="name" maxLength={fieldLimits.name} required />
-      <Field label="フリガナ（必須）" name="furigana" maxLength={fieldLimits.furigana} required />
-      <EmailField label="メールアドレス（必須）" maxLength={fieldLimits.email} required />
+      <Field label="お名前（必須）" name="name" maxLength={fieldLimits.name} required error={fieldErrors.name} />
+      <Field label="フリガナ（必須）" name="furigana" maxLength={fieldLimits.furigana} required error={fieldErrors.furigana} />
+      <EmailField label="メールアドレス（必須）" maxLength={fieldLimits.email} required error={fieldErrors.email} />
       <Field label="電話番号" name="tel" type="tel" maxLength={fieldLimits.tel} pattern="^[0-9\\-+()\\s]+$" />
       <label className="grid gap-2 text-sm font-semibold">
         相談内容
@@ -123,12 +139,36 @@ export function ContactForm() {
       </label>
       <label className="grid gap-2 text-sm font-semibold">
         お問い合わせ内容（必須）
-        <textarea className="min-h-36 rounded-lg border border-apple-border px-4 py-3 text-base font-normal" maxLength={fieldLimits.message} name="message" required />
+        <textarea
+          aria-describedby={fieldErrors.message ? "message-error" : undefined}
+          aria-invalid={fieldErrors.message ? "true" : undefined}
+          className={`min-h-36 rounded-lg border px-4 py-3 text-base font-normal ${
+            fieldErrors.message ? "border-red-300 bg-red-50/40" : "border-apple-border"
+          }`}
+          maxLength={fieldLimits.message}
+          name="message"
+          required
+        />
+        {fieldErrors.message ? (
+          <span className="text-xs font-semibold text-red-600" id="message-error">
+            {fieldErrors.message}
+          </span>
+        ) : null}
       </label>
       <label className="flex gap-3 text-sm text-apple-sub">
         <input className="mt-1 h-5 w-5" name="privacy" type="checkbox" required />
         個人情報の取り扱いに同意します
       </label>
+      {formErrors.length > 0 ? (
+        <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-700" role="alert">
+          <p>入力内容をご確認ください。</p>
+          <ul className="mt-2 list-disc space-y-1 pl-5">
+            {formErrors.map((error) => (
+              <li key={error}>{error}</li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
       <button className="min-h-12 rounded-full bg-apple-blue px-6 font-semibold text-white hover:bg-apple-hover" type="submit">
         送信する
       </button>
@@ -143,20 +183,30 @@ type FieldProps = {
   maxLength?: number;
   required?: boolean;
   pattern?: string;
+  error?: string;
 };
 
-function Field({ label, name, type = "text", maxLength, required = false, pattern }: FieldProps) {
+function Field({ label, name, type = "text", maxLength, required = false, pattern, error }: FieldProps) {
   return (
     <label className="grid gap-2 text-sm font-semibold">
       {label}
       <input
-        className="min-h-12 rounded-lg border border-apple-border px-4 text-base font-normal"
+        aria-describedby={error ? `${name}-error` : undefined}
+        aria-invalid={error ? "true" : undefined}
+        className={`min-h-12 rounded-lg border px-4 text-base font-normal ${
+          error ? "border-red-300 bg-red-50/40" : "border-apple-border"
+        }`}
         maxLength={maxLength}
         name={name}
         pattern={pattern}
         required={required}
         type={type}
       />
+      {error ? (
+        <span className="text-xs font-semibold text-red-600" id={`${name}-error`}>
+          {error}
+        </span>
+      ) : null}
     </label>
   );
 }
