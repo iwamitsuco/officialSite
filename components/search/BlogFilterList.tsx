@@ -92,7 +92,7 @@ export function BlogFilterList({ posts, categories }: BlogFilterListProps) {
           </button>
         </div>
         <div className="grid gap-3 border-t border-apple-border pt-5">
-          <div className="flex flex-wrap items-baseline justify-between gap-2">
+          <div className="flex flex-wrap items-baseline justify-start gap-x-3 gap-y-1">
             <p className="text-sm font-semibold text-apple-text">カテゴリ</p>
             <p className="text-xs font-semibold text-apple-sub">大きな分類を1つ選択</p>
           </div>
@@ -100,7 +100,7 @@ export function BlogFilterList({ posts, categories }: BlogFilterListProps) {
         </div>
 
         <div className="grid gap-3 border-t border-apple-border pt-5">
-          <div className="flex flex-wrap items-baseline justify-between gap-2">
+          <div className="flex flex-wrap items-baseline justify-start gap-x-3 gap-y-1">
             <p className="text-sm font-semibold text-apple-text">タグ</p>
             <p className="text-xs font-semibold text-apple-sub">細かいキーワードを複数選択可</p>
           </div>
