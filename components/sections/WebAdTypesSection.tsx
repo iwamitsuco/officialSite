@@ -13,7 +13,7 @@ const adTypes = [
   },
   {
     title: "SNS広告",
-    description: "Instagram、Facebook、LINEなどの投稿欄やタイムラインに表示される広告です。",
+    description: "Meta広告（Instagram・Facebook）やLINE広告などの投稿欄やタイムラインに表示される広告です。",
     point: "興味や属性に合わせて届けやすい",
     visual: "social"
   }

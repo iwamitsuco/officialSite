@@ -45,7 +45,7 @@ export const services: Service[] = [
     flow: sharedFlow,
     faq: [
       { question: "チラシだけでも依頼できますか？", answer: "はい。単体制作からWeb連動まで対応します。" },
-      { question: "SNS用画像も作れますか？", answer: "Instagramや広告用の画像も制作できます。" }
+      { question: "SNS用画像も作れますか？", answer: "SNS投稿や広告用の画像も制作できます。" }
     ]
   },
   {
@@ -67,9 +67,9 @@ export const services: Service[] = [
     slug: "web-advertising",
     title: "Web広告",
     shortTitle: "広告",
-    description: "Google、Yahoo、Instagram、Meta、LINE広告の開始と改善を支援します。",
+    description: "Google広告、Yahoo!広告、Meta広告（Instagram・Facebook）、LINE広告の開始と改善を支援します。",
     hero: "広告を出すだけでなく、成果を見ながら改善します。",
-    features: ["Google広告", "Yahoo広告", "Instagram広告", "Meta広告", "LINE広告"],
+    features: ["Google広告", "Yahoo!広告", "Meta広告（Instagram・Facebook）", "LINE広告"],
     problems: ["広告の始め方が分からない", "成果が分からない", "画像やLPが整っていない", "運用する時間がない"],
     solutions: ["目的に合わせた媒体選定", "成果確認の設計", "LPや画像の改善", "運用改善の継続支援"],
     flow: sharedFlow,
