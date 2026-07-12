@@ -35,6 +35,7 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
         </div>
       </section>
       {service.slug === "web-advertising" ? <WebAdTypesSection /> : null}
+      {service.slug === "website" ? <LandingPageStrategySection /> : null}
       <section className="section-space bg-apple-gray">
         <div className="container-site">
           <SectionTitle title="対応内容" align="center" />
@@ -94,5 +95,68 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
       </section>
       <CTASection />
     </>
+  );
+}
+
+function LandingPageStrategySection() {
+  const visitorTypes = [
+    {
+      title: "すぐに検討している方向け",
+      description: "料金、実績、制作の流れ、よくある質問など、不安を減らして問い合わせにつなげる情報を整理します。"
+    },
+    {
+      title: "まだ情報収集中の方向け",
+      description: "課題の整理、選び方、比較ポイントなど、信頼につながる情報を分かりやすく伝えます。"
+    }
+  ];
+  const planningItems = ["誰に届けるかを整理", "伝える順番を設計", "文章と見出しを作成", "問い合わせまでの導線を整理", "公開後の改善も相談可能"];
+
+  return (
+    <section className="section-space">
+      <div className="container-site">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="eyebrow">Landing Page</p>
+          <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-5xl">見る人に合わせて、伝わるLPを作ります。</h2>
+          <p className="lead mt-5">
+            すぐに相談したい方と、まず情報を集めたい方では、知りたいことが違います。届けたい相手に合わせて、構成・文章・問い合わせ導線を設計します。
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-4 md:grid-cols-2">
+          {visitorTypes.map((item) => (
+            <div className="rounded-lg border border-apple-border bg-white p-6 shadow-sm" key={item.title}>
+              <h3 className="text-xl font-semibold">{item.title}</h3>
+              <p className="mt-3 leading-7 text-apple-sub">{item.description}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-10 rounded-lg bg-apple-gray p-6 md:p-8">
+          <div className="grid gap-6 md:grid-cols-[1fr_1.4fr] md:items-center">
+            <div>
+              <p className="eyebrow">Planning</p>
+              <h3 className="mt-3 text-2xl font-semibold">目的に合わせて設計します。</h3>
+              <p className="mt-3 leading-7 text-apple-sub">
+                LPを作る目的や流入元に合わせて、必要な情報と見せる順番を整理します。
+              </p>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {planningItems.map((item) => (
+                <div className="rounded-lg bg-white p-4 text-sm font-semibold shadow-sm" key={item}>
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 rounded-lg border border-apple-border p-6 md:p-8">
+          <h3 className="text-2xl font-semibold">広告を使う場合も、LPに合わせて設計できます。</h3>
+          <p className="mt-3 leading-7 text-apple-sub">
+            広告を出す場合は、LPの内容に合わせて広告文や配信内容を整理します。広告を出さない場合でも、SNS・検索・紹介など、流入元に合わせて使いやすいページに整えます。
+          </p>
+        </div>
+      </div>
+    </section>
   );
 }
