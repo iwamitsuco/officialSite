@@ -41,6 +41,21 @@ function ogpSvg() {
   </svg>`;
 }
 
+function centeredOgpSvg() {
+  return `
+  <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="630" fill="#F5F5F7"/>
+    <rect x="70" y="70" width="1060" height="490" rx="34" fill="white"/>
+    <g text-anchor="middle">
+      <text x="600" y="224" font-family="Arial, 'Noto Sans JP', sans-serif" font-size="68" font-weight="700" fill="#111111">BLOOMIA</text>
+      <text x="600" y="294" font-family="Arial, 'Noto Sans JP', sans-serif" font-size="32" font-weight="600" fill="#555555">システム・Web広告・AIで企業を支える</text>
+      <text x="600" y="350" font-family="Arial, 'Noto Sans JP', sans-serif" font-size="28" fill="#666666">ホームページ制作・業務システム・DX支援</text>
+    </g>
+    <rect x="470" y="410" width="260" height="70" rx="35" fill="#0071E3"/>
+    <text x="600" y="455" text-anchor="middle" font-family="Arial, 'Noto Sans JP', sans-serif" font-size="26" font-weight="700" fill="white">無料相談</text>
+  </svg>`;
+}
+
 async function writeWebp(file, svg, width, height) {
   await sharp(Buffer.from(svg)).resize(width, height).webp({ quality: 88 }).toFile(path.join(root, file));
 }
@@ -60,7 +75,7 @@ async function main() {
   await writeWebp("public/images/insight-ad.webp", svgCard({ title: "Ads", subtitle: "成果を見ながら改善", accent: "#FF9500", width: 720, height: 420 }), 720, 420);
   await writeWebp("public/images/insight-ai.webp", svgCard({ title: "AI", subtitle: "安全に始める活用", accent: "#5856D6", width: 720, height: 420 }), 720, 420);
 
-  await writePng("public/ogp/ogp.png", ogpSvg(), 1200, 630);
+  await writePng("public/ogp/ogp.png", centeredOgpSvg(), 1200, 630);
   const pdf = `%PDF-1.4
 1 0 obj
 << /Type /Catalog /Pages 2 0 R >>

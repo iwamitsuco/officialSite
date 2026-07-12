@@ -8,7 +8,7 @@ export const siteConfig = {
   emailLink: "mailto:test@gmail.com",
   instagramUrl: "https://www.instagram.com/ryota_meta/",
   xUrl: "https://x.com/ryoe541513",
-  siteUrl: "https://example.com",
+  siteUrl: "https://officialsite-six.vercel.app",
   businessHours: "平日 9:00-18:00",
   siteName: "BLOOMIA合同会社",
   logoImage: "/images/bloomia-logo-mark.png",

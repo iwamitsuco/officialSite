@@ -10,6 +10,13 @@ import { blogPosts } from "@/data/blog";
 import { newsPosts } from "@/data/news";
 import { services } from "@/data/services";
 import { organizationJsonLd, SEOJsonLd } from "@/lib/jsonld";
+import { createMetadata } from "@/lib/seo";
+
+export const metadata = createMetadata({
+  title: "BLOOMIA合同会社 | システム・Web広告・AIで企業を支える",
+  description:
+    "中小企業・個人事業主向けに、ホームページ制作、業務システム、Web広告、DX支援まで一貫してサポートします。"
+});
 
 const problems = [
   "ホームページが古い",
