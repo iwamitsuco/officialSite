@@ -19,6 +19,34 @@ const adTypes = [
   }
 ];
 
+const webAdBenefits = [
+  {
+    title: "検討段階に合わせて届けられる",
+    description:
+      "すぐに相談したい方には問い合わせにつながるLPへ、まず情報を集めたい方には比較や選び方を整理したLPへ案内できます。"
+  },
+  {
+    title: "キーワードごとにLPを分けられる",
+    description:
+      "検索される言葉に合わせて広告文とリンク先を変えることで、クリック後の違和感を減らしやすくなります。"
+  },
+  {
+    title: "成果を見ながら改善できる",
+    description:
+      "表示回数、クリック数、問い合わせ数などを確認しながら、広告文やLPを改善できます。"
+  },
+  {
+    title: "小さく試して調整できる",
+    description:
+      "最初から大きく始めず、予算や地域、配信内容を絞ってテストできます。"
+  },
+  {
+    title: "必要な人に絞って届けやすい",
+    description:
+      "地域、検索語、興味関心などをもとに、届けたい相手へ近づけます。"
+  }
+];
+
 function AdVisual({ type }: { type: string }) {
   if (type === "search") {
     return (
@@ -77,29 +105,54 @@ function AdVisual({ type }: { type: string }) {
 
 export function WebAdTypesSection() {
   return (
-    <section className="section-space">
-      <div className="container-site">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="eyebrow">Web Advertising</p>
-          <h2 className="mt-3 text-3xl font-semibold leading-tight text-apple-text md:text-[40px]">
-            Web広告は、表示される場所によって役割が変わります。
-          </h2>
-          <p className="lead mt-5">
-            検索している人に出す広告、Webサイト上に出す画像広告、SNSの投稿欄に出す広告など、目的に合わせて使い分けます。
-          </p>
-        </div>
+    <>
+      <section className="section-space">
+        <div className="container-site">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="eyebrow">Web Advertising</p>
+            <h2 className="mt-3 text-3xl font-semibold leading-tight text-apple-text md:text-[40px]">
+              Web広告は、表示される場所によって役割が変わります。
+            </h2>
+            <p className="lead mt-5">
+              検索している人に出す広告、Webサイト上に出す画像広告、SNSの投稿欄に出す広告など、目的に合わせて使い分けます。
+            </p>
+          </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {adTypes.map((adType) => (
-            <article className="flex h-full flex-col rounded-lg border border-apple-border bg-white p-6 shadow-sm" key={adType.title}>
-              <AdVisual type={adType.visual} />
-              <h3 className="mt-6 text-xl font-semibold text-apple-text">{adType.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-apple-sub">{adType.description}</p>
-              <p className="mt-4 rounded-lg bg-apple-gray p-3 text-sm font-semibold text-apple-text">{adType.point}</p>
-            </article>
-          ))}
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+            {adTypes.map((adType) => (
+              <article className="flex h-full flex-col rounded-lg border border-apple-border bg-white p-6 shadow-sm" key={adType.title}>
+                <AdVisual type={adType.visual} />
+                <h3 className="mt-6 text-xl font-semibold text-apple-text">{adType.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-apple-sub">{adType.description}</p>
+                <p className="mt-4 rounded-lg bg-apple-gray p-3 text-sm font-semibold text-apple-text">{adType.point}</p>
+              </article>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section className="section-space bg-apple-gray">
+        <div className="container-site">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="eyebrow">Benefits</p>
+            <h2 className="mt-3 text-3xl font-semibold leading-tight text-apple-text md:text-[40px]">
+              Web広告でできること
+            </h2>
+            <p className="lead mt-5">
+              Web広告は、ただ多くの人に見せるだけではありません。届けたい相手や目的に合わせて、キーワード・広告文・リンク先を設計できます。
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {webAdBenefits.map((benefit) => (
+              <article className="rounded-lg bg-white p-6 shadow-sm" key={benefit.title}>
+                <h3 className="text-lg font-semibold text-apple-text">{benefit.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-apple-sub">{benefit.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
