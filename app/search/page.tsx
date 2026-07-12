@@ -26,7 +26,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
       <section className="section-space">
         <div className="container-site max-w-4xl">
           <SectionTitle label="Search" title="サイト内検索" description="サービス、ブログ、お知らせから探せます。全角・半角カタカナの揺れにも対応しています。" align="center" />
-          <div className="mx-auto mt-8 max-w-xl">
+          <div className="mx-auto mt-8 max-w-xl md:hidden">
             <Suspense>
               <SearchBox defaultValue={q} />
             </Suspense>
