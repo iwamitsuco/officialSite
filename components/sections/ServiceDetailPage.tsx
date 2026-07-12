@@ -151,9 +151,9 @@ function LandingPageStrategySection() {
         </div>
 
         <div className="mt-8 rounded-lg border border-apple-border p-6 md:p-8">
-          <h3 className="text-2xl font-semibold">広告を使う場合も、LPに合わせて設計できます。</h3>
+          <h3 className="text-2xl font-semibold">Web広告を使う場合も、LPに合わせて設計できます。</h3>
           <p className="mt-3 leading-7 text-apple-sub">
-            広告を出す場合は、LPの内容に合わせて広告文や配信内容を整理します。広告を出さない場合でも、SNS・検索・紹介など、流入元に合わせて使いやすいページに整えます。
+            Web広告を出す場合は、LPの内容に合わせて広告文や配信内容を整理します。Web広告を出さない場合でも、SNS・検索・紹介など、流入元に合わせて使いやすいページに整えます。
           </p>
         </div>
       </div>
