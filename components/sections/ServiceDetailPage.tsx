@@ -116,9 +116,12 @@ function LandingPageStrategySection() {
       <div className="container-site">
         <div className="mx-auto max-w-4xl text-center">
           <p className="eyebrow">Landing Page</p>
-          <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-5xl">見る人に合わせて、伝わるLPを作ります。</h2>
+          <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-5xl">見る人の状態に合わせて、離脱されにくいLPを設計します。</h2>
           <p className="lead mt-5">
-            すぐに相談したい方と、まず情報を集めたい方では、知りたいことが違います。届けたい相手に合わせて、構成・文章・問い合わせ導線を設計します。
+            すぐに相談したい方と、まず情報を集めたい方では、知りたいことも、読みたい順番も違います。届けたい相手に合わせて構成・文章・問い合わせ導線を整え、読み進めやすく、問い合わせにつながりやすいLPを制作します。
+          </p>
+          <p className="mt-4 text-base leading-7 text-apple-sub">
+            内容が分かりやすく整理されたページは、ユーザーが迷いにくく、検索から訪れた方にも伝わりやすいページになります。
           </p>
         </div>
 
