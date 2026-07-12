@@ -116,12 +116,12 @@ function LandingPageStrategySection() {
       <div className="container-site">
         <div className="mx-auto max-w-4xl text-center">
           <p className="eyebrow">Landing Page</p>
-          <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-5xl">見る人の状態に合わせて、離脱されにくいLPを設計します。</h2>
+          <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-5xl">届けたい相手を整理して、伝わりやすいLPを設計します。</h2>
           <p className="lead mt-5">
-            すぐに相談したい方と、まず情報を集めたい方では、知りたいことも、読みたい順番も違います。届けたい相手に合わせて構成・文章・問い合わせ導線を整え、読み進めやすく、問い合わせにつながりやすいLPを制作します。
+            LPを見る人には、すぐに相談したい方もいれば、まず情報を集めたい方もいます。制作前のヒアリングで「誰に届けたいLPなのか」を整理し、その相手に合わせて構成・文章・問い合わせ導線を設計します。
           </p>
           <p className="mt-4 text-base leading-7 text-apple-sub">
-            内容が分かりやすく整理されたページは、ユーザーが迷いにくく、検索から訪れた方にも伝わりやすいページになります。
+            狙う相手を決めてから作ることで、読み進めやすく、問い合わせにつながりやすいページに整えます。
           </p>
         </div>
 
@@ -140,7 +140,7 @@ function LandingPageStrategySection() {
               <p className="eyebrow">Planning</p>
               <h3 className="mt-3 text-2xl font-semibold">目的に合わせて設計します。</h3>
               <p className="mt-3 leading-7 text-apple-sub">
-                LPを作る目的や流入元に合わせて、必要な情報と見せる順番を整理します。
+                LPを作る目的、届けたい相手、想定される流入元を確認しながら、必要な情報と見せる順番を整理します。
               </p>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
@@ -156,7 +156,7 @@ function LandingPageStrategySection() {
         <div className="mt-8 rounded-lg border border-apple-border p-6 md:p-8">
           <h3 className="text-2xl font-semibold">Web広告を使う場合も、LPに合わせて設計できます。</h3>
           <p className="mt-3 leading-7 text-apple-sub">
-            Web広告を出す場合は、LPの内容に合わせて広告文や配信内容を整理します。Web広告を出さない場合でも、SNS・検索・紹介など、流入元に合わせて使いやすいページに整えます。
+            Web広告を出す場合は、LPの内容に合わせて広告文や配信内容を整理します。Web広告を出さない場合でも、SNS・検索・紹介など、想定される流入元を確認しながら使いやすいページに整えます。
           </p>
         </div>
       </div>
