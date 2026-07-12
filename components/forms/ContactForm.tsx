@@ -161,11 +161,31 @@ export function ContactForm() {
       onKeyDown={handleFormKeyDown}
       onSubmit={handleSubmit}
     >
-      <Field label="会社名" name="company" maxLength={fieldLimits.company} />
-      <Field label="お名前（必須）" name="name" maxLength={fieldLimits.name} required error={fieldErrors.name} />
+      <Field label="会社名" name="company" maxLength={fieldLimits.company} placeholder="株式会社○○" />
+      <Field
+        label="お名前（必須）"
+        name="name"
+        maxLength={fieldLimits.name}
+        placeholder="山田 太郎"
+        required
+        error={fieldErrors.name}
+      />
       <FuriganaField error={fieldErrors.furigana} />
-      <EmailField label="メールアドレス（必須）" maxLength={fieldLimits.email} required error={fieldErrors.email} />
-      <Field label="電話番号" name="tel" type="tel" maxLength={fieldLimits.tel} pattern="^[0-9\\-+()\\s]+$" />
+      <EmailField
+        label="メールアドレス（必須）"
+        maxLength={fieldLimits.email}
+        placeholder="sample@example.com"
+        required
+        error={fieldErrors.email}
+      />
+      <Field
+        label="電話番号"
+        name="tel"
+        type="tel"
+        maxLength={fieldLimits.tel}
+        pattern="^[0-9\\-+()\\s]+$"
+        placeholder="0312345678"
+      />
       <label className="grid gap-2 text-sm font-semibold">
         相談内容
         <select
@@ -186,11 +206,12 @@ export function ContactForm() {
         <textarea
           aria-describedby={fieldErrors.message ? "message-error" : undefined}
           aria-invalid={fieldErrors.message ? "true" : undefined}
-          className={`min-h-36 rounded-lg border px-4 py-3 text-base font-normal ${
+          className={`min-h-36 rounded-lg border px-4 py-3 text-base font-normal placeholder:text-apple-sub/60 ${
             fieldErrors.message ? "border-red-300 bg-red-50/40" : "border-apple-border"
           }`}
           maxLength={fieldLimits.message}
           name="message"
+          placeholder="お問い合わせ内容をご入力ください。"
           required
         />
         {fieldErrors.message ? (
@@ -230,7 +251,7 @@ function FuriganaField({ error }: { error?: string }) {
       <input
         aria-describedby={error ? "furigana-help furigana-error" : "furigana-help"}
         aria-invalid={error ? "true" : undefined}
-        className={`min-h-12 rounded-lg border px-4 text-base font-normal ${
+        className={`min-h-12 rounded-lg border px-4 text-base font-normal placeholder:text-apple-sub/60 ${
           error ? "border-red-300 bg-red-50/40" : "border-apple-border"
         }`}
         maxLength={fieldLimits.furigana}
@@ -246,6 +267,7 @@ function FuriganaField({ error }: { error?: string }) {
         }}
         onCompositionStart={() => setIsComposing(true)}
         required
+        placeholder="ヤマダ タロウ"
         type="text"
         value={value}
       />
@@ -268,22 +290,24 @@ type FieldProps = {
   maxLength?: number;
   required?: boolean;
   pattern?: string;
+  placeholder?: string;
   error?: string;
 };
 
-function Field({ label, name, type = "text", maxLength, required = false, pattern, error }: FieldProps) {
+function Field({ label, name, type = "text", maxLength, required = false, pattern, placeholder, error }: FieldProps) {
   return (
     <label className="grid gap-2 text-sm font-semibold">
       {label}
       <input
         aria-describedby={error ? `${name}-error` : undefined}
         aria-invalid={error ? "true" : undefined}
-        className={`min-h-12 rounded-lg border px-4 text-base font-normal ${
+        className={`min-h-12 rounded-lg border px-4 text-base font-normal placeholder:text-apple-sub/60 ${
           error ? "border-red-300 bg-red-50/40" : "border-apple-border"
         }`}
         maxLength={maxLength}
         name={name}
         pattern={pattern}
+        placeholder={placeholder}
         required={required}
         type={type}
       />

@@ -6,6 +6,7 @@ type EmailFieldProps = {
   label?: string;
   name?: string;
   maxLength?: number;
+  placeholder?: string;
   required?: boolean;
   error?: string;
 };
@@ -13,7 +14,14 @@ type EmailFieldProps = {
 const emailPattern = "[A-Za-z0-9.!#$%&'*+/=?^_`{|}~@-]+";
 const emailInvalidMessage = "メールアドレスは半角英数字と記号で入力してください。";
 
-export function EmailField({ label = "メールアドレス", name = "email", maxLength, required = false, error }: EmailFieldProps) {
+export function EmailField({
+  label = "メールアドレス",
+  name = "email",
+  maxLength,
+  placeholder,
+  required = false,
+  error
+}: EmailFieldProps) {
   function handleInput(event: FormEvent<HTMLInputElement>) {
     const input = event.currentTarget;
     const normalizedValue = input.value.normalize("NFKC");
@@ -33,7 +41,7 @@ export function EmailField({ label = "メールアドレス", name = "email", ma
         autoComplete="email"
         aria-describedby={error ? `${name}-error` : undefined}
         aria-invalid={error ? "true" : undefined}
-        className={`min-h-12 rounded-lg border px-4 text-base font-normal ${
+        className={`min-h-12 rounded-lg border px-4 text-base font-normal placeholder:text-apple-sub/60 ${
           error ? "border-red-300 bg-red-50/40" : "border-apple-border"
         }`}
         inputMode="email"
@@ -41,6 +49,7 @@ export function EmailField({ label = "メールアドレス", name = "email", ma
         name={name}
         onInput={handleInput}
         pattern={emailPattern}
+        placeholder={placeholder}
         required={required}
         title={emailInvalidMessage}
         type="email"
