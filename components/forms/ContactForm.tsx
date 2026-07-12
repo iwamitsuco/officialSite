@@ -2,6 +2,7 @@
 
 import { FormEvent, KeyboardEvent, useEffect, useState } from "react";
 import { EmailField } from "@/components/forms/EmailField";
+import { getEmailDomainSuggestion } from "@/lib/email-suggestion";
 
 const inquiryTypes = ["システム開発", "ホームページ制作", "制作・デザイン", "企業DX", "Web広告", "その他"];
 const categoryToInquiryType: Record<string, string> = {
@@ -33,6 +34,7 @@ export function ContactForm() {
   const [sent, setSent] = useState(false);
   const [formErrors, setFormErrors] = useState<string[]>([]);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const [confirmedEmail, setConfirmedEmail] = useState("");
   const [selectedInquiryType, setSelectedInquiryType] = useState("");
 
   useEffect(() => {
@@ -109,12 +111,22 @@ export function ContactForm() {
       return;
     }
 
+    const suggestedEmail = getEmailDomainSuggestion(email);
+    if (suggestedEmail && confirmedEmail !== email) {
+      const suggestionMessage = `メールアドレスは「${suggestedEmail}」ではありませんか？問題なければ、もう一度送信してください。`;
+      setConfirmedEmail(email);
+      setFieldErrors({ email: suggestionMessage });
+      setFormErrors([suggestionMessage]);
+      return;
+    }
+
     if (!agreed) {
       setFieldErrors({});
       setFormErrors(["個人情報の取り扱いに同意してください。"]);
       return;
     }
 
+    setConfirmedEmail("");
     setFormErrors([]);
     setFieldErrors({});
     setSent(true);
@@ -156,11 +168,15 @@ export function ContactForm() {
 
   return (
     <form
+      action="/mail/form-handler.php"
       className="grid gap-5 rounded-lg border border-apple-border bg-white p-6 shadow-sm md:p-10"
+      method="post"
       noValidate
       onKeyDown={handleFormKeyDown}
       onSubmit={handleSubmit}
     >
+      <input name="form_type" type="hidden" value="contact" />
+      <input name="email_confirmed" type="hidden" value={confirmedEmail ? "1" : "0"} />
       <Field label="会社名" name="company" maxLength={fieldLimits.company} placeholder="株式会社○○" />
       <Field
         label="お名前（必須）"
