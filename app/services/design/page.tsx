@@ -6,7 +6,7 @@ const service = getServiceBySlug("design");
 
 export const metadata = createMetadata({
   title: "制作・デザイン",
-  description: "チラシ、バナー、LP、SNS画像など、Webと連動する制作物を整えます。",
+  description: "チラシ、バナー、SNS画像など、Webと連動する制作物を整えます。",
   path: "/services/design"
 });
 
