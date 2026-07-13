@@ -5,8 +5,9 @@ import { createMetadata } from "@/lib/seo";
 const service = getServiceBySlug("website");
 
 export const metadata = createMetadata({
-  title: "ホームページ制作",
-  description: "公式サイト、ブログ、ECサイト、LPまで、問い合わせにつながる構成で制作します。",
+  title: "ホームページ作成・Webサイト作成",
+  description:
+    "ホームページ作成、Webサイト作成、Webページ作成、LP制作まで、目的に合わせて問い合わせにつながる構成で制作します。",
   path: "/services/website"
 });
 

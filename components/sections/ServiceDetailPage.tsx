@@ -36,6 +36,7 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
       </section>
       {service.slug === "web-advertising" ? <WebAdTypesSection /> : null}
       {service.slug === "website" ? <LandingPageStrategySection /> : null}
+      {service.slug === "website" ? <WebsiteSearchIntentSection /> : null}
       <section className="section-space bg-apple-gray">
         <div className="container-site">
           <SectionTitle title="対応内容" align="center" />
@@ -95,6 +96,78 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
       </section>
       <CTASection />
     </>
+  );
+}
+
+function WebsiteSearchIntentSection() {
+  const comparisonItems = [
+    {
+      title: "ホームページ作成",
+      description: "会社やサービスの情報を整理し、信頼感と問い合わせ導線を整えるページ制作です。"
+    },
+    {
+      title: "Webサイト作成・Webページ作成",
+      description: "呼び方は違っても、事業内容や強みを分かりやすく伝えるという目的は共通しています。"
+    },
+    {
+      title: "LP制作",
+      description: "ひとつの商品・サービス・キャンペーンに絞り、問い合わせや申し込みにつなげるページです。"
+    }
+  ];
+
+  const faqItems = [
+    {
+      question: "ホームページ作成とWebサイト作成は違いますか？",
+      answer:
+        "厳密には言葉の使われ方に違いがありますが、相談内容としては近い意味で使われることが多いです。BLOOMIAでは、呼び方よりも目的や必要なページ構成を重視して整理します。"
+    },
+    {
+      question: "LP制作会社やHP制作会社を比較している段階でも相談できますか？",
+      answer:
+        "はい。比較中の段階でもご相談いただけます。LPが必要なのか、会社サイト全体を整えるべきなのか、目的に合わせて一緒に整理します。"
+    }
+  ];
+
+  return (
+    <section className="section-space bg-apple-gray">
+      <div className="container-site">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="eyebrow">Website Planning</p>
+          <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-5xl">
+            ホームページ作成を中心に、目的に合うページ構成を整理します。
+          </h2>
+          <p className="lead mt-5">
+            「ホームページ作成」「Webサイト作成」「Webページ作成」など、探し方の言葉は違っても、必要なのは事業内容が伝わり、問い合わせにつながるページです。
+            会社サイト、サービスページ、LPなど、目的に合わせて必要な形を整理します。
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+          {comparisonItems.map((item) => (
+            <article className="rounded-lg bg-white p-6 shadow-sm" key={item.title}>
+              <h3 className="text-xl font-semibold text-apple-text">{item.title}</h3>
+              <p className="mt-3 leading-7 text-apple-sub">{item.description}</p>
+            </article>
+          ))}
+        </div>
+
+        <div className="mt-10 rounded-lg bg-white p-6 shadow-sm md:p-8">
+          <h3 className="text-2xl font-semibold text-apple-text">LP制作会社・HP制作会社を比較している方へ</h3>
+          <p className="mt-4 leading-7 text-apple-sub">
+            LPは特定の商品やサービスへの問い合わせを増やしたい場合に向いています。HPや会社サイトは、会社概要、サービス内容、実績、お知らせなどをまとめて信頼感を伝える役割があります。
+            どちらが必要か決まっていない段階でも、目的・流入元・伝えたい内容を確認しながら、必要なページを整理します。
+          </p>
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            {faqItems.map((item) => (
+              <div className="rounded-lg border border-apple-border p-5" key={item.question}>
+                <h4 className="font-semibold text-apple-text">{item.question}</h4>
+                <p className="mt-3 text-sm leading-7 text-apple-sub">{item.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
