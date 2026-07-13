@@ -16,7 +16,7 @@ const config: Config = {
           gray: "#F5F5F7",
           border: "#E5E5EA",
           text: "#111111",
-          sub: "#666666"
+          sub: "#4B5563"
         }
       },
       boxShadow: {

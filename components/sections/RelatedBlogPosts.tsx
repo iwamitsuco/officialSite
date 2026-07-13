@@ -32,7 +32,7 @@ export function RelatedBlogPosts({ serviceSlug }: RelatedBlogPostsProps) {
                 <time>{post.publishedAt}</time>
               </div>
               <h3 className="mt-3 text-lg font-semibold leading-snug text-apple-text group-hover:text-apple-blue">{post.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-apple-sub">{post.description}</p>
+              <p className="card-copy mt-3">{post.description}</p>
             </Link>
           ))}
         </div>

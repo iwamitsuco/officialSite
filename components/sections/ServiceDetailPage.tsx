@@ -34,18 +34,18 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
         <div className="container-site">
           <div className="mx-auto max-w-4xl text-center">
             <p className="eyebrow">{service.title}</p>
-            <h1 className="mt-5 text-4xl font-semibold leading-tight md:text-[56px]">{service.hero}</h1>
+            <h1 className="mt-5 text-[32px] font-semibold leading-[1.18] [overflow-wrap:anywhere] sm:text-4xl md:text-[56px]">{service.hero}</h1>
             <p className="lead mt-6">{service.description}</p>
             {isWebsite ? (
               <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
                 <Link
-                  className="inline-flex min-h-12 items-center justify-center rounded-full bg-apple-blue px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
+                  className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-apple-blue px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue sm:w-auto"
                   href="/contact"
                 >
                   無料で相談する
                 </Link>
                 <Link
-                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-apple-border bg-white px-6 py-3 text-sm font-semibold text-apple-text transition hover:border-apple-blue hover:text-apple-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
+                  className="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-apple-border bg-white px-6 py-3 text-sm font-semibold text-apple-text transition hover:border-apple-blue hover:text-apple-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue sm:w-auto"
                   href="#website-service-types"
                 >
                   制作内容を見る
@@ -196,7 +196,7 @@ function WebsiteStrengthSection() {
       <div className="container-site">
         <div className="mx-auto max-w-4xl text-center">
           <p className="eyebrow">Website</p>
-          <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-5xl">BLOOMIAのホームページ制作</h2>
+          <h2 className="mt-4 text-3xl font-semibold leading-[1.22] [overflow-wrap:anywhere] md:text-5xl">BLOOMIAのホームページ制作</h2>
           <p className="lead mt-5">
             見た目を整えるだけではなく、公開後の集客や問い合わせまで考えて設計します。
           </p>
@@ -208,7 +208,7 @@ function WebsiteStrengthSection() {
                 {String(index + 1).padStart(2, "0")}
               </div>
               <h3 className="mt-5 text-lg font-semibold text-apple-text">{item.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-apple-sub">{item.description}</p>
+              <p className="card-copy mt-3">{item.description}</p>
             </article>
           ))}
         </div>
@@ -257,7 +257,7 @@ function WebsiteFeatureSection() {
                 </svg>
               </div>
               <h3 className="mt-5 text-xl font-semibold text-apple-text">{item.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-apple-sub">{item.description}</p>
+              <p className="card-copy mt-3">{item.description}</p>
             </article>
           ))}
         </div>
@@ -280,7 +280,7 @@ function WebsiteProblemSolutionSection() {
                   <span className="hidden sm:inline">→</span>
                   <span className="sm:hidden">↓</span>
                 </div>
-                <div className="rounded-lg border border-blue-100 bg-blue-50 p-4 text-sm font-semibold leading-7 text-apple-text">
+                <div className="rounded-lg border border-blue-100 bg-blue-50 p-4 text-[15px] font-semibold leading-[1.75] text-apple-text md:text-base">
                   {item.solution}
                 </div>
               </div>
@@ -303,7 +303,7 @@ function WebsiteFlowSection() {
             <article className="relative rounded-lg bg-white p-6 shadow-sm" key={item.title}>
               <p className="text-sm font-semibold text-apple-blue">Step {index + 1}</p>
               <h3 className="mt-3 font-semibold text-apple-text">{item.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-apple-sub">{item.description}</p>
+              <p className="card-copy mt-3">{item.description}</p>
             </article>
           ))}
         </div>
@@ -345,8 +345,8 @@ function WebsitePreparationSection() {
           <div className="grid gap-8 md:grid-cols-[1.1fr_1fr] md:items-center">
             <div>
               <p className="eyebrow">Planning</p>
-              <h2 className="mt-3 text-3xl font-semibold leading-tight text-apple-text">制作前の整理を大切にしています</h2>
-              <p className="mt-4 leading-7 text-apple-sub">
+              <h2 className="mt-3 text-3xl font-semibold leading-[1.22] text-apple-text [overflow-wrap:anywhere]">制作前の整理を大切にしています</h2>
+              <p className="body-copy mt-4">
                 ホームページは、制作すること自体が目的ではありません。事業内容、届けたい相手、公開後の使い方を確認したうえで、必要なページと情報を整理します。
               </p>
             </div>
@@ -375,8 +375,8 @@ function WebsiteMidCta({ variant }: { variant: "compact" | "card" }) {
       <div className="container-site">
         <div className={className}>
           <div>
-            <h2 className="text-2xl font-semibold text-apple-text">ホームページについて相談してみませんか？</h2>
-            <p className="mt-3 leading-7 text-apple-sub">
+            <h2 className="text-2xl font-semibold text-apple-text [overflow-wrap:anywhere]">ホームページについて相談してみませんか？</h2>
+            <p className="body-copy mt-3">
               新規制作、リニューアル、現在の制作会社からの乗り換えなど、状況が固まっていない段階でもご相談いただけます。
             </p>
           </div>
@@ -439,8 +439,8 @@ function ServiceSupportLinks({ serviceSlug }: { serviceSlug: Service["slug"] }) 
     <section className="section-space">
       <div className="container-site">
         <div className="rounded-lg border border-apple-border bg-white p-6 shadow-sm md:p-8">
-          <h2 className="text-2xl font-semibold text-apple-text">{item.title}</h2>
-          <p className="mt-4 leading-7 text-apple-sub">{item.description}</p>
+          <h2 className="text-2xl font-semibold text-apple-text [overflow-wrap:anywhere]">{item.title}</h2>
+          <p className="body-copy mt-4">{item.description}</p>
           <Link
             className="mt-6 inline-flex min-h-11 items-center justify-center rounded-full border border-apple-border bg-white px-5 py-2.5 text-sm font-semibold text-apple-text transition hover:border-apple-blue hover:text-apple-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
             href={item.href}
@@ -495,7 +495,7 @@ function WebsiteSearchIntentSection() {
       <div className="container-site">
         <div className="mx-auto max-w-4xl text-center">
           <p className="eyebrow">Website Planning</p>
-          <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-5xl">
+          <h2 className="mt-4 text-3xl font-semibold leading-[1.22] [overflow-wrap:anywhere] md:text-5xl">
             ホームページ作成を中心に、目的に合うページ構成を整理します。
           </h2>
           <p className="lead mt-5">
@@ -508,14 +508,14 @@ function WebsiteSearchIntentSection() {
           {comparisonItems.map((item) => (
             <article className="rounded-lg bg-white p-6 shadow-sm" key={item.title}>
               <h3 className="text-xl font-semibold text-apple-text">{item.title}</h3>
-              <p className="mt-3 leading-7 text-apple-sub">{item.description}</p>
+              <p className="card-copy mt-3">{item.description}</p>
             </article>
           ))}
         </div>
 
         <div className="mt-10 rounded-lg bg-white p-6 shadow-sm md:p-8">
           <h3 className="text-2xl font-semibold text-apple-text">LP制作会社・HP制作会社を比較している方へ</h3>
-          <p className="mt-4 leading-7 text-apple-sub">
+          <p className="body-copy mt-4">
             LPは特定の商品やサービスへの問い合わせを増やしたい場合に向いています。HPや会社サイトは、会社概要、サービス内容、実績、お知らせなどをまとめて信頼感を伝える役割があります。
             どちらが必要か決まっていない段階でも、目的・流入元・伝えたい内容を確認しながら、必要なページを整理します。
           </p>
@@ -523,7 +523,7 @@ function WebsiteSearchIntentSection() {
             {faqItems.map((item) => (
               <div className="rounded-lg border border-apple-border p-5" key={item.question}>
                 <h4 className="font-semibold text-apple-text">{item.question}</h4>
-                <p className="mt-3 text-sm leading-7 text-apple-sub">{item.answer}</p>
+                <p className="card-copy mt-3">{item.answer}</p>
               </div>
             ))}
           </div>
@@ -551,11 +551,11 @@ function LandingPageStrategySection() {
       <div className="container-site">
         <div className="mx-auto max-w-4xl text-center">
             <p className="eyebrow">Landing Page</p>
-            <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-5xl">届けたい相手を整理して、伝わりやすいLPを設計します。</h2>
+            <h2 className="mt-4 text-3xl font-semibold leading-[1.22] [overflow-wrap:anywhere] md:text-5xl">届けたい相手を整理して、伝わりやすいLPを設計します。</h2>
             <p className="lead mt-5">
               LPを見る人の検討状況はさまざまです。制作前のヒアリングで、誰に何を届けるページなのかを整理します。目的と相手を明確にしたうえで、文章、構成、問い合わせ導線を設計します。
             </p>
-          <p className="mt-4 text-base leading-7 text-apple-sub">
+          <p className="body-copy mt-4">
             狙う相手を決めてから作ることで、読み進めやすく、問い合わせにつながりやすいページに整えます。
           </p>
         </div>
@@ -564,7 +564,7 @@ function LandingPageStrategySection() {
           {visitorTypes.map((item) => (
             <div className="rounded-lg border border-apple-border bg-white p-6 shadow-sm" key={item.title}>
               <h3 className="text-xl font-semibold">{item.title}</h3>
-              <p className="mt-3 leading-7 text-apple-sub">{item.description}</p>
+                <p className="body-copy mt-3">{item.description}</p>
             </div>
           ))}
         </div>
@@ -574,7 +574,7 @@ function LandingPageStrategySection() {
             <div>
               <p className="eyebrow">Planning</p>
               <h3 className="mt-3 text-2xl font-semibold">目的に合わせて設計します。</h3>
-              <p className="mt-3 leading-7 text-apple-sub">
+              <p className="body-copy mt-3">
                 LPを作る目的、届けたい相手、想定される流入元を確認しながら、必要な情報と見せる順番を整理します。
               </p>
             </div>
@@ -590,7 +590,7 @@ function LandingPageStrategySection() {
 
         <div className="mt-8 rounded-lg border border-apple-border p-6 md:p-8">
           <h3 className="text-2xl font-semibold">Web広告を使う場合も、LPに合わせて設計できます。</h3>
-          <p className="mt-3 leading-7 text-apple-sub">
+          <p className="body-copy mt-3">
             Web広告を出す場合は、LPの内容に合わせて広告文や配信内容を整理します。Web広告を出さない場合でも、SNS・検索・紹介など、想定される流入元を確認しながら使いやすいページに整えます。
           </p>
         </div>

@@ -26,7 +26,7 @@ export function RelatedServices({ currentSlug }: RelatedServicesProps) {
                 <RelatedServiceIcon slug={item.slug} />
               </div>
               <h3 className="mt-5 text-xl font-semibold text-apple-text group-hover:text-apple-blue">{item.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-apple-sub">{item.description}</p>
+              <p className="card-copy mt-3">{item.description}</p>
               <span className="mt-5 inline-flex text-sm font-semibold text-apple-blue">
                 {item.title}を見る
               </span>
