@@ -139,7 +139,7 @@ export function WebAdTypesSection() {
               <h2 className="mt-3 text-3xl font-semibold leading-tight text-apple-text md:text-[40px]">
                 広告の成果は、LPの内容にも左右されます。
               </h2>
-              <div className="mt-5 grid gap-4 text-base leading-8 text-apple-sub md:grid-cols-2">
+              <div className="mt-5 max-w-3xl space-y-4 text-base leading-8 text-apple-sub">
                 <p>
                   広告の成果を左右するのは、広告だけではありません。広告は、見込み客をサイトへ集める役割です。
                 </p>
