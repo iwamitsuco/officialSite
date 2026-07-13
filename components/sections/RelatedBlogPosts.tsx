@@ -20,7 +20,7 @@ export function RelatedBlogPosts({ serviceSlug }: RelatedBlogPostsProps) {
     <section className="section-space">
       <div className="container-site">
         <h2 className="text-3xl font-semibold text-apple-text">関連する記事</h2>
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className={posts.length === 1 ? "mt-8 max-w-2xl" : "mt-8 grid gap-4 md:grid-cols-3"}>
           {posts.map((post) => (
             <Link
               className="group block rounded-lg border border-apple-border bg-white p-6 transition hover:-translate-y-1 hover:shadow-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"

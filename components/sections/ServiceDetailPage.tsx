@@ -14,6 +14,8 @@ type ServiceDetailPageProps = {
 };
 
 export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
+  const isWebsite = service.slug === "website";
+
   return (
     <>
       <SEOJsonLd
@@ -34,62 +36,96 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
             <p className="eyebrow">{service.title}</p>
             <h1 className="mt-5 text-4xl font-semibold leading-tight md:text-[56px]">{service.hero}</h1>
             <p className="lead mt-6">{service.description}</p>
+            {isWebsite ? (
+              <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+                <Link
+                  className="inline-flex min-h-12 items-center justify-center rounded-full bg-apple-blue px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
+                  href="/contact"
+                >
+                  無料で相談する
+                </Link>
+                <Link
+                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-apple-border bg-white px-6 py-3 text-sm font-semibold text-apple-text transition hover:border-apple-blue hover:text-apple-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
+                  href="#website-service-types"
+                >
+                  制作内容を見る
+                </Link>
+              </div>
+            ) : null}
           </div>
         </div>
       </section>
       {service.slug === "web-advertising" ? <WebAdTypesSection /> : null}
+      {isWebsite ? <WebsiteStrengthSection /> : null}
       {service.slug === "website" ? <LandingPageStrategySection /> : null}
       {service.slug === "website" ? <WebsiteSearchIntentSection /> : null}
+      {isWebsite ? <WebsiteMidCta variant="compact" /> : null}
       <ServiceSupportLinks serviceSlug={service.slug} />
-      <section className="section-space bg-apple-gray">
-        <div className="container-site">
-          <SectionTitle title="対応内容" align="center" />
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
-            {service.features.map((feature) => (
-              <div className="rounded-lg bg-white p-6 text-center font-semibold shadow-sm" key={feature}>
-                {feature}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="section-space">
-        <div className="container-site grid gap-10 md:grid-cols-2">
-          <div>
-            <SectionTitle title="よくある課題" />
-            <ul className="mt-8 grid gap-3">
-              {service.problems.map((problem) => (
-                <li className="rounded-lg bg-apple-gray p-5 font-semibold" key={problem}>
-                  {problem}
-                </li>
+      {isWebsite ? (
+        <WebsiteFeatureSection />
+      ) : (
+        <section className="section-space bg-apple-gray">
+          <div className="container-site">
+            <SectionTitle title="対応内容" align="center" />
+            <div className="mt-10 grid gap-4 md:grid-cols-3">
+              {service.features.map((feature) => (
+                <div className="rounded-lg bg-white p-6 text-center font-semibold shadow-sm" key={feature}>
+                  {feature}
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
-          <div>
-            <SectionTitle title="解決できること" />
-            <ul className="mt-8 grid gap-3">
-              {service.solutions.map((solution) => (
-                <li className="rounded-lg border border-apple-border p-5 font-semibold" key={solution}>
-                  {solution}
-                </li>
+        </section>
+      )}
+      {isWebsite ? (
+        <>
+          <WebsiteProblemSolutionSection />
+          <WebsiteMidCta variant="card" />
+        </>
+      ) : (
+        <section className="section-space">
+          <div className="container-site grid gap-10 md:grid-cols-2">
+            <div>
+              <SectionTitle title="よくある課題" />
+              <ul className="mt-8 grid gap-3">
+                {service.problems.map((problem) => (
+                  <li className="rounded-lg bg-apple-gray p-5 font-semibold" key={problem}>
+                    {problem}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <SectionTitle title="解決できること" />
+              <ul className="mt-8 grid gap-3">
+                {service.solutions.map((solution) => (
+                  <li className="rounded-lg border border-apple-border p-5 font-semibold" key={solution}>
+                    {solution}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+      )}
+      {isWebsite ? (
+        <WebsiteFlowSection />
+      ) : (
+        <section className="section-space bg-apple-gray">
+          <div className="container-site">
+            <SectionTitle title="制作・導入の流れ" align="center" />
+            <div className="mt-10 grid gap-4 md:grid-cols-5">
+              {service.flow.map((item, index) => (
+                <div className="rounded-lg bg-white p-6 text-center shadow-sm" key={item}>
+                  <p className="text-sm font-semibold text-apple-blue">Step {index + 1}</p>
+                  <p className="mt-3 font-semibold">{item}</p>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
-        </div>
-      </section>
-      <section className="section-space bg-apple-gray">
-        <div className="container-site">
-          <SectionTitle title="制作・導入の流れ" align="center" />
-          <div className="mt-10 grid gap-4 md:grid-cols-5">
-            {service.flow.map((item, index) => (
-              <div className="rounded-lg bg-white p-6 text-center shadow-sm" key={item}>
-                <p className="text-sm font-semibold text-apple-blue">Step {index + 1}</p>
-                <p className="mt-3 font-semibold">{item}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
+      {isWebsite ? <WebsitePreparationSection /> : null}
       <section className="section-space">
         <div className="container-site max-w-4xl">
           <SectionTitle title="よくある質問" align="center" />
@@ -100,8 +136,267 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
       </section>
       <RelatedBlogPosts serviceSlug={service.slug} />
       <RelatedServices currentSlug={service.slug} />
-      <CTASection />
+      <CTASection
+        title={isWebsite ? "ホームページ制作・リニューアルのご相談はこちら" : undefined}
+        description={
+          isWebsite
+            ? "新規制作、現在のサイトの見直し、制作会社の乗り換えなど、小さなご相談でも構いません。"
+            : undefined
+        }
+      />
     </>
+  );
+}
+
+const websiteStrengths = [
+  {
+    title: "問い合わせにつながる導線設計",
+    description: "ページを見たユーザーが迷わず行動できるよう、問い合わせまでの流れを整理します。"
+  },
+  {
+    title: "SEOを意識したページ構成",
+    description: "検索キーワードとユーザーの目的を整理し、必要な情報へたどり着きやすい構成を設計します。"
+  },
+  {
+    title: "Web広告との連携",
+    description: "Google広告やSNS広告を利用する場合も、広告の内容と着地ページを一貫して設計できます。"
+  },
+  {
+    title: "公開後の改善にも対応",
+    description: "公開後の更新や内容の見直し、問い合わせ導線の改善についても相談できます。"
+  }
+];
+
+const websiteFeatureItems = [
+  { title: "ブログ", description: "情報発信や検索流入を増やすためのブログを制作します。" },
+  { title: "オフィシャルサイト", description: "会社やサービスの信頼性を伝える公式サイトを制作します。" },
+  { title: "ECサイト", description: "商品を販売するためのネットショップを構築します。" },
+  { title: "LP", description: "商品やサービスへの問い合わせに特化したページを制作します。" },
+  { title: "リニューアル", description: "古くなったサイトのデザインや構成、スマートフォン対応を見直します。" }
+];
+
+const websiteProblemPairs = [
+  { problem: "サイトが古い", solution: "デザイン、構成、スマートフォン対応を見直します。" },
+  { problem: "スマホで見づらい", solution: "スマートフォンを優先したレスポンシブ設計に改善します。" },
+  { problem: "問い合わせが増えない", solution: "CTA、フォーム、ページ内の導線を整理します。" },
+  { problem: "何を載せればよいか分からない", solution: "事業内容と目的を整理し、必要な情報をご提案します。" }
+];
+
+const websiteFlowItems = [
+  { title: "お問い合わせ", description: "気になる点やご希望をお聞かせください。" },
+  { title: "ヒアリング", description: "目的、ターゲット、必要なページを整理します。" },
+  { title: "ご提案・お見積り", description: "制作内容、スケジュール、費用をご案内します。" },
+  { title: "制作・実装", description: "デザインと内容を確認しながら制作します。" },
+  { title: "公開・運用支援", description: "公開後の更新や改善にも対応します。" }
+];
+
+function WebsiteStrengthSection() {
+  return (
+    <section className="section-space bg-apple-gray">
+      <div className="container-site">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="eyebrow">Website</p>
+          <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-5xl">BLOOMIAのホームページ制作</h2>
+          <p className="lead mt-5">
+            見た目を整えるだけではなく、公開後の集客や問い合わせまで考えて設計します。
+          </p>
+        </div>
+        <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {websiteStrengths.map((item, index) => (
+            <article className="rounded-lg bg-white p-6 shadow-sm" key={item.title}>
+              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-sm font-semibold text-apple-blue">
+                {String(index + 1).padStart(2, "0")}
+              </div>
+              <h3 className="mt-5 text-lg font-semibold text-apple-text">{item.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-apple-sub">{item.description}</p>
+            </article>
+          ))}
+        </div>
+        <WebsiteConversionDiagram />
+      </div>
+    </section>
+  );
+}
+
+function WebsiteConversionDiagram() {
+  const items = ["検索・SNS・Web広告", "ホームページ", "問い合わせ", "相談・依頼"];
+
+  return (
+    <div className="mt-10 rounded-lg border border-apple-border bg-white p-6 shadow-sm md:p-8">
+      <h3 className="text-2xl font-semibold text-apple-text">ホームページが問い合わせにつながる流れ</h3>
+      <div className="mt-6 grid gap-3 md:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] md:items-center">
+        {items.map((item, index) => (
+          <div className="contents" key={item}>
+            <div className="rounded-lg bg-apple-gray p-4 text-center font-semibold text-apple-text">{item}</div>
+            {index < items.length - 1 ? (
+              <div className="flex justify-center text-apple-blue md:block" aria-hidden="true">
+                <span className="hidden md:inline">→</span>
+                <span className="md:hidden">↓</span>
+              </div>
+            ) : null}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function WebsiteFeatureSection() {
+  return (
+    <section className="section-space bg-apple-gray" id="website-service-types">
+      <div className="container-site">
+        <SectionTitle title="対応内容" align="center" />
+        <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {websiteFeatureItems.map((item) => (
+            <article className="rounded-lg bg-white p-6 shadow-sm" key={item.title}>
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50 text-apple-blue" aria-hidden="true">
+                <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">
+                  <path d="M5 5h14v14H5z" />
+                  <path d="M8 9h8" />
+                  <path d="M8 13h5" />
+                </svg>
+              </div>
+              <h3 className="mt-5 text-xl font-semibold text-apple-text">{item.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-apple-sub">{item.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WebsiteProblemSolutionSection() {
+  return (
+    <section className="section-space">
+      <div className="container-site">
+        <SectionTitle title="よくある課題と解決できること" align="center" />
+        <div className="mt-10 grid gap-4 md:grid-cols-2">
+          {websiteProblemPairs.map((item) => (
+            <article className="rounded-lg border border-apple-border bg-white p-5 shadow-sm" key={item.problem}>
+              <div className="grid gap-3 sm:grid-cols-[1fr_auto_1.3fr] sm:items-center">
+                <div className="rounded-lg bg-apple-gray p-4 font-semibold text-apple-text">{item.problem}</div>
+                <div className="text-center text-apple-blue" aria-hidden="true">
+                  <span className="hidden sm:inline">→</span>
+                  <span className="sm:hidden">↓</span>
+                </div>
+                <div className="rounded-lg border border-blue-100 bg-blue-50 p-4 text-sm font-semibold leading-7 text-apple-text">
+                  {item.solution}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WebsiteFlowSection() {
+  return (
+    <section className="section-space bg-apple-gray">
+      <div className="container-site">
+        <SectionTitle title="制作の進め方" align="center" />
+        <WebsiteThinkingDiagram />
+        <div className="mt-10 grid gap-4 md:grid-cols-5">
+          {websiteFlowItems.map((item, index) => (
+            <article className="relative rounded-lg bg-white p-6 shadow-sm" key={item.title}>
+              <p className="text-sm font-semibold text-apple-blue">Step {index + 1}</p>
+              <h3 className="mt-3 font-semibold text-apple-text">{item.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-apple-sub">{item.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WebsiteThinkingDiagram() {
+  const items = ["目的を整理", "届けたい相手を整理", "ページ構成を設計", "制作・公開", "改善・運用"];
+
+  return (
+    <div className="mt-10 rounded-lg bg-white p-6 shadow-sm md:p-8">
+      <h3 className="text-2xl font-semibold text-apple-text">制作の考え方</h3>
+      <div className="mt-6 grid gap-3 md:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr] md:items-center">
+        {items.map((item, index) => (
+          <div className="contents" key={item}>
+            <div className="rounded-lg border border-apple-border p-4 text-center text-sm font-semibold text-apple-text">{item}</div>
+            {index < items.length - 1 ? (
+              <div className="flex justify-center text-apple-blue md:block" aria-hidden="true">
+                <span className="hidden md:inline">→</span>
+                <span className="md:hidden">↓</span>
+              </div>
+            ) : null}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function WebsitePreparationSection() {
+  const items = ["目的とターゲットを確認", "必要なページと情報を整理", "公開後の集客方法も検討"];
+
+  return (
+    <section className="section-space">
+      <div className="container-site">
+        <div className="rounded-lg border border-apple-border bg-white p-6 shadow-sm md:p-8">
+          <div className="grid gap-8 md:grid-cols-[1.1fr_1fr] md:items-center">
+            <div>
+              <p className="eyebrow">Planning</p>
+              <h2 className="mt-3 text-3xl font-semibold leading-tight text-apple-text">制作前の整理を大切にしています</h2>
+              <p className="mt-4 leading-7 text-apple-sub">
+                ホームページは、制作すること自体が目的ではありません。事業内容、届けたい相手、公開後の使い方を確認したうえで、必要なページと情報を整理します。
+              </p>
+            </div>
+            <ul className="grid gap-3">
+              {items.map((item) => (
+                <li className="rounded-lg bg-apple-gray p-4 font-semibold text-apple-text" key={item}>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WebsiteMidCta({ variant }: { variant: "compact" | "card" }) {
+  const className =
+    variant === "compact"
+      ? "rounded-lg border border-apple-border bg-white p-6 shadow-sm md:flex md:items-center md:justify-between md:gap-8"
+      : "rounded-lg bg-apple-gray p-6 md:p-8";
+
+  return (
+    <section className={variant === "compact" ? "pb-16 md:pb-20" : "section-space pt-0"}>
+      <div className="container-site">
+        <div className={className}>
+          <div>
+            <h2 className="text-2xl font-semibold text-apple-text">ホームページについて相談してみませんか？</h2>
+            <p className="mt-3 leading-7 text-apple-sub">
+              新規制作、リニューアル、現在の制作会社からの乗り換えなど、状況が固まっていない段階でもご相談いただけます。
+            </p>
+          </div>
+          <div className="mt-5 flex flex-col gap-3 sm:flex-row md:mt-0">
+            <Link
+              className="inline-flex min-h-11 items-center justify-center rounded-full bg-apple-blue px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
+              href="/contact"
+            >
+              無料相談する
+            </Link>
+            <Link
+              className="inline-flex min-h-11 items-center justify-center rounded-full border border-apple-border bg-white px-5 py-2.5 text-sm font-semibold text-apple-text transition hover:border-apple-blue hover:text-apple-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
+              href="/contact"
+            >
+              メールで問い合わせる
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -255,11 +550,11 @@ function LandingPageStrategySection() {
     <section className="section-space">
       <div className="container-site">
         <div className="mx-auto max-w-4xl text-center">
-          <p className="eyebrow">Landing Page</p>
-          <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-5xl">届けたい相手を整理して、伝わりやすいLPを設計します。</h2>
-          <p className="lead mt-5">
-            LPを見る人には、すぐに相談したい方もいれば、まず情報を集めたい方もいます。制作前のヒアリングで「誰に届けたいLPなのか」を整理し、その相手に合わせて構成・文章・問い合わせ導線を設計します。
-          </p>
+            <p className="eyebrow">Landing Page</p>
+            <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-5xl">届けたい相手を整理して、伝わりやすいLPを設計します。</h2>
+            <p className="lead mt-5">
+              LPを見る人の検討状況はさまざまです。制作前のヒアリングで、誰に何を届けるページなのかを整理します。目的と相手を明確にしたうえで、文章、構成、問い合わせ導線を設計します。
+            </p>
           <p className="mt-4 text-base leading-7 text-apple-sub">
             狙う相手を決めてから作ることで、読み進めやすく、問い合わせにつながりやすいページに整えます。
           </p>

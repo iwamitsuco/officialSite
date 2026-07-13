@@ -22,7 +22,10 @@ export function RelatedServices({ currentSlug }: RelatedServicesProps) {
               href={item.href}
               key={item.href}
             >
-              <h3 className="text-xl font-semibold text-apple-text group-hover:text-apple-blue">{item.title}</h3>
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50 text-apple-blue" aria-hidden="true">
+                <RelatedServiceIcon slug={item.slug} />
+              </div>
+              <h3 className="mt-5 text-xl font-semibold text-apple-text group-hover:text-apple-blue">{item.title}</h3>
               <p className="mt-3 text-sm leading-7 text-apple-sub">{item.description}</p>
               <span className="mt-5 inline-flex text-sm font-semibold text-apple-blue">
                 {item.title}を見る
@@ -32,5 +35,54 @@ export function RelatedServices({ currentSlug }: RelatedServicesProps) {
         </div>
       </div>
     </section>
+  );
+}
+
+function RelatedServiceIcon({ slug }: { slug: Service["slug"] }) {
+  if (slug === "web-advertising") {
+    return (
+      <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">
+        <path d="M4 19V5" />
+        <path d="M4 19h16" />
+        <path d="m7 15 4-4 3 3 5-7" />
+      </svg>
+    );
+  }
+
+  if (slug === "design") {
+    return (
+      <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">
+        <path d="M12 20h9" />
+        <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z" />
+      </svg>
+    );
+  }
+
+  if (slug === "dx") {
+    return (
+      <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">
+        <path d="M12 3v18" />
+        <path d="M5 8h14" />
+        <path d="M5 16h14" />
+      </svg>
+    );
+  }
+
+  if (slug === "system-development") {
+    return (
+      <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">
+        <path d="M4 5h16v14H4z" />
+        <path d="m8 9 3 3-3 3" />
+        <path d="M13 15h3" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">
+      <path d="M4 5h16v14H4z" />
+      <path d="M8 9h8" />
+      <path d="M8 13h5" />
+    </svg>
   );
 }
