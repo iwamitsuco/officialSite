@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { navLinks, siteConfig } from "@/lib/site-config";
 import { services } from "@/data/services";
+import { navLinks, siteConfig } from "@/lib/site-config";
 
 export function Footer() {
   return (
@@ -61,11 +61,6 @@ export function Footer() {
                 </Link>
               </li>
             ))}
-            <li>
-              <Link className="hover:text-apple-blue" href="/download">
-                資料ダウンロード
-              </Link>
-            </li>
             <li>
               <Link className="hover:text-apple-blue" href="/privacy">
                 プライバシーポリシー

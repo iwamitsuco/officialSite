@@ -8,6 +8,10 @@ type ButtonProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
 };
 
 export function Button({ href, children, variant = "primary", className = "", ...props }: ButtonProps) {
+  if (href === "/download") {
+    return null;
+  }
+
   const base = "inline-flex min-h-11 items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
   const variants = {
     primary: "bg-apple-blue text-white hover:bg-apple-hover focus-visible:outline-apple-blue",

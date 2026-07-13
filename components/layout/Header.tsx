@@ -3,8 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/Button";
 import { SearchBox } from "@/components/search/SearchBox";
+import { Button } from "@/components/ui/Button";
 import { navLinks, siteConfig } from "@/lib/site-config";
 
 export function Header() {
@@ -51,9 +51,6 @@ export function Header() {
 
         <div className="hidden items-center gap-2 lg:flex">
           <SearchBox compact />
-          <Button href="/download" variant="secondary">
-            資料DL
-          </Button>
           <Button href="/contact">無料相談</Button>
         </div>
 
@@ -110,11 +107,8 @@ export function Header() {
               ))}
             </nav>
             <div className="mt-8 grid gap-3">
-              <Button href="/download" variant="secondary" onClick={() => setOpen(false)}>
-                資料をダウンロード
-              </Button>
               <Button href="/contact" onClick={() => setOpen(false)}>
-                無料で相談する
+                無料相談
               </Button>
             </div>
           </div>
