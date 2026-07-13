@@ -3,7 +3,6 @@ import { Suspense } from "react";
 import "./globals.css";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
-import { ChatWidget } from "@/components/layout/ChatWidget";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -33,7 +32,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         </Suspense>
         <main>{children}</main>
         <Footer />
-        <ChatWidget />
       </body>
     </html>
   );
