@@ -19,15 +19,33 @@ export const metadata = createMetadata({
 });
 
 const problems = [
-  "ホームページが古い",
-  "Webから問い合わせが来ない",
-  "広告を出しても成果が分からない",
-  "Excelや紙管理に限界を感じている",
-  "AIを使いたいが何から始めればよいか分からない"
+  {
+    title: "ホームページが古い",
+    links: [{ label: "ホームページ制作を見る", href: "/services/website" }]
+  },
+  {
+    title: "Webから問い合わせが来ない",
+    links: [
+      { label: "ホームページを見直したい", href: "/services/website" },
+      { label: "アクセスを増やしたい", href: "/services/web-advertising" }
+    ]
+  },
+  {
+    title: "広告を出しても成果が分からない",
+    links: [{ label: "Web広告サービスを見る", href: "/services/web-advertising" }]
+  },
+  {
+    title: "Excelや紙管理に限界を感じている",
+    links: [{ label: "企業DX・業務改善を見る", href: "/services/dx" }]
+  },
+  {
+    title: "AIを使いたいが何から始めればよいか分からない",
+    links: [{ label: "企業DX・生成AI活用を見る", href: "/services/dx" }]
+  }
 ];
 
 const reasons = [
-  "Web制作から広告運用まで対応",
+  "Web制作からWeb広告運用まで対応",
   "システム開発で業務改善も可能",
   "生成AIやDX導入も相談可能",
   "地域企業に寄り添った提案",
@@ -52,15 +70,12 @@ export default function HomePage() {
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button href="/contact">無料で相談する</Button>
-              <Button href="/download" variant="secondary">
-                資料をダウンロード
-              </Button>
             </div>
           </div>
           <div className="relative">
             <Image
               src="/images/hero-dashboard.webp"
-              alt="Web制作、広告、DX支援を表すミニマルなダッシュボード"
+              alt="Web制作、Web広告、DX支援を表すミニマルなダッシュボード"
               width={960}
               height={720}
               priority
@@ -72,11 +87,22 @@ export default function HomePage() {
 
       <section className="section-space bg-apple-gray">
         <div className="container-site">
-          <SectionTitle title="こんなお悩みはありませんか？" description="難しい言葉より、いま困っていることから整理します。" align="center" />
+          <SectionTitle title="こんなお悩みはありませんか？" description="今の課題に近い項目から、関連するサービスを確認できます。" align="center" />
           <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
             {problems.map((problem) => (
-              <div className="rounded-lg bg-white p-5 text-center text-sm font-semibold shadow-sm" key={problem}>
-                {problem}
+              <div className="rounded-lg bg-white p-5 shadow-sm" key={problem.title}>
+                <h2 className="text-center text-sm font-semibold text-apple-text">{problem.title}</h2>
+                <div className="mt-4 grid gap-2">
+                  {problem.links.map((link) => (
+                    <Link
+                      className="rounded-full border border-apple-border px-3 py-2 text-center text-xs font-semibold text-apple-text transition hover:border-apple-blue hover:text-apple-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
+                      href={link.href}
+                      key={link.href}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
@@ -85,7 +111,7 @@ export default function HomePage() {
 
       <section className="section-space">
         <div className="container-site">
-          <SectionTitle label="Services" title="必要な支援をまとめて相談できます。" description="Web、システム、広告、DXまで、事業の状況に合わせて組み合わせます。" />
+          <SectionTitle label="Services" title="必要な支援をまとめて相談できます。" description="Web、システム、Web広告、DXまで、事業の状況に合わせて組み合わせます。" />
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
               <ServiceCard service={service} key={service.slug} />

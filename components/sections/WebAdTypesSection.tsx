@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const adTypes = [
   {
     title: "検索広告",
@@ -146,6 +148,30 @@ export function WebAdTypesSection() {
                 <p>
                   その後、お問い合わせにつなげる役割を担うのがランディングページ（LP）です。Web広告とLPの両方を最適化することで、より高い成果が期待できます。
                 </p>
+              </div>
+              <div className="mt-6 rounded-lg bg-white p-5">
+                <h3 className="text-xl font-semibold text-apple-text">広告のリンク先となるページも整えます。</h3>
+                <p className="mt-3 leading-7 text-apple-sub">
+                  広告のリンク先となるホームページやLPが整っていない場合は、ページの制作や改善から対応できます。
+                </p>
+                <Link
+                  className="mt-5 inline-flex min-h-11 items-center justify-center rounded-full border border-apple-border bg-white px-5 py-2.5 text-sm font-semibold text-apple-text transition hover:border-apple-blue hover:text-apple-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
+                  href="/services/website"
+                >
+                  ホームページ・LP制作を見る
+                </Link>
+              </div>
+              <div className="mt-4 rounded-lg bg-white p-5">
+                <h3 className="text-xl font-semibold text-apple-text">広告用の画像制作にも対応しています</h3>
+                <p className="mt-3 leading-7 text-apple-sub">
+                  ディスプレイ広告やSNS広告では、バナーや画像の内容も成果に影響します。広告運用と合わせて、広告クリエイティブの制作・改善もご相談いただけます。
+                </p>
+                <Link
+                  className="mt-5 inline-flex min-h-11 items-center justify-center rounded-full border border-apple-border bg-white px-5 py-2.5 text-sm font-semibold text-apple-text transition hover:border-apple-blue hover:text-apple-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
+                  href="/services/design"
+                >
+                  バナー・広告画像の制作を見る
+                </Link>
               </div>
             </div>
           </div>

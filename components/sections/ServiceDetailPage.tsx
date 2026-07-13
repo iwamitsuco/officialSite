@@ -1,5 +1,8 @@
+import Link from "next/link";
 import { CTASection } from "@/components/sections/CTASection";
 import { FAQ } from "@/components/sections/FAQ";
+import { RelatedBlogPosts } from "@/components/sections/RelatedBlogPosts";
+import { RelatedServices } from "@/components/sections/RelatedServices";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { WebAdTypesSection } from "@/components/sections/WebAdTypesSection";
@@ -37,6 +40,7 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
       {service.slug === "web-advertising" ? <WebAdTypesSection /> : null}
       {service.slug === "website" ? <LandingPageStrategySection /> : null}
       {service.slug === "website" ? <WebsiteSearchIntentSection /> : null}
+      <ServiceSupportLinks serviceSlug={service.slug} />
       <section className="section-space bg-apple-gray">
         <div className="container-site">
           <SectionTitle title="対応内容" align="center" />
@@ -94,8 +98,71 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
           </div>
         </div>
       </section>
+      <RelatedBlogPosts serviceSlug={service.slug} />
+      <RelatedServices currentSlug={service.slug} />
       <CTASection />
     </>
+  );
+}
+
+function ServiceSupportLinks({ serviceSlug }: { serviceSlug: Service["slug"] }) {
+  const items: Partial<Record<Service["slug"], { title: string; description: string; href: string; linkLabel: string }>> = {
+    website: {
+      title: "ホームページ公開後の集客もサポートします",
+      description:
+        "ホームページは、公開するだけで必ず見てもらえるとは限りません。検索やSNS、Web広告など、事業や目的に合った方法でユーザーへ届けることも重要です。BLOOMIAでは、ホームページ制作からWeb広告の運用まで一貫してご相談いただけます。",
+      href: "/services/web-advertising",
+      linkLabel: "Web広告サービスを見る"
+    },
+    design: {
+      title: "制作した画像をWeb広告にも活用できます",
+      description:
+        "バナーやSNS画像は、制作して終わりではありません。届けたい相手や広告媒体に合わせて、Web広告への展開も支援します。LPの構成・文章・問い合わせ導線を含む制作については、ホームページ制作サービスでご案内しています。",
+      href: "/services/web-advertising",
+      linkLabel: "Web広告サービスを見る"
+    },
+    dx: {
+      title: "既存ツールでは対応できない業務もご相談ください",
+      description:
+        "Excelや簡易ツールでの改善が難しい場合は、業務に合わせた専用システムの開発も可能です。",
+      href: "/services/system-development",
+      linkLabel: "システム開発を見る"
+    },
+    "system-development": {
+      title: "大がかりな開発が必要か分からない場合もご相談ください",
+      description:
+        "すべてをシステム化するのではなく、Excel改善や生成AI、簡易ツールで解決できる場合もあります。課題に合った規模からご提案します。",
+      href: "/services/dx",
+      linkLabel: "企業DX・業務改善を見る"
+    }
+  };
+  const item = items[serviceSlug];
+
+  if (!item) return null;
+
+  return (
+    <section className="section-space">
+      <div className="container-site">
+        <div className="rounded-lg border border-apple-border bg-white p-6 shadow-sm md:p-8">
+          <h2 className="text-2xl font-semibold text-apple-text">{item.title}</h2>
+          <p className="mt-4 leading-7 text-apple-sub">{item.description}</p>
+          <Link
+            className="mt-6 inline-flex min-h-11 items-center justify-center rounded-full border border-apple-border bg-white px-5 py-2.5 text-sm font-semibold text-apple-text transition hover:border-apple-blue hover:text-apple-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
+            href={item.href}
+          >
+            {item.linkLabel}
+          </Link>
+          {serviceSlug === "design" ? (
+            <Link
+              className="ml-0 mt-3 inline-flex min-h-11 items-center justify-center rounded-full border border-apple-border bg-white px-5 py-2.5 text-sm font-semibold text-apple-text transition hover:border-apple-blue hover:text-apple-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue sm:ml-3"
+              href="/services/website"
+            >
+              LP・ホームページ制作を見る
+            </Link>
+          ) : null}
+        </div>
+      </div>
+    </section>
   );
 }
 

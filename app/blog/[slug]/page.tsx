@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { BlogCard } from "@/components/sections/BlogCard";
+import { BlogServiceCTA } from "@/components/sections/BlogServiceCTA";
 import { CTASection } from "@/components/sections/CTASection";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { CopyArticleUrlButton } from "@/components/ui/CopyArticleUrlButton";
@@ -71,6 +72,7 @@ export default async function BlogDetailPage({ params }: BlogDetailProps) {
             <p className="text-sm font-semibold text-apple-sub">記事を共有</p>
             <CopyArticleUrlButton />
           </div>
+          <BlogServiceCTA category={post.category} />
         </div>
       </article>
       {related.length > 0 ? (

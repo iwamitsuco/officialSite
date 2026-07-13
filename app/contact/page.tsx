@@ -24,7 +24,18 @@ export default function ContactPage() {
               <p>メール: <a className="font-semibold text-apple-blue" href={siteConfig.emailLink}>{siteConfig.email}</a></p>
             </div>
           </div>
+          <div>
+            <div className="mb-6 rounded-lg bg-white p-5 shadow-sm">
+              <h2 className="text-lg font-semibold text-apple-text">ご相談前に</h2>
+              <ul className="mt-4 grid gap-2 text-sm leading-7 text-apple-sub">
+                <li>相談内容が決まっていなくても問題ありません。</li>
+                <li>小さなご相談にも対応します。</li>
+                <li>電話番号の入力は任意です。</li>
+                <li>通常2営業日以内に返信します。</li>
+              </ul>
+            </div>
           <ContactForm />
+          </div>
         </div>
       </section>
     </>

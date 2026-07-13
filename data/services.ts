@@ -39,7 +39,7 @@ export const services: Service[] = [
     shortTitle: "デザイン",
     description: "チラシ、バナー、SNS画像など、Webと連動する制作物を整えます。",
     hero: "伝えたいことを、見やすく印象に残る形へ。",
-    features: ["チラシ", "バナー", "SNS画像", "広告クリエイティブ"],
+    features: ["チラシ", "バナー", "SNS画像", "広告クリエイティブ", "Webサイト用画像"],
     problems: ["デザインに統一感がない", "広告画像を作れない", "開業準備で必要な制作物が多い"],
     solutions: ["ブランド感の統一", "広告に使いやすい素材設計", "Webと紙をまとめて準備"],
     flow: sharedFlow,
