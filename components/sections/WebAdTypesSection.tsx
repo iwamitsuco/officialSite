@@ -137,14 +137,14 @@ export function WebAdTypesSection() {
             <div className="mx-auto max-w-4xl">
               <p className="eyebrow">Landing Page</p>
               <h2 className="mt-3 text-3xl font-semibold leading-tight text-apple-text md:text-[40px]">
-                広告の成果は、LPの内容にも左右されます。
+                Web広告の成果は、LPの内容にも左右されます。
               </h2>
               <div className="mt-5 max-w-3xl space-y-4 text-base leading-8 text-apple-sub">
                 <p>
-                  広告の成果を左右するのは、広告だけではありません。広告は、見込み客をサイトへ集める役割です。
+                  Web広告の成果を左右するのは、Web広告だけではありません。Web広告は、見込み客をサイトへ集める役割です。
                 </p>
                 <p>
-                  その後、お問い合わせにつなげる役割を担うのがランディングページ（LP）です。広告とLPの両方を最適化することで、より高い成果が期待できます。
+                  その後、お問い合わせにつなげる役割を担うのがランディングページ（LP）です。Web広告とLPの両方を最適化することで、より高い成果が期待できます。
                 </p>
               </div>
             </div>
