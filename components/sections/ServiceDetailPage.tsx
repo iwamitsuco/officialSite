@@ -35,7 +35,7 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
         <div className="container-site">
           <div className="mx-auto max-w-4xl text-center">
             <p className="eyebrow">{service.title}</p>
-            <h1 className="mt-5 text-[32px] font-semibold leading-[1.18] [overflow-wrap:anywhere] sm:text-4xl md:text-[56px]">{service.hero}</h1>
+            <h1 className="mx-auto mt-5 max-w-5xl text-[32px] font-semibold leading-[1.32] [overflow-wrap:anywhere] sm:text-4xl md:text-[56px] md:leading-[1.24]">{service.hero}</h1>
             <p className="lead mt-6">{service.description}</p>
             {isWebsite ? (
               <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
