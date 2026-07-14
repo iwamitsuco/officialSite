@@ -15,6 +15,7 @@ type ServiceDetailPageProps = {
 
 export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
   const isWebsite = service.slug === "website";
+  const isWebAdvertising = service.slug === "web-advertising";
 
   return (
     <>
@@ -82,7 +83,7 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
           <WebsiteProblemSolutionSection />
           <WebsiteMidCta variant="card" />
         </>
-      ) : (
+      ) : isWebAdvertising ? null : (
         <section className="section-space">
           <div className="container-site grid gap-10 md:grid-cols-2">
             <div>

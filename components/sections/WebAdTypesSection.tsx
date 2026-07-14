@@ -28,7 +28,7 @@ const webAdBenefits = [
       "すぐに相談したい方には問い合わせにつながるLPへ、まず情報を集めたい方には比較や選び方を整理したLPへ案内できます。"
   },
   {
-    title: "キーワードごとにLPを分けられる",
+    title: "検索キーワードごとにLPを分けられる",
     description:
       "検索される言葉に合わせて広告文とリンク先を変えることで、クリック後の違和感を減らしやすくなります。"
   },
@@ -46,6 +46,21 @@ const webAdBenefits = [
     title: "必要な人に絞って届けやすい",
     description:
       "地域、検索語、興味関心などをもとに、届けたい相手へ近づけます。"
+  }
+];
+
+const adFlowItems = [
+  {
+    title: "Web広告",
+    description: "検索やSNSから、見込み客を集めます。"
+  },
+  {
+    title: "LP",
+    description: "不安や疑問を減らし、問い合わせへ案内します。"
+  },
+  {
+    title: "問い合わせ",
+    description: "相談や申し込みにつながる状態を目指します。"
   }
 ];
 
@@ -143,35 +158,58 @@ export function WebAdTypesSection() {
               </h2>
               <div className="mt-5 max-w-3xl space-y-4 text-base leading-8 text-apple-sub">
                 <p>
-                  Web広告の成果を左右するのは、Web広告だけではありません。Web広告は、見込み客をサイトへ集める役割です。
+                  LP（広告や検索から来た人に見てもらう専用ページ）は、問い合わせにつなげるための受け皿です。
                 </p>
                 <p>
-                  その後、お問い合わせにつなげる役割を担うのがランディングページ（LP）です。Web広告とLPの両方を最適化することで、より高い成果が期待できます。
+                  Web広告で人を集めても、リンク先のLPで不安や疑問が解消されないと、問い合わせにはつながりにくくなります。広告とLPの両方を整えることで、成果を改善しやすくなります。
                 </p>
               </div>
-              <div className="mt-6 rounded-lg bg-white p-5">
-                <h3 className="text-xl font-semibold text-apple-text">広告のリンク先となるページも整えます。</h3>
-                <p className="mt-3 leading-7 text-apple-sub">
-                  広告のリンク先となるホームページやLPが整っていない場合は、ページの制作や改善から対応できます。
-                </p>
-                <Link
-                  className="mt-5 inline-flex min-h-11 items-center justify-center rounded-full border border-apple-border bg-white px-5 py-2.5 text-sm font-semibold text-apple-text transition hover:border-apple-blue hover:text-apple-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
-                  href="/services/website"
-                >
-                  ホームページ・LP制作を見る
-                </Link>
+
+              <div className="mt-8 rounded-lg bg-white p-5 shadow-sm md:p-6">
+                <div className="grid gap-3 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:items-stretch">
+                  {adFlowItems.map((item, index) => (
+                    <div className="contents" key={item.title}>
+                      <div className="rounded-lg border border-apple-border bg-white p-4">
+                        <p className="text-sm font-semibold text-apple-blue">Step {index + 1}</p>
+                        <h3 className="mt-2 text-lg font-semibold text-apple-text">{item.title}</h3>
+                        <p className="mt-2 text-sm leading-7 text-apple-sub">{item.description}</p>
+                      </div>
+                      {index < adFlowItems.length - 1 ? (
+                        <div className="flex items-center justify-center text-apple-blue" aria-hidden="true">
+                          <span className="hidden md:inline">→</span>
+                          <span className="md:hidden">↓</span>
+                        </div>
+                      ) : null}
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="mt-4 rounded-lg bg-white p-5">
-                <h3 className="text-xl font-semibold text-apple-text">広告用の画像制作にも対応しています</h3>
-                <p className="mt-3 leading-7 text-apple-sub">
-                  ディスプレイ広告やSNS広告では、バナーや画像の内容も成果に影響します。広告運用と合わせて、広告クリエイティブの制作・改善もご相談いただけます。
-                </p>
-                <Link
-                  className="mt-5 inline-flex min-h-11 items-center justify-center rounded-full border border-apple-border bg-white px-5 py-2.5 text-sm font-semibold text-apple-text transition hover:border-apple-blue hover:text-apple-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
-                  href="/services/design"
-                >
-                  バナー・広告画像の制作を見る
-                </Link>
+
+              <div className="mt-6 grid gap-4 md:grid-cols-2">
+                <div className="rounded-lg bg-white p-5">
+                  <h3 className="text-xl font-semibold text-apple-text">広告のリンク先となるページも整えます。</h3>
+                  <p className="mt-3 leading-7 text-apple-sub">
+                    広告のリンク先となるホームページやLPが整っていない場合は、ページの制作や改善から対応できます。
+                  </p>
+                  <Link
+                    className="mt-5 inline-flex min-h-11 items-center justify-center rounded-full border border-apple-border bg-white px-5 py-2.5 text-sm font-semibold text-apple-text transition hover:border-apple-blue hover:text-apple-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
+                    href="/services/website"
+                  >
+                    ホームページ・LP制作を見る
+                  </Link>
+                </div>
+                <div className="rounded-lg bg-white p-5">
+                  <h3 className="text-xl font-semibold text-apple-text">広告用の画像制作にも対応しています</h3>
+                  <p className="mt-3 leading-7 text-apple-sub">
+                    ディスプレイ広告やSNS広告では、バナーや画像の内容も成果に影響します。広告運用と合わせて、広告クリエイティブの制作・改善もご相談いただけます。
+                  </p>
+                  <Link
+                    className="mt-5 inline-flex min-h-11 items-center justify-center rounded-full border border-apple-border bg-white px-5 py-2.5 text-sm font-semibold text-apple-text transition hover:border-apple-blue hover:text-apple-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
+                    href="/services/design"
+                  >
+                    バナー・広告画像の制作を見る
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -186,7 +224,7 @@ export function WebAdTypesSection() {
               Web広告でできること
             </h2>
             <p className="lead mt-5">
-              Web広告は、ただ多くの人に見せるだけではありません。届けたい相手や目的に合わせて、キーワード・広告文・リンク先を設計できます。
+              Web広告は、ただ多くの人に見せるだけではありません。届けたい相手や目的に合わせて、検索キーワード・広告文・リンク先を設計できます。
             </p>
           </div>
 

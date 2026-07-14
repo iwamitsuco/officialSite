@@ -18,16 +18,20 @@ export function RelatedServices({ currentSlug }: RelatedServicesProps) {
         <div className="mt-8 grid gap-4 md:grid-cols-2">
           {items.map((item) => (
             <Link
-              className="group block rounded-lg bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
+              className="group flex min-h-full flex-col rounded-lg bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
               href={item.href}
               key={item.href}
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50 text-apple-blue" aria-hidden="true">
-                <RelatedServiceIcon slug={item.slug} />
+              <div className="flex gap-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-apple-blue" aria-hidden="true">
+                  <RelatedServiceIcon slug={item.slug} />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-apple-text group-hover:text-apple-blue">{item.title}</h3>
+                  <p className="card-copy mt-2">{item.description}</p>
+                </div>
               </div>
-              <h3 className="mt-5 text-xl font-semibold text-apple-text group-hover:text-apple-blue">{item.title}</h3>
-              <p className="card-copy mt-3">{item.description}</p>
-              <span className="mt-5 inline-flex text-sm font-semibold text-apple-blue">
+              <span className="mt-auto inline-flex min-h-11 items-center pt-5 text-sm font-semibold text-apple-blue">
                 {item.title}を見る
               </span>
             </Link>
