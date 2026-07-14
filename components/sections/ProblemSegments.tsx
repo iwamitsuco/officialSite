@@ -128,18 +128,24 @@ export function ProblemSegments() {
     <div className="mt-10">
       <div className="flex justify-center">
         <div
-          className="grid w-full grid-cols-2 gap-1 rounded-full border border-apple-border bg-white p-1 sm:inline-grid sm:w-auto"
+          className="relative grid w-full max-w-[420px] grid-cols-2 rounded-full border border-apple-border bg-white p-1 shadow-sm sm:max-w-[520px]"
           role="tablist"
           aria-label="悩みの種類"
         >
+          <span
+            className={`absolute inset-y-1 left-1 w-[calc(50%-4px)] rounded-full bg-apple-blue shadow-sm transition-transform duration-300 ease-out ${
+              activeId === "new" ? "translate-x-full" : "translate-x-0"
+            }`}
+            aria-hidden="true"
+          />
           {problemSegments.map((segment) => {
             const isActive = segment.id === activeId;
 
             return (
               <button
                 aria-selected={isActive}
-                className={`min-h-11 rounded-full px-3 py-2.5 text-[13px] font-semibold leading-snug transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue sm:px-5 md:text-base ${
-                  isActive ? "bg-apple-blue text-white" : "bg-white text-apple-text hover:bg-apple-gray"
+                className={`relative z-10 min-h-11 rounded-full px-3 py-2.5 text-[13px] font-semibold leading-snug transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue sm:px-5 md:text-base ${
+                  isActive ? "text-white" : "text-apple-text hover:text-apple-blue"
                 }`}
                 key={segment.id}
                 role="tab"
