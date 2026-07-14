@@ -17,13 +17,32 @@ export function BlogFilterList({ posts, categories }: BlogFilterListProps) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [showAllTags, setShowAllTags] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const visibleTags = useMemo(() => getTagsForCategory(posts, category), [posts, category]);
   const filteredTags = selectedTags.filter((tag) => visibleTags.includes(tag));
+  const popularTags = useMemo(() => {
+    const scopedPosts = category ? posts.filter((post) => post.category === category) : posts;
+    const tagCounts = new Map<string, number>();
+
+    scopedPosts.forEach((post) => {
+      post.tags.forEach((tag) => tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1));
+    });
+
+    return [...visibleTags].sort((a, b) => {
+      const countDiff = (tagCounts.get(b) ?? 0) - (tagCounts.get(a) ?? 0);
+      return countDiff || a.localeCompare(b, "ja");
+    }).slice(0, 10);
+  }, [category, posts, visibleTags]);
+  const displayedTags = showAllTags
+    ? visibleTags
+    : Array.from(new Set([...popularTags, ...filteredTags.filter((tag) => visibleTags.includes(tag))]));
+  const canToggleAllTags = visibleTags.length > popularTags.length;
 
   function handleCategoryChange(nextCategory: string) {
     setCategory(nextCategory);
+    setShowAllTags(false);
     setSelectedTags((current) => current.filter((tag) => getTagsForCategory(posts, nextCategory).includes(tag)));
   }
 
@@ -102,9 +121,20 @@ export function BlogFilterList({ posts, categories }: BlogFilterListProps) {
         <div className="grid gap-3 border-t border-apple-border pt-5">
           <div className="flex flex-wrap items-baseline justify-start gap-x-3 gap-y-1">
             <p className="text-sm font-semibold text-apple-text">タグ</p>
-            <p className="text-xs font-semibold text-apple-sub">細かいキーワードを複数選択可</p>
+            <p className="text-xs font-semibold text-apple-sub">
+              {showAllTags ? "すべてのタグを表示中" : "人気タグ10件を表示"}
+            </p>
           </div>
-          <TagFilter tags={visibleTags} selectedTags={filteredTags} onToggle={handleTagToggle} />
+          <TagFilter tags={displayedTags} selectedTags={filteredTags} onToggle={handleTagToggle} />
+          {canToggleAllTags ? (
+            <button
+              className="justify-self-start rounded-full border border-apple-border bg-white px-4 py-2 text-sm font-semibold text-apple-text transition hover:border-apple-blue hover:text-apple-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
+              type="button"
+              onClick={() => setShowAllTags((current) => !current)}
+            >
+              {showAllTags ? "表示を少なくする" : "すべてのタグを表示"}
+            </button>
+          ) : null}
         </div>
       </div>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
