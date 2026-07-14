@@ -18,8 +18,6 @@ type ProblemItem = {
 type ProblemSegment = {
   id: "existing" | "new";
   label: string;
-  heading: string;
-  description: string;
   items: ProblemItem[];
 };
 
@@ -27,8 +25,6 @@ const problemSegments: ProblemSegment[] = [
   {
     id: "existing",
     label: "今ある課題を改善したい",
-    heading: "こんなお悩みありませんか？",
-    description: "ホームページ、広告、日々の業務など、今の状態を見直して改善しやすい形に整理します。",
     items: [
       {
         icon: "website",
@@ -80,8 +76,6 @@ const problemSegments: ProblemSegment[] = [
   {
     id: "new",
     label: "新しく始めたい",
-    heading: "こんなお悩みありませんか？",
-    description: "新しい事業やサービスを始めるために、必要なページ、集客、管理方法を一緒に整理します。",
     items: [
       {
         icon: "website",
@@ -160,23 +154,20 @@ export function ProblemSegments() {
       </div>
 
       <div className="mt-8 rounded-lg border border-apple-border bg-white/80 p-5 shadow-sm md:p-8">
-        <div className="max-w-3xl">
-          <h3 className="text-2xl font-semibold leading-[1.3] text-apple-text md:text-3xl">{activeSegment.heading}</h3>
-          <p className="body-copy mt-3">{activeSegment.description}</p>
-        </div>
-
-        <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {activeSegment.items.map((item) => (
             <article className="flex min-h-full flex-col rounded-lg border border-apple-border bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-soft" key={item.title}>
-              <div>
-                <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-blue-50 text-apple-blue" aria-hidden="true">
+              <div className="flex gap-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-apple-blue md:h-14 md:w-14" aria-hidden="true">
                   <ProblemIcon icon={item.icon} />
                 </div>
-                <h4 className="mt-5 text-xl font-semibold leading-[1.35] text-apple-text">{item.title}</h4>
-                <p className="card-copy mt-3">{item.description}</p>
+                <div>
+                  <h3 className="text-lg font-semibold leading-[1.35] text-apple-text md:text-xl">{item.title}</h3>
+                  <p className="card-copy mt-2">{item.description}</p>
+                </div>
               </div>
 
-              <div className="mt-6 grid gap-2 border-t border-apple-border pt-4">
+              <div className="mt-5 grid gap-2 border-t border-apple-border pt-4">
                 {item.links.map((link) => (
                   <Link
                     className="inline-flex min-h-11 items-center justify-between rounded-lg border border-apple-border bg-white px-4 py-3 text-sm font-semibold text-apple-text transition hover:border-apple-blue hover:text-apple-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
