@@ -3,6 +3,7 @@ import Link from "next/link";
 import { BlogCard } from "@/components/sections/BlogCard";
 import { CTASection } from "@/components/sections/CTASection";
 import { NewsCard } from "@/components/sections/NewsCard";
+import { ProblemSegments } from "@/components/sections/ProblemSegments";
 import { ServiceCard } from "@/components/sections/ServiceCard";
 import { Button } from "@/components/ui/Button";
 import { SectionTitle } from "@/components/ui/SectionTitle";
@@ -17,32 +18,6 @@ export const metadata = createMetadata({
   description:
     "中小企業・個人事業主向けに、ホームページ制作、業務システム、Web広告、DX支援まで一貫してサポートします。"
 });
-
-const problems = [
-  {
-    title: "ホームページが古い",
-    links: [{ label: "ホームページ制作を見る", href: "/services/website" }]
-  },
-  {
-    title: "Webから問い合わせが来ない",
-    links: [
-      { label: "ホームページを見直したい", href: "/services/website" },
-      { label: "アクセスを増やしたい", href: "/services/web-advertising" }
-    ]
-  },
-  {
-    title: "広告を出しても成果が分からない",
-    links: [{ label: "Web広告サービスを見る", href: "/services/web-advertising" }]
-  },
-  {
-    title: "Excelや紙管理に限界を感じている",
-    links: [{ label: "企業DX・業務改善を見る", href: "/services/dx" }]
-  },
-  {
-    title: "AIを使いたいが何から始めればよいか分からない",
-    links: [{ label: "企業DX・生成AI活用を見る", href: "/services/dx" }]
-  }
-];
 
 const reasons = [
   "Web制作からWeb広告運用まで対応",
@@ -87,25 +62,12 @@ export default function HomePage() {
 
       <section className="section-space bg-apple-gray">
         <div className="container-site">
-          <SectionTitle title="こんなお悩みはありませんか？" description="今の課題に近い項目から、関連するサービスを確認できます。" align="center" />
-          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
-            {problems.map((problem) => (
-              <div className="rounded-lg bg-white p-5 shadow-sm" key={problem.title}>
-                <h2 className="text-center text-sm font-semibold text-apple-text">{problem.title}</h2>
-                <div className="mt-4 grid gap-2">
-                  {problem.links.map((link) => (
-                    <Link
-                      className="rounded-full border border-apple-border px-3 py-2 text-center text-xs font-semibold text-apple-text transition hover:border-apple-blue hover:text-apple-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
-                      href={link.href}
-                      key={link.href}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+          <SectionTitle
+            title="こんなお悩みはありませんか？"
+            description="状況に近い項目を選ぶと、関連するサービスを確認できます。"
+            align="center"
+          />
+          <ProblemSegments />
         </div>
       </section>
 
