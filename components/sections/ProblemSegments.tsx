@@ -26,9 +26,9 @@ type ProblemSegment = {
 const problemSegments: ProblemSegment[] = [
   {
     id: "existing",
-    label: "既存サイトを改善したい",
-    heading: "既存サイトの改善でよくあるお悩み",
-    description: "今のホームページや広告の状態を見直し、問い合わせにつながる流れを整理します。",
+    label: "今ある課題を改善したい",
+    heading: "こんなお悩みありませんか？",
+    description: "ホームページ、広告、日々の業務など、今の状態を見直して改善しやすい形に整理します。",
     items: [
       {
         title: "ホームページが古い",
@@ -47,14 +47,35 @@ const problemSegments: ProblemSegment[] = [
         title: "広告を出しても成果が分からない",
         description: "広告の目的、リンク先、成果確認の方法を見直し、改善しやすい状態に整えます。",
         links: [{ label: "Web広告を見直す", href: "/services/web-advertising", primary: true }]
+      },
+      {
+        title: "雑務を減らしたい",
+        description: "日々の入力作業、確認作業、資料作成などを減らせる方法を整理します。",
+        links: [
+          { label: "業務改善を相談する", href: "/services/dx", primary: true },
+          { label: "システム開発を見る", href: "/services/system-development" }
+        ]
+      },
+      {
+        title: "Excelや紙管理に限界を感じている",
+        description: "予約、顧客、在庫、社内情報などの管理方法を見直し、使いやすい形を検討します。",
+        links: [
+          { label: "企業DXを見る", href: "/services/dx", primary: true },
+          { label: "システム化を相談する", href: "/services/system-development" }
+        ]
+      },
+      {
+        title: "AIを使いたいが何から始めればよいか分からない",
+        description: "文章作成、資料作成、問い合わせ対応など、使いやすい範囲から導入を整理します。",
+        links: [{ label: "AI活用を相談する", href: "/services/dx", primary: true }]
       }
     ]
   },
   {
     id: "new",
-    label: "新しくサイトを作りたい",
-    heading: "新規事業の立ち上げでよくあるお悩み",
-    description: "事業内容や届けたい相手を整理し、必要なページや集客方法を一緒に考えます。",
+    label: "新しく始めたい",
+    heading: "こんなお悩みありませんか？",
+    description: "新しい事業やサービスを始めるために、必要なページ、集客、管理方法を一緒に整理します。",
     items: [
       {
         title: "何を載せればよいか分からない",
@@ -72,6 +93,22 @@ const problemSegments: ProblemSegment[] = [
         links: [
           { label: "制作・デザインを見る", href: "/services/design", primary: true },
           { label: "Web広告も相談する", href: "/services/web-advertising" }
+        ]
+      },
+      {
+        title: "Web広告で最初の集客を始めたい",
+        description: "届けたい相手や目的に合わせて、広告の出し方とリンク先のページを整理します。",
+        links: [
+          { label: "Web広告を相談する", href: "/services/web-advertising", primary: true },
+          { label: "LP制作も見る", href: "/services/website" }
+        ]
+      },
+      {
+        title: "予約や問い合わせを管理したい",
+        description: "問い合わせ後の対応、予約、顧客情報などを管理しやすい仕組みに整えます。",
+        links: [
+          { label: "システム開発を見る", href: "/services/system-development", primary: true },
+          { label: "小さく業務改善する", href: "/services/dx" }
         ]
       }
     ]
@@ -117,7 +154,7 @@ export function ProblemSegments() {
           <p className="body-copy mt-3">{activeSegment.description}</p>
         </div>
 
-        <div className="mt-8 grid gap-4 lg:grid-cols-3">
+        <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {activeSegment.items.map((item) => (
             <article className="flex min-h-full flex-col rounded-lg border border-apple-border bg-white p-5 shadow-sm" key={item.title}>
               <div>
