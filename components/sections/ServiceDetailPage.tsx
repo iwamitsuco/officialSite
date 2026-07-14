@@ -58,10 +58,6 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
       </section>
       {service.slug === "web-advertising" ? <WebAdTypesSection /> : null}
       {isWebsite ? <WebsiteStrengthSection /> : null}
-      {service.slug === "website" ? <LandingPageStrategySection /> : null}
-      {service.slug === "website" ? <WebsiteSearchIntentSection /> : null}
-      {isWebsite ? <WebsiteMidCta variant="compact" /> : null}
-      <ServiceSupportLinks serviceSlug={service.slug} />
       {isWebsite ? (
         <WebsiteFeatureSection />
       ) : (
@@ -79,10 +75,7 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
         </section>
       )}
       {isWebsite ? (
-        <>
-          <WebsiteProblemSolutionSection />
-          <WebsiteMidCta variant="card" />
-        </>
+        <WebsiteSearchIntentSection />
       ) : isWebAdvertising ? null : (
         <section className="section-space">
           <div className="container-site grid gap-10 md:grid-cols-2">
@@ -109,6 +102,8 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
           </div>
         </section>
       )}
+      {service.slug === "website" ? <LandingPageStrategySection /> : null}
+      {isWebsite ? <WebsiteMidCta variant="compact" /> : null}
       {isWebsite ? (
         <WebsiteFlowSection />
       ) : (
@@ -127,6 +122,7 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
         </section>
       )}
       {isWebsite ? <WebsitePreparationSection /> : null}
+      <ServiceSupportLinks serviceSlug={service.slug} />
       <section className="section-space">
         <div className="container-site max-w-4xl">
           <SectionTitle title="よくある質問" align="center" />
@@ -174,13 +170,6 @@ const websiteFeatureItems = [
   { title: "ECサイト", description: "商品を販売するためのネットショップを構築します。" },
   { title: "LP", description: "商品やサービスへの問い合わせに特化したページを制作します。" },
   { title: "リニューアル", description: "古くなったサイトのデザインや構成、スマートフォン対応を見直します。" }
-];
-
-const websiteProblemPairs = [
-  { problem: "サイトが古い", solution: "デザイン、構成、スマートフォン対応を見直します。" },
-  { problem: "スマホで見づらい", solution: "スマートフォンを優先したレスポンシブ設計に改善します。" },
-  { problem: "問い合わせが増えない", solution: "CTA、フォーム、ページ内の導線を整理します。" },
-  { problem: "何を載せればよいか分からない", solution: "事業内容と目的を整理し、必要な情報をご提案します。" }
 ];
 
 const websiteFlowItems = [
@@ -250,39 +239,25 @@ function WebsiteFeatureSection() {
         <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {websiteFeatureItems.map((item) => (
             <article className="rounded-lg bg-white p-6 shadow-sm" key={item.title}>
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50 text-apple-blue" aria-hidden="true">
-                <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M5 5h14v14H5z" />
-                  <path d="M8 9h8" />
-                  <path d="M8 13h5" />
-                </svg>
-              </div>
-              <h3 className="mt-5 text-xl font-semibold text-apple-text">{item.title}</h3>
-              <p className="card-copy mt-3">{item.description}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function WebsiteProblemSolutionSection() {
-  return (
-    <section className="section-space">
-      <div className="container-site">
-        <SectionTitle title="よくある課題と解決できること" align="center" />
-        <div className="mt-10 grid gap-4 md:grid-cols-2">
-          {websiteProblemPairs.map((item) => (
-            <article className="rounded-lg border border-apple-border bg-white p-5 shadow-sm" key={item.problem}>
-              <div className="grid gap-3 sm:grid-cols-[1fr_auto_1.3fr] sm:items-center">
-                <div className="rounded-lg bg-apple-gray p-4 font-semibold text-apple-text">{item.problem}</div>
-                <div className="text-center text-apple-blue" aria-hidden="true">
-                  <span className="hidden sm:inline">→</span>
-                  <span className="sm:hidden">↓</span>
+              <div className="flex gap-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-apple-blue" aria-hidden="true">
+                  <svg
+                    className="h-6 w-6"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M5 5h14v14H5z" />
+                    <path d="M8 9h8" />
+                    <path d="M8 13h5" />
+                  </svg>
                 </div>
-                <div className="rounded-lg border border-blue-100 bg-blue-50 p-4 text-[15px] font-semibold leading-[1.75] text-apple-text md:text-base">
-                  {item.solution}
+                <div>
+                  <h3 className="text-xl font-semibold text-apple-text">{item.title}</h3>
+                  <p className="card-copy mt-2">{item.description}</p>
                 </div>
               </div>
             </article>
@@ -466,15 +441,15 @@ function WebsiteSearchIntentSection() {
   const comparisonItems = [
     {
       title: "ホームページ作成",
-      description: "会社やサービスの情報を整理し、信頼感と問い合わせ導線を整えるページ制作です。"
+      description: "会社やサービスを伝え、問い合わせの入口を整えます。"
     },
     {
       title: "Webサイト作成・Webページ作成",
-      description: "呼び方は違っても、事業内容や強みを分かりやすく伝えるという目的は共通しています。"
+      description: "呼び方が違っても、目的に合うページ構成を整理します。"
     },
     {
       title: "LP制作",
-      description: "ひとつの商品・サービス・キャンペーンに絞り、問い合わせや申し込みにつなげるページです。"
+      description: "ひとつの商品やサービスに絞り、相談や申し込みにつなげます。"
     }
   ];
 
@@ -500,8 +475,7 @@ function WebsiteSearchIntentSection() {
             ホームページ作成を中心に、目的に合うページ構成を整理します。
           </h2>
           <p className="lead mt-5">
-            「ホームページ作成」「Webサイト作成」「Webページ作成」など、探し方の言葉は違っても、必要なのは事業内容が伝わり、問い合わせにつながるページです。
-            会社サイト、サービスページ、LPなど、目的に合わせて必要な形を整理します。
+            探し方の言葉が違っても、必要なのは事業内容が伝わり、問い合わせにつながるページです。
           </p>
         </div>
 
@@ -517,8 +491,7 @@ function WebsiteSearchIntentSection() {
         <div className="mt-10 rounded-lg bg-white p-6 shadow-sm md:p-8">
           <h3 className="text-2xl font-semibold text-apple-text">LP制作会社・HP制作会社を比較している方へ</h3>
           <p className="body-copy mt-4">
-            LPは特定の商品やサービスへの問い合わせを増やしたい場合に向いています。HPや会社サイトは、会社概要、サービス内容、実績、お知らせなどをまとめて信頼感を伝える役割があります。
-            どちらが必要か決まっていない段階でも、目的・流入元・伝えたい内容を確認しながら、必要なページを整理します。
+            LPが必要なのか、会社サイト全体を整えるべきなのか分からない段階でも大丈夫です。目的と伝えたい内容を確認しながら、必要なページを整理します。
           </p>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {faqItems.map((item) => (
@@ -537,27 +510,27 @@ function WebsiteSearchIntentSection() {
 function LandingPageStrategySection() {
   const visitorTypes = [
     {
-      title: "すぐに検討している方向け",
-      description: "料金、実績、制作の流れ、よくある質問など、不安を減らして問い合わせにつなげる情報を整理します。"
+      title: "すぐ相談したい人向け",
+      description: "料金、実績、流れ、よくある質問など、不安を減らす情報を整理します。"
     },
     {
-      title: "まだ情報収集中の方向け",
-      description: "課題の整理、選び方、比較ポイントなど、信頼につながる情報を分かりやすく伝えます。"
+      title: "まず情報を集めたい人向け",
+      description: "選び方、比較ポイント、判断材料など、信頼につながる情報を整理します。"
     }
   ];
-  const planningItems = ["誰に届けるかを整理", "伝える順番を設計", "文章と見出しを作成", "問い合わせまでの導線を整理", "公開後の改善も相談可能"];
+  const planningItems = ["誰に届けるか", "何を伝えるか", "どの順番で見せるか", "問い合わせへどう案内するか"];
 
   return (
     <section className="section-space">
       <div className="container-site">
-        <div className="mx-auto max-w-4xl text-center">
-            <p className="eyebrow">Landing Page</p>
-            <h2 className="mt-4 text-3xl font-semibold leading-[1.22] [overflow-wrap:anywhere] md:text-5xl">届けたい相手を整理して、伝わりやすいLPを設計します。</h2>
-            <p className="lead mt-5">
-              LPを見る人の検討状況はさまざまです。制作前のヒアリングで、誰に何を届けるページなのかを整理します。目的と相手を明確にしたうえで、文章、構成、問い合わせ導線を設計します。
-            </p>
+        <div className="max-w-4xl">
+          <p className="eyebrow">Landing Page</p>
+          <h2 className="mt-4 text-3xl font-semibold leading-[1.22] [overflow-wrap:anywhere] md:text-5xl">届けたい相手に合わせてLPを設計します。</h2>
+          <p className="lead mt-5">
+            LPは、すぐ相談したい人向けなのか、まず情報を集めたい人向けなのかで必要な内容が変わります。
+          </p>
           <p className="body-copy mt-4">
-            狙う相手を決めてから作ることで、読み進めやすく、問い合わせにつながりやすいページに整えます。
+            制作前に目的と相手を整理し、問い合わせにつながりやすい構成にします。
           </p>
         </div>
 
@@ -565,7 +538,7 @@ function LandingPageStrategySection() {
           {visitorTypes.map((item) => (
             <div className="rounded-lg border border-apple-border bg-white p-6 shadow-sm" key={item.title}>
               <h3 className="text-xl font-semibold">{item.title}</h3>
-                <p className="body-copy mt-3">{item.description}</p>
+              <p className="body-copy mt-3">{item.description}</p>
             </div>
           ))}
         </div>
@@ -576,7 +549,7 @@ function LandingPageStrategySection() {
               <p className="eyebrow">Planning</p>
               <h3 className="mt-3 text-2xl font-semibold">目的に合わせて設計します。</h3>
               <p className="body-copy mt-3">
-                LPを作る目的、届けたい相手、想定される流入元を確認しながら、必要な情報と見せる順番を整理します。
+                必要な情報と見せる順番を、制作前に整理します。
               </p>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
@@ -587,13 +560,6 @@ function LandingPageStrategySection() {
               ))}
             </div>
           </div>
-        </div>
-
-        <div className="mt-8 rounded-lg border border-apple-border p-6 md:p-8">
-          <h3 className="text-2xl font-semibold">Web広告を使う場合も、LPに合わせて設計できます。</h3>
-          <p className="body-copy mt-3">
-            Web広告を出す場合は、LPの内容に合わせて広告文や配信内容を整理します。Web広告を出さない場合でも、SNS・検索・紹介など、想定される流入元を確認しながら使いやすいページに整えます。
-          </p>
         </div>
       </div>
     </section>
