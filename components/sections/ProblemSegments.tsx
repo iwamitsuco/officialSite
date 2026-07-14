@@ -9,6 +9,7 @@ type ProblemLink = {
 };
 
 type ProblemItem = {
+  icon: "website" | "inquiry" | "ad" | "task" | "spreadsheet" | "ai" | "page" | "design" | "system";
   title: string;
   description: string;
   links: ProblemLink[];
@@ -30,42 +31,48 @@ const problemSegments: ProblemSegment[] = [
     description: "ホームページ、広告、日々の業務など、今の状態を見直して改善しやすい形に整理します。",
     items: [
       {
+        icon: "website",
         title: "ホームページが古い",
-        description: "デザインやスマートフォン対応が古く、信頼感に影響している可能性があります。",
+        description: "見た目やスマホ対応を見直し、安心して見てもらえる形に整えます。",
         links: [{ label: "ホームページを見直す", href: "/services/website" }]
       },
       {
+        icon: "inquiry",
         title: "Webから問い合わせが来ない",
-        description: "ページ構成、CTA、フォーム、集客方法のどこに課題があるかを整理します。",
+        description: "ページの流れや問い合わせまでの道筋を分かりやすく整えます。",
         links: [
           { label: "導線を改善する", href: "/services/website" },
           { label: "集客も相談する", href: "/services/web-advertising" }
         ]
       },
       {
-        title: "広告を出しても成果が分からない",
-        description: "広告の目的、リンク先、成果確認の方法を見直し、改善しやすい状態に整えます。",
+        icon: "ad",
+        title: "広告の成果が分からない",
+        description: "広告の目的や見られているページを確認し、改善しやすくします。",
         links: [{ label: "Web広告を見直す", href: "/services/web-advertising" }]
       },
       {
+        icon: "task",
         title: "雑務を減らしたい",
-        description: "日々の入力作業、確認作業、資料作成などを減らせる方法を整理します。",
+        description: "入力、確認、資料作成など、毎日の手間を減らす方法を整理します。",
         links: [
           { label: "業務改善を相談する", href: "/services/dx" },
           { label: "システム開発を見る", href: "/services/system-development" }
         ]
       },
       {
-        title: "Excelや紙管理に限界を感じている",
-        description: "予約、顧客、在庫、社内情報などの管理方法を見直し、使いやすい形を検討します。",
+        icon: "spreadsheet",
+        title: "Excelや紙管理が大変",
+        description: "予約、顧客、在庫などを管理しやすい形に見直します。",
         links: [
           { label: "企業DXを見る", href: "/services/dx" },
           { label: "システム化を相談する", href: "/services/system-development" }
         ]
       },
       {
-        title: "AIを使いたいが何から始めればよいか分からない",
-        description: "文章作成、資料作成、問い合わせ対応など、使いやすい範囲から導入を整理します。",
+        icon: "ai",
+        title: "AIを使ってみたい",
+        description: "文章作成や資料作成など、使いやすいところから始められます。",
         links: [{ label: "AI活用を相談する", href: "/services/dx" }]
       }
     ]
@@ -77,34 +84,39 @@ const problemSegments: ProblemSegment[] = [
     description: "新しい事業やサービスを始めるために、必要なページ、集客、管理方法を一緒に整理します。",
     items: [
       {
+        icon: "website",
         title: "何を載せればよいか分からない",
-        description: "サービス内容、強み、問い合わせまでの流れを整理し、必要な情報をご提案します。",
+        description: "サービス内容や強みを整理し、必要な情報を一緒に考えます。",
         links: [{ label: "ホームページ制作を相談する", href: "/services/website" }]
       },
       {
+        icon: "page",
         title: "LPや告知ページを作りたい",
-        description: "商品やサービスに合わせて、問い合わせや申し込みにつながるページ構成を設計します。",
+        description: "商品やサービスに合わせて、伝わりやすいページを作ります。",
         links: [{ label: "LP制作を相談する", href: "/services/website" }]
       },
       {
+        icon: "design",
         title: "画像や広告もまとめて準備したい",
-        description: "サイト用画像、SNS画像、広告クリエイティブまで、見た目の統一感を整えます。",
+        description: "サイト用画像、SNS画像、広告画像まで見た目をそろえます。",
         links: [
           { label: "制作・デザインを見る", href: "/services/design" },
           { label: "Web広告も相談する", href: "/services/web-advertising" }
         ]
       },
       {
+        icon: "ad",
         title: "Web広告で最初の集客を始めたい",
-        description: "届けたい相手や目的に合わせて、広告の出し方とリンク先のページを整理します。",
+        description: "届けたい相手に合わせて、広告とリンク先を整理します。",
         links: [
           { label: "Web広告を相談する", href: "/services/web-advertising" },
           { label: "LP制作も見る", href: "/services/website" }
         ]
       },
       {
+        icon: "system",
         title: "予約や問い合わせを管理したい",
-        description: "問い合わせ後の対応、予約、顧客情報などを管理しやすい仕組みに整えます。",
+        description: "予約、問い合わせ、顧客情報を扱いやすく整えます。",
         links: [
           { label: "システム開発を見る", href: "/services/system-development" },
           { label: "小さく業務改善する", href: "/services/dx" }
@@ -155,9 +167,12 @@ export function ProblemSegments() {
 
         <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {activeSegment.items.map((item) => (
-            <article className="flex min-h-full flex-col rounded-lg border border-apple-border bg-white p-5 shadow-sm" key={item.title}>
+            <article className="flex min-h-full flex-col rounded-lg border border-apple-border bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-soft" key={item.title}>
               <div>
-                <h4 className="text-xl font-semibold leading-[1.35] text-apple-text">{item.title}</h4>
+                <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-blue-50 text-apple-blue" aria-hidden="true">
+                  <ProblemIcon icon={item.icon} />
+                </div>
+                <h4 className="mt-5 text-xl font-semibold leading-[1.35] text-apple-text">{item.title}</h4>
                 <p className="card-copy mt-3">{item.description}</p>
               </div>
 
@@ -178,5 +193,96 @@ export function ProblemSegments() {
         </div>
       </div>
     </div>
+  );
+}
+
+function ProblemIcon({ icon }: { icon: ProblemItem["icon"] }) {
+  const commonProps = {
+    className: "h-7 w-7",
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    strokeWidth: "2",
+    viewBox: "0 0 24 24"
+  };
+
+  if (icon === "inquiry") {
+    return (
+      <svg {...commonProps}>
+        <path d="M5 6h14v9H8l-3 3z" />
+        <path d="M9 10h6" />
+      </svg>
+    );
+  }
+
+  if (icon === "ad") {
+    return (
+      <svg {...commonProps}>
+        <path d="M4 19V5" />
+        <path d="M4 19h16" />
+        <path d="m7 15 4-4 3 3 5-7" />
+      </svg>
+    );
+  }
+
+  if (icon === "task") {
+    return (
+      <svg {...commonProps}>
+        <path d="M8 6h12" />
+        <path d="M8 12h12" />
+        <path d="M8 18h12" />
+        <path d="m3 6 1 1 2-2" />
+        <path d="m3 12 1 1 2-2" />
+        <path d="m3 18 1 1 2-2" />
+      </svg>
+    );
+  }
+
+  if (icon === "spreadsheet") {
+    return (
+      <svg {...commonProps}>
+        <path d="M5 4h14v16H5z" />
+        <path d="M5 9h14" />
+        <path d="M5 14h14" />
+        <path d="M10 4v16" />
+      </svg>
+    );
+  }
+
+  if (icon === "ai") {
+    return (
+      <svg {...commonProps}>
+        <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z" />
+        <path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z" />
+      </svg>
+    );
+  }
+
+  if (icon === "design") {
+    return (
+      <svg {...commonProps}>
+        <path d="M12 20h9" />
+        <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z" />
+      </svg>
+    );
+  }
+
+  if (icon === "system") {
+    return (
+      <svg {...commonProps}>
+        <path d="M4 5h16v14H4z" />
+        <path d="m8 9 3 3-3 3" />
+        <path d="M13 15h3" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg {...commonProps}>
+      <path d="M4 5h16v14H4z" />
+      <path d="M8 9h8" />
+      <path d="M8 13h5" />
+    </svg>
   );
 }
