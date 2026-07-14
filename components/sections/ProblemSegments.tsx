@@ -122,7 +122,7 @@ export function ProblemSegments() {
     <div className="mt-10">
       <div className="flex justify-center">
         <div
-          className="grid w-full gap-2 rounded-full border border-apple-border bg-white p-1 shadow-sm sm:inline-grid sm:w-auto sm:grid-cols-2"
+          className="grid w-full grid-cols-2 gap-1 rounded-full border border-apple-border bg-white p-1 sm:inline-grid sm:w-auto"
           role="tablist"
           aria-label="悩みの種類"
         >
@@ -132,8 +132,8 @@ export function ProblemSegments() {
             return (
               <button
                 aria-selected={isActive}
-                className={`min-h-12 rounded-full px-5 py-3 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue md:text-base ${
-                  isActive ? "bg-apple-blue text-white shadow-sm" : "bg-white text-apple-text hover:bg-apple-gray"
+                className={`min-h-11 rounded-full px-3 py-2.5 text-[13px] font-semibold leading-snug transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue sm:px-5 md:text-base ${
+                  isActive ? "bg-apple-blue text-white" : "bg-white text-apple-text hover:bg-apple-gray"
                 }`}
                 key={segment.id}
                 role="tab"
