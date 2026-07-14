@@ -157,7 +157,7 @@ export function ProblemSegments() {
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {activeSegment.items.map((item) => (
             <article className="flex min-h-full flex-col rounded-lg border border-apple-border bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-soft" key={item.title}>
-              <div className="flex gap-4">
+              <div className="flex gap-4 md:min-h-[154px]">
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-apple-blue md:h-14 md:w-14" aria-hidden="true">
                   <ProblemIcon icon={item.icon} />
                 </div>
