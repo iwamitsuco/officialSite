@@ -133,7 +133,7 @@ export function ProblemSegments() {
           aria-label="悩みの種類"
         >
           <span
-            className={`absolute inset-y-1 left-1 w-[calc(50%-4px)] rounded-full border border-slate-200 bg-slate-100 shadow-sm transition-transform duration-300 ease-out ${
+            className={`absolute inset-y-1 left-1 w-[calc(50%-4px)] rounded-full bg-[#2F6F5E] shadow-sm transition-transform duration-300 ease-out ${
               activeId === "new" ? "translate-x-full" : "translate-x-0"
             }`}
             aria-hidden="true"
@@ -145,7 +145,7 @@ export function ProblemSegments() {
               <button
                 aria-selected={isActive}
                 className={`relative z-10 min-h-11 rounded-full px-3 py-2.5 text-[13px] font-semibold leading-snug transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue sm:px-5 md:text-base ${
-                  isActive ? "text-apple-text" : "text-apple-sub hover:text-apple-text"
+                  isActive ? "text-white" : "text-apple-sub hover:text-apple-text"
                 }`}
                 key={segment.id}
                 role="tab"
