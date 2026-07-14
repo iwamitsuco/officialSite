@@ -34,7 +34,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
         {service.title}
       </h3>
       <p className="lead mt-4">{service.description}</p>
-      <span className="mt-8 inline-flex text-sm font-semibold text-apple-blue">詳しく見る</span>
+      <span className="mt-8 inline-flex text-sm font-semibold text-apple-blue">{service.title}の詳細を見る</span>
     </Link>
   );
 }
