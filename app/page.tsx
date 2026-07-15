@@ -26,11 +26,6 @@ const reasons = [
     services: ["Web制作", "Web広告"]
   },
   {
-    icon: "system",
-    title: "問い合わせ後の管理を整えたい",
-    services: ["Web制作", "システム開発"]
-  },
-  {
     icon: "ai",
     title: "日々の作業を減らしたい",
     services: ["DX支援", "生成AI"]
@@ -93,10 +88,10 @@ export default function HomePage() {
       </section>
 
       <section className="section-space bg-apple-gray">
-        <div className="container-site grid gap-8 lg:grid-cols-[0.78fr_1.42fr] lg:items-start">
+        <div className="container-site grid gap-8 lg:grid-cols-[0.95fr_1.25fr] lg:items-start">
           <div>
             <p className="eyebrow">支援の組み合わせ</p>
-            <h2 className="mt-4 text-3xl font-semibold leading-[1.22] [overflow-wrap:anywhere] text-apple-text md:text-4xl lg:text-[44px]">
+            <h2 className="mt-4 max-w-[560px] text-3xl font-semibold leading-[1.22] [overflow-wrap:anywhere] text-apple-text md:text-4xl lg:text-[42px]">
               課題に合わせて支援を組み合わせます。
             </h2>
             <p className="body-copy mt-5 max-w-xl">
