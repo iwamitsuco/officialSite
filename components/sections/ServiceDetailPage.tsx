@@ -523,7 +523,7 @@ function LandingPageStrategySection() {
   return (
     <section className="section-space">
       <div className="container-site">
-        <div className="max-w-4xl">
+        <div className="mx-auto max-w-4xl text-center">
           <p className="eyebrow">Landing Page</p>
           <h2 className="mt-4 text-3xl font-semibold leading-[1.22] [overflow-wrap:anywhere] md:text-5xl">届けたい相手に合わせてLPを設計します。</h2>
           <p className="lead mt-5">
