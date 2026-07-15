@@ -137,9 +137,6 @@ export default function HomePage() {
                   href="/contact"
                 >
                   無料で相談する
-                  <span className="ml-3" aria-hidden="true">
-                    →
-                  </span>
                 </Link>
               </div>
             </div>
