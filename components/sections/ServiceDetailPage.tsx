@@ -147,35 +147,20 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
 
 const websiteStrengths = [
   {
-    icon: "ads",
-    title: "Web広告まで見据えたページ設計",
-    description: "公開後の集客や、広告のリンク先となるLP改善まで相談できます。",
-    href: "/services/web-advertising",
-    linkLabel: "Web広告サービスを見る"
+    title: "問い合わせにつながる導線設計",
+    description: "ページを見たユーザーが迷わず行動できるよう、問い合わせまでの流れを整理します。"
   },
   {
-    icon: "system",
-    title: "業務改善・システム開発にも対応",
-    description: "問い合わせ後の管理や予約、顧客情報の整理もあわせて相談できます。",
-    href: "/services/system-development",
-    linkLabel: "システム開発を見る"
+    title: "SEOを意識したページ構成",
+    description: "検索キーワードとユーザーの目的を整理し、必要な情報へたどり着きやすい構成を設計します。"
   },
   {
-    icon: "ai",
-    title: "AI・DX活用も小さく始められる",
-    description: "文章作成、資料作成、問い合わせ対応など、使いやすい範囲から整理します。",
-    href: "/services/dx",
-    linkLabel: "企業DXを見る"
+    title: "Web広告との連携",
+    description: "Google広告やSNS広告を利用する場合も、広告の内容と着地ページを一貫して設計できます。"
   },
   {
-    icon: "target",
-    title: "事業内容に合わせた提案",
-    description: "業種や目的に合わせて、必要なページ・導線・運用方法を整理します。"
-  },
-  {
-    icon: "growth",
-    title: "小さく始めて改善できる設計",
-    description: "最初から大きく作り込まず、必要に応じてページや機能を追加しやすい形にします。"
+    title: "公開後の改善にも対応",
+    description: "公開後の更新や内容の見直し、問い合わせ導線の改善についても相談できます。"
   }
 ];
 
@@ -199,100 +184,27 @@ function WebsiteStrengthSection() {
   return (
     <section className="section-space bg-apple-gray">
       <div className="container-site">
-        <div className="grid gap-10 lg:grid-cols-[0.82fr_1.35fr] lg:items-start">
-          <div className="lg:sticky lg:top-28">
-            <p className="eyebrow">BLOOMIAができること</p>
-            <h2 className="mt-4 text-3xl font-semibold leading-[1.22] [overflow-wrap:anywhere] md:text-5xl">
-              制作後の集客や業務改善まで相談できます。
-            </h2>
-            <p className="body-copy mt-6 max-w-xl">
-              ホームページ制作だけで終わらず、公開後の集客、問い合わせ導線、業務改善まで一緒に整理します。
-            </p>
-          </div>
-
-          <div className="grid gap-4">
-            {websiteStrengths.map((item) => (
-              <article className="rounded-lg border border-apple-border bg-white p-5 shadow-sm md:p-6" key={item.title}>
-                <div className="grid gap-4 sm:grid-cols-[5.25rem_1px_1fr_auto] sm:items-center">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-blue-50 text-apple-blue" aria-hidden="true">
-                    <WebsiteStrengthIcon type={item.icon} />
-                  </div>
-                  <div className="hidden h-16 w-px bg-apple-border sm:block" aria-hidden="true" />
-                  <div>
-                    <h3 className="text-xl font-semibold leading-snug text-apple-text">{item.title}</h3>
-                    <p className="card-copy mt-2">{item.description}</p>
-                  </div>
-                  {item.href ? (
-                    <Link
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-apple-blue transition hover:text-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue sm:justify-self-end"
-                      href={item.href}
-                    >
-                      {item.linkLabel}
-                      <span aria-hidden="true">→</span>
-                    </Link>
-                  ) : null}
-                </div>
-              </article>
-            ))}
-          </div>
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="eyebrow">Website</p>
+          <h2 className="mt-4 text-3xl font-semibold leading-[1.22] [overflow-wrap:anywhere] md:text-5xl">BLOOMIAのホームページ制作</h2>
+          <p className="lead mt-5">
+            見た目を整えるだけではなく、公開後の集客や問い合わせまで考えて設計します。
+          </p>
         </div>
+        <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {websiteStrengths.map((item, index) => (
+            <article className="rounded-lg bg-white p-6 shadow-sm" key={item.title}>
+              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-sm font-semibold text-apple-blue">
+                {String(index + 1).padStart(2, "0")}
+              </div>
+              <h3 className="mt-5 text-lg font-semibold text-apple-text">{item.title}</h3>
+              <p className="card-copy mt-3">{item.description}</p>
+            </article>
+          ))}
+        </div>
+        <WebsiteConversionDiagram />
       </div>
     </section>
-  );
-}
-
-function WebsiteStrengthIcon({ type }: { type: string }) {
-  if (type === "ads") {
-    return (
-      <svg className="h-9 w-9" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">
-        <path d="M4 5h16v14H4z" />
-        <path d="M7 15l3-3 2 2 4-5" />
-        <path d="M7 8h4" />
-      </svg>
-    );
-  }
-
-  if (type === "system") {
-    return (
-      <svg className="h-9 w-9" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">
-        <path d="M4 5h16v11H4z" />
-        <path d="M9 20h6" />
-        <path d="M12 16v4" />
-        <path d="M9 10h6" />
-        <path d="M12 7v6" />
-      </svg>
-    );
-  }
-
-  if (type === "ai") {
-    return (
-      <svg className="h-9 w-9" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">
-        <path d="M12 3l1.6 5.4L19 10l-5.4 1.6L12 17l-1.6-5.4L5 10l5.4-1.6L12 3z" />
-        <path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16z" />
-      </svg>
-    );
-  }
-
-  if (type === "target") {
-    return (
-      <svg className="h-9 w-9" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="8" />
-        <circle cx="12" cy="12" r="3" />
-        <path d="M15 9l5-5" />
-        <path d="M17 4h3v3" />
-      </svg>
-    );
-  }
-
-  return (
-    <svg className="h-9 w-9 text-emerald-700" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">
-      <path d="M5 19V9" />
-      <path d="M10 19V5" />
-      <path d="M15 19v-7" />
-      <path d="M20 19V8" />
-      <path d="M4 19h17" />
-      <path d="M16 8l2-2 2 2" />
-    </svg>
   );
 }
 
