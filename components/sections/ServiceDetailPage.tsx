@@ -440,14 +440,17 @@ function ServiceSupportLinks({ serviceSlug }: { serviceSlug: Service["slug"] }) 
 function WebsiteSearchIntentSection() {
   const comparisonItems = [
     {
+      type: "homepage",
       title: "ホームページ作成",
       description: "会社やサービスを伝え、問い合わせの入口を整えます。"
     },
     {
+      type: "website",
       title: "Webサイト作成",
       description: "Webページ作成など、呼び方が違っても目的に合う構成を整理します。"
     },
     {
+      type: "lp",
       title: "LP制作",
       description: "ひとつの商品やサービスに絞り、相談や申し込みにつなげます。"
     }
@@ -481,19 +484,25 @@ function WebsiteSearchIntentSection() {
 
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           {comparisonItems.map((item) => (
-            <article className="rounded-lg bg-white p-6 shadow-sm" key={item.title}>
-              <h3 className="text-lg font-semibold leading-snug text-apple-text md:text-xl">{item.title}</h3>
-              <p className="card-copy mt-3">{item.description}</p>
+            <article className="rounded-lg bg-white p-5 shadow-sm md:p-6" key={item.title}>
+              <WebsitePageTypeVisual type={item.type} />
+              <h3 className="mt-6 text-center text-lg font-semibold leading-snug text-apple-text md:text-xl">{item.title}</h3>
+              <p className="card-copy mx-auto mt-3 max-w-sm text-center">{item.description}</p>
             </article>
           ))}
         </div>
 
         <div className="mx-auto mt-10 max-w-5xl rounded-lg bg-white p-6 shadow-sm md:p-8">
-          <h3 className="text-2xl font-semibold text-apple-text">LP制作会社・HP制作会社を比較している方へ</h3>
-          <p className="body-copy mt-4">
-            LPが必要なのか、会社サイト全体を整えるべきなのか分からない段階でも大丈夫です。目的と伝えたい内容を確認しながら、必要なページを整理します。
-          </p>
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
+          <div className="grid gap-8 lg:grid-cols-[1fr_1.25fr] lg:items-center">
+            <div>
+              <h3 className="text-2xl font-semibold text-apple-text">どのページが必要か迷っていても大丈夫です</h3>
+              <p className="body-copy mt-4">
+                LPが必要なのか、会社サイト全体を整えるべきなのか分からない段階でも、目的と伝えたい内容を確認しながら整理します。
+              </p>
+            </div>
+            <WebsitePageChoiceDiagram />
+          </div>
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
             {faqItems.map((item) => (
               <div className="rounded-lg border border-apple-border p-5" key={item.question}>
                 <h4 className="font-semibold text-apple-text">{item.question}</h4>
@@ -504,6 +513,128 @@ function WebsiteSearchIntentSection() {
         </div>
       </div>
     </section>
+  );
+}
+
+function WebsitePageTypeVisual({ type }: { type: string }) {
+  if (type === "homepage") {
+    return (
+      <div className="rounded-lg border border-blue-100 bg-blue-50/60 p-4" aria-hidden="true">
+        <div className="rounded-md bg-white p-3 shadow-sm">
+          <div className="flex items-center justify-between border-b border-blue-100 pb-2">
+            <div className="h-2 w-16 rounded-full bg-apple-blue" />
+            <div className="flex gap-1">
+              <span className="h-2 w-7 rounded-full bg-slate-200" />
+              <span className="h-2 w-7 rounded-full bg-slate-200" />
+              <span className="h-2 w-7 rounded-full bg-apple-blue" />
+            </div>
+          </div>
+          <div className="mt-3 grid gap-3 md:grid-cols-[1.2fr_0.8fr]">
+            <div>
+              <div className="h-3 w-24 rounded-full bg-slate-900" />
+              <div className="mt-2 h-2 w-20 rounded-full bg-slate-200" />
+              <div className="mt-2 h-2 w-28 rounded-full bg-slate-200" />
+              <div className="mt-3 h-6 w-20 rounded-full bg-apple-blue" />
+            </div>
+            <div className="rounded-md bg-blue-100 p-2">
+              <div className="h-12 rounded-md bg-white/80" />
+            </div>
+          </div>
+          <div className="mt-3 grid grid-cols-3 gap-2">
+            <div className="h-10 rounded-md bg-apple-gray" />
+            <div className="h-10 rounded-md bg-apple-gray" />
+            <div className="h-10 rounded-md bg-apple-gray" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (type === "website") {
+    return (
+      <div className="rounded-lg border border-blue-100 bg-blue-50/60 p-4" aria-hidden="true">
+        <div className="mx-auto max-w-[13rem]">
+          <div className="rounded-md bg-white p-3 shadow-sm">
+            <div className="h-3 w-24 rounded-full bg-slate-200" />
+            <div className="mt-3 grid grid-cols-[0.7fr_1fr] gap-2">
+              <div className="h-12 rounded bg-blue-100" />
+              <div className="space-y-2">
+                <div className="h-2 rounded-full bg-slate-200" />
+                <div className="h-2 rounded-full bg-slate-200" />
+                <div className="h-2 w-2/3 rounded-full bg-slate-200" />
+              </div>
+            </div>
+          </div>
+          <div className="mx-auto h-5 w-px bg-apple-blue" />
+          <div className="grid grid-cols-3 gap-2">
+            {["サービス", "実績", "問い合わせ"].map((label) => (
+              <div className="rounded-md bg-white p-2 text-center text-[10px] font-semibold text-apple-text shadow-sm" key={label}>
+                <div className="mx-auto mb-2 h-5 w-5 rounded bg-blue-100" />
+                {label}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="rounded-lg border border-emerald-100 bg-emerald-50/70 p-4" aria-hidden="true">
+      <div className="grid gap-4 md:grid-cols-[0.75fr_1fr] md:items-center">
+        <ol className="space-y-2 text-xs font-semibold text-apple-text">
+          {["課題を伝える", "強みを見せる", "実績で安心", "相談へ案内"].map((label, index) => (
+            <li className="flex items-center gap-2" key={label}>
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-600 text-[11px] text-white">{index + 1}</span>
+              {label}
+            </li>
+          ))}
+        </ol>
+        <div className="rounded-md bg-white p-3 shadow-sm">
+          <div className="h-3 w-28 rounded-full bg-slate-900" />
+          <div className="mt-3 space-y-2">
+            <div className="h-8 rounded bg-apple-gray" />
+            <div className="h-8 rounded bg-apple-gray" />
+            <div className="h-8 rounded bg-blue-50" />
+          </div>
+          <div className="mt-3 h-7 rounded-full bg-emerald-600" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function WebsitePageChoiceDiagram() {
+  return (
+    <div className="grid gap-3 sm:grid-cols-[1fr_auto_1fr] sm:items-center" aria-hidden="true">
+      <div className="rounded-lg border border-blue-100 bg-blue-50 p-4 text-center">
+        <p className="text-sm font-semibold text-apple-text">情報を広く伝えたい</p>
+        <div className="mx-auto mt-3 flex h-12 w-12 items-center justify-center rounded-lg bg-white text-apple-blue shadow-sm">
+          <svg className="h-7 w-7" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">
+            <path d="M4 6h16" />
+            <path d="M7 10h4v4H7z" />
+            <path d="M13 10h4v4h-4z" />
+            <path d="M9 14v4" />
+            <path d="M15 14v4" />
+            <path d="M6 18h12" />
+          </svg>
+        </div>
+        <p className="mt-3 font-semibold text-apple-blue">ホームページ・Webサイト</p>
+      </div>
+      <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-apple-gray text-sm font-semibold text-apple-text">または</div>
+      <div className="rounded-lg border border-emerald-100 bg-emerald-50 p-4 text-center">
+        <p className="text-sm font-semibold text-apple-text">特定のサービスに絞りたい</p>
+        <div className="mx-auto mt-3 flex h-12 w-12 items-center justify-center rounded-lg bg-white text-emerald-600 shadow-sm">
+          <svg className="h-7 w-7" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">
+            <path d="M7 3h10v18H7z" />
+            <path d="M10 7h4" />
+            <path d="M10 11h4" />
+            <path d="M10 15h2" />
+          </svg>
+        </div>
+        <p className="mt-3 font-semibold text-emerald-700">LP制作</p>
+      </div>
+    </div>
   );
 }
 
