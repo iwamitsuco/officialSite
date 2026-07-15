@@ -444,8 +444,8 @@ function WebsiteSearchIntentSection() {
       description: "会社やサービスを伝え、問い合わせの入口を整えます。"
     },
     {
-      title: "Webサイト作成・Webページ作成",
-      description: "呼び方が違っても、目的に合うページ構成を整理します。"
+      title: "Webサイト作成",
+      description: "Webページ作成など、呼び方が違っても目的に合う構成を整理します。"
     },
     {
       title: "LP制作",
@@ -469,26 +469,26 @@ function WebsiteSearchIntentSection() {
   return (
     <section className="section-space bg-apple-gray">
       <div className="container-site">
-        <div className="mx-auto max-w-4xl text-center">
+        <div className="mx-auto max-w-3xl text-center">
           <p className="eyebrow">Website Planning</p>
-          <h2 className="mt-4 text-3xl font-semibold leading-[1.22] [overflow-wrap:anywhere] md:text-5xl">
-            ホームページ作成を中心に、目的に合うページ構成を整理します。
+          <h2 className="mt-4 text-3xl font-semibold leading-[1.28] [overflow-wrap:anywhere] md:text-4xl lg:text-[44px]">
+            目的に合うページ構成を整理します。
           </h2>
           <p className="lead mt-5">
-            探し方の言葉が違っても、必要なのは事業内容が伝わり、問い合わせにつながるページです。
+            「ホームページ作成」「Webサイト作成」「LP制作」など、探し方の言葉が違っても、必要なのは事業内容が伝わり、問い合わせにつながるページです。
           </p>
         </div>
 
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           {comparisonItems.map((item) => (
             <article className="rounded-lg bg-white p-6 shadow-sm" key={item.title}>
-              <h3 className="text-xl font-semibold text-apple-text">{item.title}</h3>
+              <h3 className="text-lg font-semibold leading-snug text-apple-text md:text-xl">{item.title}</h3>
               <p className="card-copy mt-3">{item.description}</p>
             </article>
           ))}
         </div>
 
-        <div className="mt-10 rounded-lg bg-white p-6 shadow-sm md:p-8">
+        <div className="mx-auto mt-10 max-w-5xl rounded-lg bg-white p-6 shadow-sm md:p-8">
           <h3 className="text-2xl font-semibold text-apple-text">LP制作会社・HP制作会社を比較している方へ</h3>
           <p className="body-copy mt-4">
             LPが必要なのか、会社サイト全体を整えるべきなのか分からない段階でも大丈夫です。目的と伝えたい内容を確認しながら、必要なページを整理します。
