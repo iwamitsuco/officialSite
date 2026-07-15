@@ -22,34 +22,18 @@ export const metadata = createMetadata({
 const reasons = [
   {
     icon: "ads",
-    title: "Web広告まで見据えたページ設計",
-    description: "公開後の集客や、広告のリンク先となるLP改善まで相談できます。",
-    href: "/services/web-advertising",
-    linkLabel: "Web広告サービスを見る"
+    title: "サイトを作って集客したい",
+    services: ["Web制作", "Web広告"]
   },
   {
     icon: "system",
-    title: "業務改善・システム開発にも対応",
-    description: "問い合わせ後の管理や予約、顧客情報の整理もあわせて相談できます。",
-    href: "/services/system-development",
-    linkLabel: "システム開発を見る"
+    title: "問い合わせ後の管理を整えたい",
+    services: ["Web制作", "システム開発"]
   },
   {
     icon: "ai",
-    title: "AI・DX活用も小さく始められる",
-    description: "文章作成、資料作成、問い合わせ対応など、使いやすい範囲から整理します。",
-    href: "/services/dx",
-    linkLabel: "企業DXを見る"
-  },
-  {
-    icon: "target",
-    title: "事業内容に合わせた提案",
-    description: "業種や目的に合わせて、必要なページ・導線・運用方法を整理します。"
-  },
-  {
-    icon: "growth",
-    title: "小さく始めて改善できる設計",
-    description: "最初から大きく作り込まず、必要に応じてページや機能を追加しやすい形にします。"
+    title: "日々の作業を減らしたい",
+    services: ["DX支援", "生成AI"]
   }
 ];
 
@@ -111,37 +95,59 @@ export default function HomePage() {
       <section className="section-space bg-apple-gray">
         <div className="container-site grid gap-8 lg:grid-cols-[0.78fr_1.42fr] lg:items-start">
           <div>
-            <p className="eyebrow">BLOOMIAができること</p>
+            <p className="eyebrow">支援の組み合わせ</p>
             <h2 className="mt-4 text-3xl font-semibold leading-[1.22] [overflow-wrap:anywhere] text-apple-text md:text-4xl lg:text-[44px]">
-              集客・業務改善・AI活用までまとめて相談できます。
+              課題に合わせて支援を組み合わせます。
             </h2>
             <p className="body-copy mt-5 max-w-xl">
-              Web制作、Web広告、システム開発、DX支援まで、事業の状況に合わせて必要な支援を整理します。
+              Web制作、Web広告、システム開発、DX支援を必要に応じて組み合わせ、事業の状況に合う進め方を整理します。
             </p>
           </div>
-          <div className="grid gap-4 md:grid-cols-2">
-            {reasons.map((reason) => (
-              <article className="rounded-lg border border-apple-border bg-white p-5 shadow-sm" key={reason.title}>
-                <div className="flex gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-apple-blue" aria-hidden="true">
-                    <ReasonIcon type={reason.icon} />
-                  </div>
-                  <div className="min-w-0">
-                    <h3 className="text-lg font-semibold leading-snug text-apple-text">{reason.title}</h3>
-                    <p className="card-copy mt-2">{reason.description}</p>
-                    {reason.href ? (
-                      <Link
-                        className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-apple-blue transition hover:text-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
-                        href={reason.href}
-                      >
-                        {reason.linkLabel}
-                        <span aria-hidden="true">→</span>
-                      </Link>
-                    ) : null}
-                  </div>
-                </div>
-              </article>
-            ))}
+          <div className="grid gap-5 lg:grid-cols-[8rem_1fr] lg:items-center">
+            <div className="hidden lg:flex">
+              <div className="flex h-28 w-28 flex-col items-center justify-center rounded-lg border border-emerald-200 bg-white text-emerald-700 shadow-sm">
+                <ReasonIcon type="target" />
+                <p className="mt-2 text-lg font-semibold">課題</p>
+              </div>
+            </div>
+            <div>
+              <div className="grid gap-4">
+                {reasons.map((reason) => (
+                  <article className="rounded-lg border border-emerald-100 bg-white p-5 shadow-sm" key={reason.title}>
+                    <div className="flex gap-4">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-emerald-50 text-emerald-700" aria-hidden="true">
+                        <ReasonIcon type={reason.icon} />
+                      </div>
+                      <div className="min-w-0">
+                        <h3 className="text-lg font-semibold leading-snug text-apple-text">{reason.title}</h3>
+                        <div className="mt-3 flex flex-wrap items-center gap-2">
+                          <span className="rounded-full border border-emerald-200 px-3 py-1 text-sm font-semibold text-emerald-700">
+                            {reason.services[0]}
+                          </span>
+                          <span className="text-lg font-semibold text-emerald-700" aria-hidden="true">
+                            +
+                          </span>
+                          <span className="rounded-full border border-emerald-200 px-3 py-1 text-sm font-semibold text-emerald-700">
+                            {reason.services[1]}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+              <div className="mt-6 flex justify-start lg:justify-end">
+                <Link
+                  className="inline-flex min-h-12 w-full items-center justify-center rounded-lg bg-apple-blue px-6 py-3 text-base font-semibold text-white transition hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue sm:w-auto"
+                  href="/contact"
+                >
+                  無料で相談する
+                  <span className="ml-3" aria-hidden="true">
+                    →
+                  </span>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
