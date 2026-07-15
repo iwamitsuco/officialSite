@@ -109,37 +109,36 @@ export default function HomePage() {
       </section>
 
       <section className="section-space bg-apple-gray">
-        <div className="container-site grid gap-10 lg:grid-cols-[0.82fr_1.35fr] lg:items-start">
+        <div className="container-site grid gap-8 lg:grid-cols-[0.78fr_1.42fr] lg:items-start">
           <div>
             <p className="eyebrow">BLOOMIAができること</p>
-            <h2 className="mt-4 text-3xl font-semibold leading-[1.22] [overflow-wrap:anywhere] text-apple-text md:text-5xl">
-              制作後の集客や業務改善まで相談できます。
+            <h2 className="mt-4 text-3xl font-semibold leading-[1.22] [overflow-wrap:anywhere] text-apple-text md:text-4xl lg:text-[44px]">
+              集客・業務改善・AI活用までまとめて相談できます。
             </h2>
-            <p className="body-copy mt-6 max-w-xl">
-              ホームページ制作だけで終わらず、公開後の集客、問い合わせ導線、業務改善まで一緒に整理します。
+            <p className="body-copy mt-5 max-w-xl">
+              Web制作、Web広告、システム開発、DX支援まで、事業の状況に合わせて必要な支援を整理します。
             </p>
           </div>
-          <div className="grid gap-4">
+          <div className="grid gap-4 md:grid-cols-2">
             {reasons.map((reason) => (
-              <article className="rounded-lg border border-apple-border bg-white p-5 shadow-sm md:p-6" key={reason.title}>
-                <div className="grid gap-4 sm:grid-cols-[5.25rem_1px_1fr_auto] sm:items-center">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-blue-50 text-apple-blue" aria-hidden="true">
+              <article className="rounded-lg border border-apple-border bg-white p-5 shadow-sm" key={reason.title}>
+                <div className="flex gap-4">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-apple-blue" aria-hidden="true">
                     <ReasonIcon type={reason.icon} />
                   </div>
-                  <div className="hidden h-16 w-px bg-apple-border sm:block" aria-hidden="true" />
-                  <div>
-                    <h3 className="text-xl font-semibold leading-snug text-apple-text">{reason.title}</h3>
+                  <div className="min-w-0">
+                    <h3 className="text-lg font-semibold leading-snug text-apple-text">{reason.title}</h3>
                     <p className="card-copy mt-2">{reason.description}</p>
+                    {reason.href ? (
+                      <Link
+                        className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-apple-blue transition hover:text-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
+                        href={reason.href}
+                      >
+                        {reason.linkLabel}
+                        <span aria-hidden="true">→</span>
+                      </Link>
+                    ) : null}
                   </div>
-                  {reason.href ? (
-                    <Link
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-apple-blue transition hover:text-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue sm:justify-self-end"
-                      href={reason.href}
-                    >
-                      {reason.linkLabel}
-                      <span aria-hidden="true">→</span>
-                    </Link>
-                  ) : null}
                 </div>
               </article>
             ))}
