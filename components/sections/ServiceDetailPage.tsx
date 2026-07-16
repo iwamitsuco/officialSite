@@ -39,8 +39,8 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
               <div>
                 <p className="eyebrow">{service.title}</p>
                 <h1 className="mt-5 max-w-none text-[34px] font-semibold leading-[1.22] tracking-normal text-apple-text sm:text-4xl md:text-[48px] md:leading-[1.15] xl:text-[52px] 2xl:text-[56px]">
-                  <span className="block lg:whitespace-nowrap">伝わるホームページで、</span>
-                  <span className="block lg:whitespace-nowrap">問い合わせの入口を整えます。</span>
+                  <span className="block lg:whitespace-nowrap">伝わるホームページを、</span>
+                  <span className="block lg:whitespace-nowrap">問い合わせの入口に。</span>
                 </h1>
                 <p className="lead mt-6 max-w-2xl">{service.description}</p>
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
