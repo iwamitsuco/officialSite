@@ -52,7 +52,7 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
                   </Link>
                   <Link
                     className="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-apple-border bg-white px-6 py-3 text-sm font-semibold text-apple-text transition hover:border-apple-blue hover:text-apple-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue sm:w-auto"
-                    href="#ad-media-types"
+                    href="#supported-media"
                   >
                     対応媒体を見る
                   </Link>
@@ -90,7 +90,10 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
       {isWebsite ? (
         <WebsiteFeatureSection />
       ) : (
-        <section className="section-space bg-apple-gray">
+        <section
+          className={`section-space bg-apple-gray${isWebAdvertising ? " scroll-mt-24" : ""}`}
+          id={isWebAdvertising ? "supported-media" : undefined}
+        >
           <div className="container-site">
             <SectionTitle title="対応内容" align="center" />
             <div className="mt-10 grid gap-4 md:grid-cols-3">
