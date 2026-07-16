@@ -18,7 +18,7 @@ export default function ServicesPage() {
       <Breadcrumb items={[{ label: "サービス", href: "/services" }]} />
       <section className="section-space">
         <div className="container-site">
-          <SectionTitle label="Services" title="事業に必要なデジタル支援を一つに。" description="課題に合わせて、Web・システム・広告・DXを組み合わせて提案します。" align="center" />
+          <SectionTitle label="Services" title="事業に必要なデジタル支援を一つに。" description="課題に合わせて、Web・システム・広告・DXを組み合わせて提案します。" align="center" headingLevel="h1" />
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
               <ServiceCard service={service} key={service.slug} />

@@ -33,7 +33,7 @@ export default function CompanyPage() {
       <Breadcrumb items={[{ label: "会社概要", href: "/company" }]} />
       <section className="section-space">
         <div className="container-site max-w-4xl">
-          <SectionTitle label="Company" title="会社概要" description="事業に必要なデジタル活用を、分かりやすく実務に近い形で支援します。" align="center" />
+          <SectionTitle label="Company" title="会社概要" description="事業に必要なデジタル活用を、分かりやすく実務に近い形で支援します。" align="center" headingLevel="h1" />
           <dl className="mt-12 divide-y divide-apple-border rounded-lg border border-apple-border bg-white">
             {rows.map(([label, value]) => (
               <div className="grid gap-2 p-6 md:grid-cols-[180px_1fr]" key={label}>
