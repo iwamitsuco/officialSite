@@ -109,7 +109,7 @@ const problemSegments: ProblemSegment[] = [
       },
       {
         icon: "system",
-        title: "予約・問い合わせを管理したい",
+        title: "顧客管理をしたい",
         description: "予約、問い合わせ、顧客情報を扱いやすくします。",
         links: [
           { label: "システム開発を見る", href: "/services/system-development" },
