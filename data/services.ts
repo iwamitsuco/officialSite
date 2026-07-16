@@ -101,7 +101,7 @@ export const services: Service[] = [
     slug: "web-advertising",
     title: "Web広告",
     shortTitle: "広告",
-    description: "Google広告、Yahoo!広告、Meta広告（Instagram・Facebook）、LINE広告の出稿と改善を支援します。",
+    description: "広告の出し方、成果の見方、改善の進め方までサポートします。",
     hero: "広告を出すだけでなく、成果を見ながら改善します。",
     features: ["Google広告", "Yahoo!広告", "Meta広告（Instagram・Facebook）", "LINE広告"],
     problems: ["広告の出稿方法が分からない", "成果が分からない", "画像やLPが整っていない", "運用する時間がない"],

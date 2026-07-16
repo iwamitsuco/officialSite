@@ -6,7 +6,7 @@ const service = getServiceBySlug("web-advertising");
 
 export const metadata = createMetadata({
   title: "Web広告",
-  description: "Google広告、Yahoo!広告、Meta広告（Instagram・Facebook）、LINE広告の出稿と改善を支援します。",
+  description: "広告の出し方、成果の見方、改善の進め方までサポートします。",
   path: "/services/web-advertising"
 });
 
