@@ -43,7 +43,7 @@ export default function HomePage() {
           <div>
             <p className="eyebrow">中小企業のデジタル支援</p>
             <h1 className="mt-5 text-4xl font-semibold leading-tight tracking-normal text-apple-text md:text-[56px]">
-              システム・Web広告・AIで企業を支える
+              システム・<span className="whitespace-nowrap">Web広告</span>・AIで企業を支える
             </h1>
             <p className="lead mt-6 max-w-2xl">
               中小企業・個人事業主向けに、ホームページ制作、業務システム、Web広告、DX支援まで一貫してサポートします。
