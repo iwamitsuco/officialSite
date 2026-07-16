@@ -159,24 +159,23 @@ export function ProblemSegments() {
         </div>
       </div>
 
-      <div className="mt-8 rounded-lg border border-apple-border bg-white/80 p-5 shadow-sm md:p-8">
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {activeSegment.items.map((item) => (
-            <article className="flex min-h-full flex-col rounded-lg border border-apple-border bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-soft" key={item.title}>
-              <div className="flex gap-4 md:min-h-[154px]">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-apple-blue md:h-14 md:w-14" aria-hidden="true">
+            <article className="flex min-h-full flex-col rounded-lg border border-apple-border bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-soft md:p-6" key={item.title}>
+              <div className="flex gap-4">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-apple-blue" aria-hidden="true">
                   <ProblemIcon icon={item.icon} />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <h3 className="text-lg font-semibold leading-[1.35] text-apple-text md:text-xl">{item.title}</h3>
-                  <p className="card-copy mt-2">{item.description}</p>
+                  <p className="mt-2 text-[15px] leading-[1.75] text-apple-sub md:text-base">{item.description}</p>
                 </div>
               </div>
 
-              <div className="mt-5 grid gap-2 border-t border-apple-border pt-4">
+              <div className="mt-auto flex flex-wrap justify-end gap-x-5 gap-y-2 pt-5">
                 {item.links.map((link) => (
                   <Link
-                    className="inline-flex min-h-11 items-center justify-between rounded-lg border border-apple-border bg-white px-4 py-3 text-sm font-semibold text-apple-text transition hover:border-apple-blue hover:text-apple-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
+                    className="inline-flex min-h-10 items-center gap-2 text-sm font-semibold text-apple-blue transition hover:text-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
                     href={link.href}
                     key={`${item.title}-${link.href}-${link.label}`}
                   >
@@ -187,7 +186,6 @@ export function ProblemSegments() {
               </div>
             </article>
           ))}
-        </div>
       </div>
     </div>
   );
