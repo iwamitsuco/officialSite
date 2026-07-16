@@ -61,7 +61,7 @@ function ServiceCombinationSection() {
     <section className="section-space bg-apple-gray">
       <div className="container-site">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-semibold leading-tight text-apple-text md:text-[40px]">どのサービスを選べばよいか分からない方へ</h2>
+          <h2 className="text-3xl font-semibold leading-tight text-apple-text md:text-[40px]">サービス選びに迷っている方へ</h2>
           <p className="lead mt-5">
             ご相談内容が複数のサービスにまたがっていても問題ありません。現在の課題を伺い、必要な支援と進める順番を整理します。
           </p>
