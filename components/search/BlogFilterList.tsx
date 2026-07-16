@@ -137,9 +137,11 @@ export function BlogFilterList({ posts, categories }: BlogFilterListProps) {
           ) : null}
         </div>
       </div>
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="-mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 md:mx-0 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-3">
         {filteredPosts.map((post) => (
-          <BlogCard post={post} key={post.slug} />
+          <div className="min-w-[84%] snap-start sm:min-w-[46%] md:min-w-0" key={post.slug}>
+            <BlogCard post={post} />
+          </div>
         ))}
       </div>
       {filteredPosts.length === 0 ? <p className="lead">該当する記事がありません。</p> : null}
