@@ -65,9 +65,9 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
               <div>
                 <p className="eyebrow">{service.title}</p>
                 <h1 className="mt-5 max-w-3xl text-[34px] font-semibold leading-[1.22] tracking-normal text-apple-text sm:text-4xl md:text-[56px] md:leading-[1.15]">
-                  広告を出すだけでなく、
+                  広告を、
                   <br />
-                  成果を見ながら改善します。
+                  成果につながる運用へ。
                 </h1>
                 <p className="lead mt-6 max-w-2xl">{service.description}</p>
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">

@@ -102,7 +102,7 @@ export const services: Service[] = [
     title: "Web広告",
     shortTitle: "広告",
     description: "広告の出し方、成果の見方、改善の進め方までサポートします。",
-    hero: "広告を出すだけでなく、成果を見ながら改善します。",
+    hero: "広告を、成果につながる運用へ。",
     features: ["Google広告", "Yahoo!広告", "Meta広告（Instagram・Facebook）", "LINE広告"],
     problems: ["広告の出稿方法が分からない", "成果が分からない", "画像やLPが整っていない", "運用する時間がない"],
     solutions: ["目的に合わせた媒体選定", "成果確認の設計", "LPや画像の改善", "運用改善の継続支援"],
