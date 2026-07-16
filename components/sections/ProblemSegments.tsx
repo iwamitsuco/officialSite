@@ -29,47 +29,47 @@ const problemSegments: ProblemSegment[] = [
       {
         icon: "website",
         title: "ホームページが古い",
-        description: "見た目やスマホ対応を見直し、安心して見てもらえる形に整えます。",
+        description: "見た目やスマホ対応を見直し、信頼感を整えます。",
         links: [{ label: "ホームページを見直す", href: "/services/website" }]
       },
       {
         icon: "inquiry",
         title: "Webから問い合わせが来ない",
-        description: "ページの流れや問い合わせまでの道筋を分かりやすく整えます。",
+        description: "ページの流れを見直し、問い合わせまでの道筋を整えます。",
         links: [
-          { label: "導線を改善する", href: "/services/website" },
-          { label: "集客も相談する", href: "/services/web-advertising" }
+          { label: "導線を見直す", href: "/services/website" },
+          { label: "Web広告を見る", href: "/services/web-advertising" }
         ]
       },
       {
         icon: "ad",
         title: "広告の成果が分からない",
-        description: "広告の目的や見られているページを確認し、改善しやすくします。",
+        description: "目的やリンク先を確認し、改善点を見つけます。",
         links: [{ label: "Web広告を見直す", href: "/services/web-advertising" }]
       },
       {
         icon: "task",
         title: "雑務を減らしたい",
-        description: "入力、確認、資料作成など、毎日の手間を減らす方法を整理します。",
+        description: "入力、確認、資料作成などの手間を減らします。",
         links: [
-          { label: "業務改善を相談する", href: "/services/dx" },
+          { label: "企業DXを見る", href: "/services/dx" },
           { label: "システム開発を見る", href: "/services/system-development" }
         ]
       },
       {
         icon: "spreadsheet",
         title: "Excelや紙管理が大変",
-        description: "予約、顧客、在庫などを管理しやすい形に見直します。",
+        description: "予約、顧客、在庫などの管理方法を見直します。",
         links: [
           { label: "企業DXを見る", href: "/services/dx" },
-          { label: "システム化を相談する", href: "/services/system-development" }
+          { label: "システム開発を見る", href: "/services/system-development" }
         ]
       },
       {
         icon: "ai",
         title: "AIを使ってみたい",
-        description: "文章作成や資料作成など、使いやすいところから始められます。",
-        links: [{ label: "AI活用を相談する", href: "/services/dx" }]
+        description: "文章作成や資料作成など、使いやすい範囲から始めます。",
+        links: [{ label: "企業DXを見る", href: "/services/dx" }]
       }
     ]
   },
@@ -80,40 +80,40 @@ const problemSegments: ProblemSegment[] = [
       {
         icon: "website",
         title: "何を載せればよいか分からない",
-        description: "サービス内容や強みを整理し、必要な情報を一緒に考えます。",
-        links: [{ label: "ホームページ制作を相談する", href: "/services/website" }]
+        description: "サービス内容や強みを整理し、必要な情報をまとめます。",
+        links: [{ label: "ホームページ制作を見る", href: "/services/website" }]
       },
       {
         icon: "page",
         title: "LPや告知ページを作りたい",
-        description: "商品やサービスに合わせて、伝わりやすいページを作ります。",
-        links: [{ label: "LP制作を相談する", href: "/services/website" }]
+        description: "商品やサービスに合わせて、伝わるページを整えます。",
+        links: [{ label: "LP制作を見る", href: "/services/website" }]
       },
       {
         icon: "design",
         title: "画像や広告もまとめて準備したい",
-        description: "サイト用画像、SNS画像、広告画像まで見た目をそろえます。",
+        description: "サイト画像、SNS画像、広告画像の見た目をそろえます。",
         links: [
           { label: "制作・デザインを見る", href: "/services/design" },
-          { label: "Web広告も相談する", href: "/services/web-advertising" }
+          { label: "Web広告を見る", href: "/services/web-advertising" }
         ]
       },
       {
         icon: "ad",
         title: "Web広告で最初の集客を始めたい",
-        description: "届けたい相手に合わせて、広告とリンク先を整理します。",
+        description: "届けたい相手に合わせて、広告とリンク先を整えます。",
         links: [
-          { label: "Web広告を相談する", href: "/services/web-advertising" },
+          { label: "Web広告を見る", href: "/services/web-advertising" },
           { label: "LP制作も見る", href: "/services/website" }
         ]
       },
       {
         icon: "system",
         title: "予約や問い合わせを管理したい",
-        description: "予約、問い合わせ、顧客情報を扱いやすく整えます。",
+        description: "予約、問い合わせ、顧客情報を扱いやすくします。",
         links: [
           { label: "システム開発を見る", href: "/services/system-development" },
-          { label: "小さく業務改善する", href: "/services/dx" }
+          { label: "企業DXを見る", href: "/services/dx" }
         ]
       }
     ]
@@ -159,20 +159,20 @@ export function ProblemSegments() {
         </div>
       </div>
 
-      <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      <div className="mt-8 grid items-start gap-4 md:grid-cols-2 xl:grid-cols-3">
           {activeSegment.items.map((item) => (
-            <article className="flex min-h-full flex-col rounded-lg border border-apple-border bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-soft md:p-6" key={item.title}>
+            <article className="flex flex-col rounded-lg border border-apple-border bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-soft" key={item.title}>
               <div className="flex gap-4">
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-apple-blue" aria-hidden="true">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-apple-blue" aria-hidden="true">
                   <ProblemIcon icon={item.icon} />
                 </div>
                 <div className="min-w-0">
-                  <h3 className="text-lg font-semibold leading-[1.35] text-apple-text md:text-xl">{item.title}</h3>
-                  <p className="mt-2 text-[15px] leading-[1.75] text-apple-sub md:text-base">{item.description}</p>
+                  <h3 className="text-lg font-semibold leading-[1.35] text-apple-text md:text-[19px]">{item.title}</h3>
+                  <p className="mt-2 text-[15px] leading-[1.7] text-apple-sub">{item.description}</p>
                 </div>
               </div>
 
-              <div className="mt-auto flex flex-wrap justify-end gap-x-5 gap-y-2 pt-5">
+              <div className="flex flex-wrap justify-end gap-x-5 gap-y-2 pt-4">
                 {item.links.map((link) => (
                   <Link
                     className="inline-flex min-h-10 items-center gap-2 text-sm font-semibold text-apple-blue transition hover:text-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
