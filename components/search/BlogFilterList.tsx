@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useRef, useState } from "react";
-import { BlogCard } from "@/components/sections/BlogCard";
+import { BlogCardCarousel } from "@/components/sections/BlogCardCarousel";
 import { CategoryFilter } from "@/components/search/CategoryFilter";
 import { TagFilter } from "@/components/search/TagFilter";
 import { getTagsForCategory } from "@/lib/search";
@@ -137,13 +137,7 @@ export function BlogFilterList({ posts, categories }: BlogFilterListProps) {
           ) : null}
         </div>
       </div>
-      <div className="-mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 md:mx-0 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-3">
-        {filteredPosts.map((post) => (
-          <div className="min-w-[84%] snap-start sm:min-w-[46%] md:min-w-0" key={post.slug}>
-            <BlogCard post={post} />
-          </div>
-        ))}
-      </div>
+      <BlogCardCarousel posts={filteredPosts} />
       {filteredPosts.length === 0 ? <p className="lead">該当する記事がありません。</p> : null}
     </div>
   );

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BlogCard } from "@/components/sections/BlogCard";
+import { BlogCardCarousel } from "@/components/sections/BlogCardCarousel";
 import { CTASection } from "@/components/sections/CTASection";
 import { NewsCard } from "@/components/sections/NewsCard";
 import { ProblemSegments } from "@/components/sections/ProblemSegments";
@@ -167,11 +167,7 @@ export default function HomePage() {
               ブログ一覧へ
             </Link>
           </div>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {blogPosts.slice(0, 3).map((post) => (
-              <BlogCard post={post} key={post.slug} />
-            ))}
-          </div>
+          <BlogCardCarousel posts={blogPosts.slice(0, 3)} className="mt-10" />
           <div className="mt-16">
             <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
               <SectionTitle label="News" title="お知らせ" />
