@@ -34,7 +34,7 @@ const problemSegments: ProblemSegment[] = [
       },
       {
         icon: "inquiry",
-        title: "Webから問い合わせが来ない",
+        title: "問い合わせが来ない",
         description: "ページの流れを見直し、問い合わせまでの道筋を整えます。",
         links: [
           { label: "導線を見直す", href: "/services/website" },
@@ -43,7 +43,7 @@ const problemSegments: ProblemSegment[] = [
       },
       {
         icon: "ad",
-        title: "広告の成果が分からない",
+        title: "広告成果が分からない",
         description: "目的やリンク先を確認し、改善点を見つけます。",
         links: [{ label: "Web広告を見直す", href: "/services/web-advertising" }]
       },
@@ -58,7 +58,7 @@ const problemSegments: ProblemSegment[] = [
       },
       {
         icon: "spreadsheet",
-        title: "Excelや紙管理が大変",
+        title: "Excel・紙管理が大変",
         description: "予約、顧客、在庫などの管理方法を見直します。",
         links: [
           { label: "企業DXを見る", href: "/services/dx" },
@@ -79,19 +79,19 @@ const problemSegments: ProblemSegment[] = [
     items: [
       {
         icon: "website",
-        title: "何を載せればよいか分からない",
+        title: "載せる内容が分からない",
         description: "サービス内容や強みを整理し、必要な情報をまとめます。",
         links: [{ label: "ホームページ制作を見る", href: "/services/website" }]
       },
       {
         icon: "page",
-        title: "LPや告知ページを作りたい",
+        title: "LP・告知ページを作りたい",
         description: "商品やサービスに合わせて、伝わるページを整えます。",
         links: [{ label: "LP制作を見る", href: "/services/website" }]
       },
       {
         icon: "design",
-        title: "画像や広告もまとめて準備したい",
+        title: "広告画像も準備したい",
         description: "サイト画像、SNS画像、広告画像の見た目をそろえます。",
         links: [
           { label: "制作・デザインを見る", href: "/services/design" },
@@ -100,7 +100,7 @@ const problemSegments: ProblemSegment[] = [
       },
       {
         icon: "ad",
-        title: "Web広告で最初の集客を始めたい",
+        title: "Web広告を始めたい",
         description: "届けたい相手に合わせて、広告とリンク先を整えます。",
         links: [
           { label: "Web広告を見る", href: "/services/web-advertising" },
@@ -109,7 +109,7 @@ const problemSegments: ProblemSegment[] = [
       },
       {
         icon: "system",
-        title: "予約や問い合わせを管理したい",
+        title: "予約・問い合わせを管理したい",
         description: "予約、問い合わせ、顧客情報を扱いやすくします。",
         links: [
           { label: "システム開発を見る", href: "/services/system-development" },
