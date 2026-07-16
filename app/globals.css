@@ -9,10 +9,14 @@
 
 html {
   scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
   min-height: 100vh;
+  max-width: 100%;
+  overflow-x: hidden;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Noto Sans JP", "Hiragino Sans", sans-serif;
   background: #ffffff;
   color: #111111;
