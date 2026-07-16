@@ -123,7 +123,7 @@ function AdVisual({ type }: { type: string }) {
 export function WebAdTypesSection() {
   return (
     <>
-      <section className="section-space">
+      <section className="section-space scroll-mt-24" id="ad-media-types">
         <div className="container-site">
           <div className="mx-auto max-w-3xl text-center">
             <p className="eyebrow">Web Advertising</p>

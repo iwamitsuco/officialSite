@@ -33,11 +33,39 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
       <Breadcrumb items={[{ label: "サービス", href: "/services" }, { label: service.title, href: `/services/${service.slug}` }]} />
       <section className="section-space">
         <div className="container-site">
-          <div className="mx-auto max-w-4xl text-center">
-            <p className="eyebrow">{service.title}</p>
-            <h1 className="mx-auto mt-5 max-w-5xl text-[32px] font-semibold leading-[1.32] [overflow-wrap:anywhere] sm:text-4xl md:text-[56px] md:leading-[1.24]">{service.hero}</h1>
-            <p className="lead mt-6">{service.description}</p>
-            {isWebsite ? (
+          {isWebAdvertising ? (
+            <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+              <div>
+                <p className="eyebrow">{service.title}</p>
+                <h1 className="mt-5 max-w-3xl text-[34px] font-semibold leading-[1.22] tracking-normal text-apple-text sm:text-4xl md:text-[56px] md:leading-[1.15]">
+                  広告を出すだけでなく、
+                  <br />
+                  成果を見ながら改善します。
+                </h1>
+                <p className="lead mt-6 max-w-2xl">{service.description}</p>
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                  <Link
+                    className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-apple-blue px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue sm:w-auto"
+                    href="/contact"
+                  >
+                    無料で相談する
+                  </Link>
+                  <Link
+                    className="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-apple-border bg-white px-6 py-3 text-sm font-semibold text-apple-text transition hover:border-apple-blue hover:text-apple-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue sm:w-auto"
+                    href="#ad-media-types"
+                  >
+                    対応媒体を見る
+                  </Link>
+                </div>
+              </div>
+              <WebAdvertisingHeroVisual />
+            </div>
+          ) : (
+            <div className="mx-auto max-w-4xl text-center">
+              <p className="eyebrow">{service.title}</p>
+              <h1 className="mx-auto mt-5 max-w-5xl text-[32px] font-semibold leading-[1.32] [overflow-wrap:anywhere] sm:text-4xl md:text-[56px] md:leading-[1.24]">{service.hero}</h1>
+              <p className="lead mt-6">{service.description}</p>
+              {isWebsite ? (
               <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
                 <Link
                   className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-apple-blue px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue sm:w-auto"
@@ -52,8 +80,9 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
                   制作内容を見る
                 </Link>
               </div>
-            ) : null}
-          </div>
+              ) : null}
+            </div>
+          )}
         </div>
       </section>
       {service.slug === "web-advertising" ? <WebAdTypesSection /> : null}
@@ -142,6 +171,64 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
         }
       />
     </>
+  );
+}
+
+function WebAdvertisingHeroVisual() {
+  return (
+    <div
+      className="rounded-lg bg-apple-gray p-5 shadow-sm md:p-8"
+      role="img"
+      aria-label="広告管理画面、成果グラフ、検索広告のイメージ"
+    >
+      <div className="rounded-lg bg-white p-5 shadow-soft md:p-7">
+        <div className="flex items-center gap-2">
+          <span className="h-3 w-3 rounded-full bg-red-400" />
+          <span className="h-3 w-3 rounded-full bg-yellow-400" />
+          <span className="h-3 w-3 rounded-full bg-green-400" />
+        </div>
+        <div className="mt-6 flex flex-col gap-5 lg:flex-row">
+          <div className="flex-1 rounded-lg bg-blue-50 p-4">
+            <p className="text-xs font-semibold text-apple-blue">検索広告</p>
+            <div className="mt-3 rounded-lg border border-blue-100 bg-white p-4">
+              <p className="text-sm font-semibold text-apple-text">ホームページ制作を相談</p>
+              <div className="mt-3 space-y-2">
+                <span className="block h-2 w-11/12 rounded-full bg-gray-300" />
+                <span className="block h-2 w-8/12 rounded-full bg-gray-200" />
+              </div>
+              <p className="mt-4 text-xs font-semibold text-apple-blue">広告</p>
+            </div>
+          </div>
+          <div className="flex-1 rounded-lg border border-apple-border bg-white p-4">
+            <p className="text-xs font-semibold text-apple-sub">改善レポート</p>
+            <div className="mt-5 h-28">
+              <svg className="h-full w-full" viewBox="0 0 220 110" fill="none" aria-hidden="true">
+                <path d="M10 96H210" stroke="#E5E7EB" strokeWidth="3" strokeLinecap="round" />
+                <path d="M10 72H210" stroke="#F1F5F9" strokeWidth="2" strokeLinecap="round" />
+                <path d="M10 46H210" stroke="#F1F5F9" strokeWidth="2" strokeLinecap="round" />
+                <path d="M10 86C36 66 58 73 82 52C105 32 128 44 151 28C171 14 190 22 210 10" stroke="#0071E3" strokeWidth="7" strokeLinecap="round" />
+                <circle cx="82" cy="52" r="5" fill="#0071E3" />
+                <circle cx="151" cy="28" r="5" fill="#0071E3" />
+                <circle cx="210" cy="10" r="5" fill="#0071E3" />
+              </svg>
+            </div>
+            <div className="mt-5 grid grid-cols-2 gap-3">
+              <div className="rounded-lg bg-apple-gray p-3">
+                <p className="text-xs text-apple-sub">クリック</p>
+                <p className="mt-1 text-lg font-semibold text-apple-text">改善中</p>
+              </div>
+              <div className="rounded-lg bg-apple-gray p-3">
+                <p className="text-xs text-apple-sub">問い合わせ</p>
+                <p className="mt-1 text-lg font-semibold text-apple-text">確認</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="mt-5 rounded-full bg-gray-100 p-1">
+          <div className="h-3 w-2/3 rounded-full bg-apple-blue" />
+        </div>
+      </div>
+    </div>
   );
 }
 
