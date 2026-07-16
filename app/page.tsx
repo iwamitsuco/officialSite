@@ -80,7 +80,7 @@ export default function HomePage() {
       <section className="section-space">
         <div className="container-site">
           <SectionTitle label="Services" title="必要な支援をまとめて相談できます。" description="Web、システム、Web広告、DXまで、事業の状況に合わせて組み合わせます。" />
-          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
               <ServiceCard service={service} key={service.slug} compact />
             ))}
