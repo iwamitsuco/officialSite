@@ -69,7 +69,7 @@ export default function HomePage() {
       <section className="section-space bg-apple-gray">
         <div className="container-site">
           <SectionTitle
-            title="こんなお悩みはありませんか？"
+            title="こんなお悩みありませんか？"
             description="状況に近い項目を選ぶと、関連するサービスを確認できます。"
             align="center"
           />
