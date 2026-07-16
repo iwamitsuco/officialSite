@@ -3,6 +3,7 @@ import type { Service } from "@/types";
 
 type ServiceCardProps = {
   service: Service;
+  compact?: boolean;
 };
 
 const iconPaths: Record<string, string> = {
@@ -23,7 +24,36 @@ function ServiceIcon({ slug }: { slug: string }) {
   );
 }
 
-export function ServiceCard({ service }: ServiceCardProps) {
+const compactDescriptions: Record<string, string> = {
+  "system-development": "予約・顧客管理など、業務に合わせた仕組みを作ります。",
+  website: "会社やサービスが伝わるWebページを整えます。",
+  design: "バナー、SNS画像、広告画像などを制作します。",
+  dx: "Excel改善やAI活用など、日々の業務を軽くします。",
+  "web-advertising": "各種媒体で、集客の入口を整えます。"
+};
+
+export function ServiceCard({ service, compact = false }: ServiceCardProps) {
+  if (compact) {
+    return (
+      <Link
+        className="flex min-h-full rounded-lg border border-apple-border bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
+        href={`/services/${service.slug}`}
+      >
+        <div className="flex gap-4">
+          <ServiceIcon slug={service.slug} />
+          <div className="min-w-0">
+            <h3 className="text-lg font-semibold leading-[1.35] text-apple-text">{service.title}</h3>
+            <p className="mt-2 text-[15px] leading-[1.7] text-apple-sub">{compactDescriptions[service.slug] ?? service.description}</p>
+            <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-apple-blue">
+              {service.title}を見る
+              <span aria-hidden="true">→</span>
+            </span>
+          </div>
+        </div>
+      </Link>
+    );
+  }
+
   return (
     <Link className="subtle-card block" href={`/services/${service.slug}`}>
       <div className="flex items-center gap-4">
