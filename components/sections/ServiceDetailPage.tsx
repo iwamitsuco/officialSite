@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { CTASection } from "@/components/sections/CTASection";
 import { FAQ } from "@/components/sections/FAQ";
@@ -33,7 +34,32 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
       <Breadcrumb items={[{ label: "サービス", href: "/services" }, { label: service.title, href: `/services/${service.slug}` }]} />
       <section className="section-space">
         <div className="container-site">
-          {isWebAdvertising ? (
+          {isWebsite ? (
+            <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+              <div>
+                <p className="eyebrow">{service.title}</p>
+                <h1 className="mt-5 max-w-3xl text-[34px] font-semibold leading-[1.22] tracking-normal text-apple-text sm:text-4xl md:text-[56px] md:leading-[1.15]">
+                  {service.hero}
+                </h1>
+                <p className="lead mt-6 max-w-2xl">{service.description}</p>
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                  <Link
+                    className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-apple-blue px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue sm:w-auto"
+                    href="/contact"
+                  >
+                    無料で相談する
+                  </Link>
+                  <Link
+                    className="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-apple-border bg-white px-6 py-3 text-sm font-semibold text-apple-text transition hover:border-apple-blue hover:text-apple-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue sm:w-auto"
+                    href="#website-service-types"
+                  >
+                    制作内容を見る
+                  </Link>
+                </div>
+              </div>
+              <WebsiteHeroVisual />
+            </div>
+          ) : isWebAdvertising ? (
             <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
               <div>
                 <p className="eyebrow">{service.title}</p>
@@ -65,22 +91,6 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
               <p className="eyebrow">{service.title}</p>
               <h1 className="mx-auto mt-5 max-w-5xl text-[32px] font-semibold leading-[1.32] [overflow-wrap:anywhere] sm:text-4xl md:text-[56px] md:leading-[1.24]">{service.hero}</h1>
               <p className="lead mt-6">{service.description}</p>
-              {isWebsite ? (
-              <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-                <Link
-                  className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-apple-blue px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue sm:w-auto"
-                  href="/contact"
-                >
-                  無料で相談する
-                </Link>
-                <Link
-                  className="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-apple-border bg-white px-6 py-3 text-sm font-semibold text-apple-text transition hover:border-apple-blue hover:text-apple-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue sm:w-auto"
-                  href="#website-service-types"
-                >
-                  制作内容を見る
-                </Link>
-              </div>
-              ) : null}
             </div>
           )}
         </div>
@@ -174,6 +184,21 @@ export function ServiceDetailPage({ service }: ServiceDetailPageProps) {
         }
       />
     </>
+  );
+}
+
+function WebsiteHeroVisual() {
+  return (
+    <div className="rounded-lg bg-apple-gray p-4 shadow-sm md:p-6">
+      <Image
+        src="/images/website-service-hero.png"
+        alt="パソコンとスマートフォンに表示されたホームページ制作のイメージ"
+        width={1536}
+        height={1087}
+        priority
+        className="h-auto w-full rounded-lg"
+      />
+    </div>
   );
 }
 
