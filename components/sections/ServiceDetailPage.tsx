@@ -361,13 +361,7 @@ function WebsiteMidCta({ variant }: { variant: "compact" | "card" }) {
               className="inline-flex min-h-11 items-center justify-center rounded-full bg-apple-blue px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
               href="/contact"
             >
-              無料相談する
-            </Link>
-            <Link
-              className="inline-flex min-h-11 items-center justify-center rounded-full border border-apple-border bg-white px-5 py-2.5 text-sm font-semibold text-apple-text transition hover:border-apple-blue hover:text-apple-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-apple-blue"
-              href="/contact"
-            >
-              メールで問い合わせる
+              無料で相談する
             </Link>
           </div>
         </div>
