@@ -14,7 +14,7 @@ import { organizationJsonLd, SEOJsonLd } from "@/lib/jsonld";
 import { createMetadata } from "@/lib/seo";
 
 export const metadata = createMetadata({
-  title: "BLOOMIA合同会社 | システム・Web広告・AIで企業を支える",
+  title: "BLOOMIA合同会社 | Webと業務の課題を、まとめて相談できる",
   description:
     "中小企業・個人事業主向けに、ホームページ制作、業務システム、Web広告、DX支援まで一貫してサポートします。"
 });
@@ -43,7 +43,8 @@ export default function HomePage() {
           <div>
             <p className="eyebrow">中小企業のデジタル支援</p>
             <h1 className="mt-5 text-4xl font-semibold leading-tight tracking-normal text-apple-text md:text-[56px]">
-              システム・<span className="whitespace-nowrap">Web広告</span>・AIで企業を支える
+              <span className="whitespace-nowrap">Webと業務の課題を、</span>
+              <span className="whitespace-nowrap">まとめて相談できる。</span>
             </h1>
             <p className="lead mt-6 max-w-2xl">
               中小企業・個人事業主向けに、ホームページ制作、業務システム、Web広告、DX支援まで一貫してサポートします。
