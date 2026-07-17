@@ -75,3 +75,140 @@ img {
     overflow-wrap: anywhere;
   }
 }
+
+.hero-zipper-intro {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+  background: #ffffff;
+  animation: hero-intro-fade 4.8s ease forwards;
+}
+
+.hero-zipper-screen {
+  width: min(980px, calc(100% - 40px));
+  transform-origin: center;
+  animation: hero-screen-close 4.8s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+.hero-zipper-window {
+  overflow: hidden;
+  border: 1px solid #d2d2d7;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 24px 80px rgb(0 0 0 / 12%);
+}
+
+.hero-zipper-track {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(980px, calc(100% - 40px));
+  height: 38px;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation: hero-zipper-track 4.8s ease forwards;
+}
+
+.hero-zipper-teeth {
+  position: absolute;
+  inset: 17px 0 auto;
+  height: 4px;
+  border-radius: 999px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #111111 0 8px,
+      transparent 8px 16px
+    );
+}
+
+.hero-zipper-pull {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: grid;
+  height: 38px;
+  width: 48px;
+  place-items: center;
+  transform: translateY(-50%);
+  border-radius: 999px;
+  background: #111111;
+  box-shadow: 0 12px 32px rgb(0 0 0 / 22%);
+  animation: hero-zipper-pull 4.8s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+.hero-zipper-pull span {
+  display: block;
+  height: 14px;
+  width: 14px;
+  border: 2px solid #ffffff;
+  border-radius: 999px;
+}
+
+@keyframes hero-intro-fade {
+  0%,
+  70% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes hero-screen-close {
+  0%,
+  34% {
+    clip-path: inset(0 0 0 0 round 8px);
+    transform: scale(1);
+  }
+
+  74% {
+    clip-path: inset(0 50% 0 50% round 8px);
+    transform: scale(0.98);
+  }
+
+  100% {
+    clip-path: inset(0 50% 0 50% round 8px);
+    transform: scale(0.98);
+  }
+}
+
+@keyframes hero-zipper-track {
+  0%,
+  26% {
+    opacity: 0;
+  }
+
+  34%,
+  82% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes hero-zipper-pull {
+  0%,
+  34% {
+    left: 0;
+  }
+
+  74%,
+  100% {
+    left: calc(100% - 48px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-zipper-intro {
+    display: none;
+  }
+}

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BlogCardCarousel } from "@/components/sections/BlogCardCarousel";
 import { CTASection } from "@/components/sections/CTASection";
+import { HeroZipperIntro } from "@/components/sections/HeroZipperIntro";
 import { NewsCard } from "@/components/sections/NewsCard";
 import { ProblemSegments } from "@/components/sections/ProblemSegments";
 import { ServiceCard } from "@/components/sections/ServiceCard";
@@ -38,7 +39,8 @@ export default function HomePage() {
   return (
     <>
       <SEOJsonLd data={organizationJsonLd()} />
-      <section className="overflow-hidden bg-white">
+      <section className="relative isolate overflow-hidden bg-white">
+        <HeroZipperIntro />
         <div className="container-site grid min-h-[calc(100vh-4rem)] items-center gap-12 py-16 md:grid-cols-[1.05fr_0.95fr] md:py-20">
           <div>
             <p className="eyebrow">中小企業のデジタル支援</p>
