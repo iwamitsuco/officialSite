@@ -1,53 +1,61 @@
-const stats = [
-  { label: "Web", value: "Site" },
-  { label: "Ads", value: "Growth" },
-  { label: "DX", value: "Flow" }
+const petals = [
+  { label: "WEB", className: "hero-zipper-petal hero-zipper-petal-web" },
+  { label: "SYSTEM", className: "hero-zipper-petal hero-zipper-petal-system" },
+  { label: "DESIGN", className: "hero-zipper-petal hero-zipper-petal-design" },
+  { label: "AD", className: "hero-zipper-petal hero-zipper-petal-ad" },
+  { label: "APP", className: "hero-zipper-petal hero-zipper-petal-app" }
 ];
 
 export function HeroZipperIntro() {
   return (
     <div className="hero-zipper-intro" aria-hidden="true">
       <div className="hero-zipper-screen">
-        <div className="hero-zipper-window">
-          <div className="flex items-center gap-2 border-b border-apple-border px-5 py-4">
-            <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-            <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-            <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-            <span className="ml-auto h-2 w-16 rounded-full bg-slate-200" />
-          </div>
-          <div className="grid gap-6 p-6 md:grid-cols-[0.8fr_1.2fr] md:p-8">
+        <div className="hero-zipper-stage">
+          <div className="hero-zipper-glow" />
+          <div className="hero-zipper-orbit hero-zipper-orbit-one" />
+          <div className="hero-zipper-orbit hero-zipper-orbit-two" />
+          <div className="hero-zipper-nav">
             <div>
-              <p className="text-sm font-semibold text-apple-blue">Digital Support</p>
-              <p className="mt-3 text-3xl font-semibold leading-tight text-apple-text md:text-4xl">
-                Webと業務を
-                <br />
-                ひとつの流れに。
-              </p>
-              <div className="mt-6 space-y-3">
-                <span className="block h-3 w-4/5 rounded-full bg-slate-200" />
-                <span className="block h-3 w-2/3 rounded-full bg-slate-200" />
-                <span className="block h-11 w-36 rounded-full bg-apple-blue" />
-              </div>
+              <p className="hero-zipper-brand">BLOOMIA</p>
+              <p className="hero-zipper-studio">DIGITAL STUDIO</p>
             </div>
-            <div className="grid gap-4">
-              <div className="rounded-lg border border-blue-100 bg-blue-50 p-5">
-                <div className="h-28 rounded-lg bg-white shadow-sm">
-                  <div className="flex h-full items-end gap-3 p-5">
-                    <span className="h-10 flex-1 rounded-t-lg bg-blue-200" />
-                    <span className="h-16 flex-1 rounded-t-lg bg-blue-300" />
-                    <span className="h-24 flex-1 rounded-t-lg bg-apple-blue" />
-                  </div>
-                </div>
-              </div>
-              <div className="grid grid-cols-3 gap-3">
-                {stats.map((item) => (
-                  <div className="rounded-lg border border-apple-border bg-white p-4 shadow-sm" key={item.label}>
-                    <p className="text-xs font-semibold text-apple-sub">{item.label}</p>
-                    <p className="mt-2 text-sm font-semibold text-apple-text">{item.value}</p>
-                  </div>
-                ))}
-              </div>
+            <div className="hero-zipper-menu">
+              <span>私たちについて</span>
+              <span>サービス</span>
+              <span>実績</span>
+              <span>ブログ</span>
             </div>
+            <span className="hero-zipper-outline">相談する</span>
+          </div>
+          <div className="hero-zipper-copy">
+            <p className="hero-zipper-kicker">WEB ・ SYSTEM ・ DESIGN ・ AD</p>
+            <p className="hero-zipper-title">
+              つくる力を、ひとつに。
+              <br />
+              事業に、花を咲かせる。
+            </p>
+            <p className="hero-zipper-lead">
+              Web制作からシステム開発、広告運用、デザインまで。
+              <br />
+              分断しないチームが、成果につながる体験を設計します。
+            </p>
+            <div className="hero-zipper-actions">
+              <span className="hero-zipper-gold-button">メールで相談する</span>
+              <span className="hero-zipper-text-link">私たちにできること</span>
+            </div>
+          </div>
+          <div className="hero-zipper-flower">
+            <div className="hero-zipper-center" />
+            {petals.map((petal) => (
+              <div className={petal.className} key={petal.label}>
+                <span>{petal.label}</span>
+              </div>
+            ))}
+          </div>
+          <div className="hero-zipper-badges">
+            <span>宮崎から全国対応</span>
+            <span>企画から運用まで一貫支援</span>
+            <span>5つの専門領域</span>
           </div>
         </div>
       </div>
